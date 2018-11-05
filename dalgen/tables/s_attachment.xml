@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_attachment">
+
+    <!-- 创建信息 -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_attachment
+            (id,b_table,b_id,name,type,biz_type,url,gmt_create)
+            values
+             (?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+	</operation>
+	<!--通过主键查询一条信息-->
+	<operation name="selectByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select id,b_table,b_id,name,type,biz_type,url,gmt_create from s_attachment where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<!--获取所有信息-->
+	<operation name="selectByBId" paramtype="primitive" multiplicity="many">
+			<sql>
+				<![CDATA[
+                 select id,b_table,b_id,name,type,biz_type,url,gmt_create from s_attachment where b_table=? and b_id=?
+   			]]>
+			</sql>
+	</operation>
+	
+	<!--获取所有信息-->
+	<operation name="selectByBIdAndBiz" paramtype="primitive" multiplicity="many">
+			<sql>
+				<![CDATA[
+                 select id,b_table,b_id,name,type,biz_type,url,gmt_create from s_attachment where b_table=? and b_id=? and biz_type=?
+   			]]>
+			</sql>
+	</operation>
+	
+	<!--更新信息，根据ID-->
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_attachment set b_table=?,b_id=?,name=?,type=?,biz_type=?,url=?,gmt_create=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<!--删除信息，根据ID-->
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   DELETE from s_attachment where id=?
+   			]]>
+   		</sql>
+	</operation> 
+		<!--删除信息，根据ID-->
+	<operation name="deleteByBId">
+   		<sql>
+   			<![CDATA[
+                   DELETE from s_attachment where b_id=? and b_table=?
+   			]]>
+   		</sql>
+	</operation> 
+		
+</table>

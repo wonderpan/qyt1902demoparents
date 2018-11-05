@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_account_authorize">
+
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_account_authorize
+            (id,account_id,type,resource_key)
+            values
+             (?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+
+	
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select *
+                from c_account_authorize where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	
+	
+	<operation name="deleteById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+               delete from c_account_authorize where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteByAccountId" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+               delete from c_account_authorize where account_id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByCondition" paramtype="primitive" multiplicity="many">
+   		<extraparams>
+   			<param name="accountId" javatype="java.lang.String"/>
+   			<param name="type" javatype="java.lang.Integer"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+              select * from c_account_authorize
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       select * from c_account_authorize where 1=1 
+		       <dynamic>
+			       <isNotEmpty property="account_id" prepend="and">
+	   			         account_id=#accountId#
+					</isNotEmpty> 
+					  <isNotEmpty property="type" prepend="and">
+	   			         type=#type#
+					</isNotEmpty> 
+			  </dynamic>
+			]]> 
+		</sqlmap>
+	</operation>
+	<operation name="selectByAccountId" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_account_authorize where account_id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="update" paramtype="object">
+		<sql>
+            <![CDATA[
+            update c_account_authorize set resource_key=?
+            where account_id=?
+             ]]>
+		</sql>
+	</operation>
+</table>

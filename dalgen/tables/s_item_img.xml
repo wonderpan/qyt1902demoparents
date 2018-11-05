@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item_img">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO s_item_img (s_item_id,s_item_saasid,img_url_old,img_url,status,is_main,create_time,check_time,s_admin_id,gysid)
+			VALUES
+                (?, ?, ?, ?, ?, ?, ?, ?,?,?)
+
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item_img where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="updateById" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update s_item_img set img_url=?,status=?,is_main=?,check_time=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="delete" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from s_item_img where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+     <operation name="selectByItemId" multiplicity="many">
+		<extraparams>
+			<param name="s_item_id" javatype="java.lang.int"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_item_img where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from s_item_img
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+					<isNotEmpty property="SItemId" prepend="and">
+					 	s_item_id=#SItemId#
+					 </isNotEmpty>
+			 </dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+     <operation name="selectByItemSaasId" multiplicity="many">
+		<extraparams>
+			<param name="s_item_saasid" javatype="java.lang.int"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_item_img where status=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from s_item_img
+                where status=1
+				   ${cdata-end}
+   			  <dynamic>
+					<isNotEmpty property="SItemSaasid" prepend="and">
+					 	s_item_saasid=#SItemSaasid#
+					 </isNotEmpty>
+			 </dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	
+	<operation name="deleteByItemId" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from s_item_img where s_item_id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+</table> 

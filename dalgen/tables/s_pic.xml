@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_pic">
+	
+	
+    <!-- ??????? -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_pic(id,name,url,create_time,update_time)
+            values
+             (?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<!--???????????-->
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select id,name,url,create_time,update_time from s_pic where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	
+	<!--????????????ID-->
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_pic set name=?,url=?,create_time=?,update_time=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<!--???????????ID-->
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from s_pic where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<!--???name???????-->
+	<operation name="selectByName" multiplicity="many" paging="false">
+	    <extraparams>
+			<param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                   select id,name,url,create_time,update_time from s_pic where name like '$name$%' order by sort
+   			]]>
+   		</sql>
+	</operation>
+		<!--???name???????-->
+	<operation name="getByName">
+   		<sql>
+   			<![CDATA[
+                   select id,name,url,create_time,update_time from s_pic where name = ?
+   			]]>
+   		</sql>
+	</operation>
+	
+</table>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_member_type">
+    
+    <operation name="selectAll" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_member_type
+   			]]>
+		</sql>
+	</operation>
+</table> 

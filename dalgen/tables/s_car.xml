@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_car" autoSwitchDataSrc="true">
+	<column name="price" javatype="com.caozong.util.money.Money" />
+		<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+				insert into s_car(id,cardNo,itemId,itemName,imgItem,price,amount,gmtCreate,PCID,JJID,PIHAO,YXQ,CHBDJ,PICI,zbzs,isMultiple,leastNum,counts,kfid,jwhid,jlgg,zbzshl,kkpshl,shj,is_cl,activity_id) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectByCardNo" multiplicity="many">
+        <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_car 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from s_car where cardNo=#cardNo#
+   			]]>
+		</sqlmap>
+     </operation>
+     
+     <operation name="selectByItemIdAndCardNoForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_car where cardNo=? and itemId=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateCountByItemId" paramtype="object">
+        <sql>
+            <![CDATA[
+           update s_car set amount=? where itemId=? and cardNo=?
+             ]]>
+        </sql>
+    </operation>
+    
+    
+    <operation name="updateCountById" paramtype="object">
+        <sql>
+            <![CDATA[
+           update s_car set amount=? where id=?
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_car where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	
+    <operation name="delete" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from s_car where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+     <operation name="selectByCartIds" multiplicity="many">
+		<extraparams>
+			<param name="Ids" javatype="java.util.List"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_car where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from s_car
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+				   <isNotEmpty property="ids" prepend="and"> id in
+						<iterate property="ids" conjunction="," close=")" open="(" >
+									#ids[]#
+						</iterate>
+					</isNotEmpty>
+			 </dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="upMyCart" paramtype="object">
+        <sql>
+            <![CDATA[
+           update s_car set   cardNo=?,itemId=?,itemName=?,imgItem=?,price=?,amount=?,gmtCreate=?,PCID=?,JJID=?,PIHAO=?,YXQ=?,CHBDJ=?,PICI=?,zbzs=?,isMultiple=?,leastNum=?,counts=?   where id=?
+             ]]>
+        </sql>
+    </operation>
+</table>

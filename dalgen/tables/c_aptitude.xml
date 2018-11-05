@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_aptitude">
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+            insert into c_aptitude
+            (id,cardNo,aptitudeName,imgAptitude,status,reason,gmtCreate)
+            values
+             (?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                select * from c_aptitude where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpd" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                select * from c_aptitude where id=? for update
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteById" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                delete from c_aptitude where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateAptitude" paramtype="object">
+		<sql>
+			<![CDATA[
+                update c_aptitude set aptitudeName=?,imgAptitude=?,status=?,reason=?
+	        	where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByCardNo" paramtype="primitive" multiplicity="many" paging="true">
+		<sql>
+			<![CDATA[
+                select * from c_aptitude where cardNo=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectBycardNo" paramtype="primitive" multiplicity="many">
+		<sql>
+			<![CDATA[
+                select * from c_aptitude where cardNo=?
+   			]]>
+		</sql>
+	</operation>
+</table>

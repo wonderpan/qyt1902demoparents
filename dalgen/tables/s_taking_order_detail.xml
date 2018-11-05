@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_taking_order_detail">
+  <column name="money" javatype="com.caozong.util.money.Money" />
+
+   <operation name="insert" paramtype="object">
+	   <sql>
+		   <![CDATA[
+		insert into s_taking_order_detail (id,taking_id,cardNo,nick_name,money,
+			   source,source_text,source_people,source_bill,operator,gmt_create,gmt_operate,sort)
+		values(?,?,?,?,?,?,?,?,?,?,?,?,?)
+			]]>
+	   </sql>
+   </operation>
+  <operation name="update" paramtype="object">
+        <sql>
+            <![CDATA[
+           update s_taking_order_detail set taking_id=?,cardNo=?,nick_name=?,money=?,
+		   source=?,source_text=?,source_people=?,source_bill=?,operator=?,gmt_create=?,gmt_operate=?,sort=?
+           where id=?
+             ]]>
+        </sql>
+    </operation>
+	
+    <operation name="delete" paramtype="primitive">
+        <sql>
+            <![CDATA[
+            	delete from s_taking_order_detail where id=?
+             ]]>
+        </sql>
+    </operation>
+	
+    <operation name="deleteByTakingId" paramtype="primitive">
+        <sql>
+            <![CDATA[
+            	delete from s_taking_order_detail where taking_id=?
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="selectById" paramtype="primitive">
+       <sql>
+            <![CDATA[
+            	select * from s_taking_order_detail where id=?
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectByBillNo" paramtype="primitive" multiplicity="many">
+       <sql>
+            <![CDATA[
+            	select * from s_taking_order_detail where source_bill=?
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectByTakingId" paramtype="primitive" multiplicity="many">
+       <sql>
+            <![CDATA[
+            	select * from s_taking_order_detail where taking_id=?
+             ]]>
+        </sql>
+    </operation>
+</table>

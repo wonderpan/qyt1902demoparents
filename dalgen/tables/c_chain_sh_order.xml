@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_chain_sh_order">
+    <column name="ls_price" javatype="com.caozong.util.money.Money" />
+    <column name="wx_price" javatype="com.caozong.util.money.Money" />
+    <column name="carriage_fee" javatype="com.caozong.util.money.Money" />
+    <column name="service_fee" javatype="com.caozong.util.money.Money" />
+    <column name="bail_fee" javatype="com.caozong.util.money.Money" />
+    <column name="settle_fee" javatype="com.caozong.util.money.Money" />
+    <column name="has_settle_fee" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_chain_sh_order (
+               id,sh_order_no,order_no,shCardNo,shName,supply_mode,delivery_mode,product_id,product_code,product_name,
+               img_item, json_model,typeId,ls_price,wx_price,carriage_fee ,amount, service_fee,bail_fee,
+               settle_fee, has_settle_fee , gmt_bail_unfreeze ,gmt_create , gmt_shipments ,  gmt_timeout , gmt_receipt,
+               gmt_test ,gmt_balance ,timeout_minute ,gmt_update ,biz_status ,status , status_content ,qh_name , qh_mobile,
+               qh_region_code,qh_region_name,qh_address 
+            )
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_sh_order where id=?
+   			]]>
+		</sql>
+	</operation>
+    
+   <operation name="updateByID" paramtype="object">
+		<sql>
+		<![CDATA[
+			  update c_chain_sh_order set
+				  sh_order_no =? ,order_no =? ,shCardNo =? ,shName =? ,supply_mode =? ,delivery_mode =? ,product_id =? ,product_code =? ,product_name =? ,
+                  img_item =? , json_model =? ,typeId =? ,ls_price =? ,wx_price =? ,carriage_fee =?  ,amount =? , service_fee =?   ,bail_fee =? ,
+                  settle_fee =? , has_settle_fee =? , gmt_bail_unfreeze =? ,gmt_create =? , gmt_shipments =? ,  gmt_timeout =? , gmt_receipt =? ,
+                  gmt_test =?  ,gmt_balance =?  ,timeout_minute =?  ,gmt_update =?  ,biz_status =?  ,status =?  , status_content =?  ,qh_name =?  , qh_mobile =? ,
+                  qh_region_code =? ,qh_region_name =? ,qh_address =?  
+			  where id =?
+		]]>
+		</sql>
+	</operation>
+	
+    <operation name="delete" paramtype="primitive">
+    	<sql>
+            <![CDATA[
+            	delete from c_chain_sh_order where id=? 
+             ]]>
+        </sql>
+    </operation>
+
+	<operation name="selectPageList" multiplicity="many" paging="true">
+		<extraparams>
+		    <param name="productName" javatype="java.lang.String"/>
+		    <param name="shOrderNo" javatype="java.lang.String"/>
+		    <param name="shCardNo" javatype="java.lang.String"/>
+		    <param name="orderNo" javatype="java.lang.String"/>
+		    <param name="deliveryMode" javatype="java.lang.String"/>
+		    <param name="supplyMode" javatype="java.lang.String"/>
+		    <param name="status" javatype="java.lang.String"/>	
+			<param name="bizStatusList" javatype="java.util.List"/>
+			<param name="gmtCreateBegin" javatype="java.lang.String"/>
+			<param name="gmtCreateEnd" javatype="java.lang.String"/>
+		
+		</extraparams>
+		<sql>
+		<![CDATA[
+			select * from c_chain_sh_order
+		]]>
+		</sql>
+		<sqlmap>
+		<![CDATA[
+		    select * from c_chain_sh_order where 1=1
+			<dynamic>
+				<isNotEmpty property="productName"  prepend=" and ">
+					 product_name like  '%$productName$%'
+				</isNotEmpty>
+				<isNotEmpty property="shOrderNo"  prepend=" and ">
+					 sh_order_no =#shOrderNo#
+				</isNotEmpty>
+			    <isNotEmpty property="shCardNo"  prepend=" and ">
+					 shCardNo =#shCardNo#
+				</isNotEmpty>
+				<isNotEmpty property="orderNo"  prepend=" and ">
+					 order_no =#orderNo#
+				</isNotEmpty>
+					<isNotEmpty property="deliveryMode"  prepend=" and ">
+					 delivery_mode =#deliveryMode#
+				</isNotEmpty>
+				<isNotEmpty property="supplyMode"  prepend=" and ">
+					 supply_mode =#supplyMode#
+				</isNotEmpty>
+				<isNotEmpty property="status"  prepend=" and ">
+					 status =#status#
+				</isNotEmpty>	
+				<isNotEmpty property="bizStatusList"  prepend="and">
+					 <iterate property="bizStatusList" open="(" close=")" conjunction="or">
+							biz_status=#bizStatusList[]#
+					 </iterate>
+				</isNotEmpty>							
+				<isNotEmpty property="gmtCreateBegin" prepend="and"> 
+					date_format(gmt_create,'%Y-%m-%d')  >= #gmtCreateBegin# 
+				</isNotEmpty>
+				<isNotEmpty property="gmtCreateEnd" prepend="and"> 
+					#gmtCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				</isNotEmpty>
+			</dynamic>
+		]]>
+		</sqlmap>
+	</operation>
+</table>

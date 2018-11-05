@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_param">
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_param
+            (id,
+             path,
+	         parent_id,
+             name,
+             value,
+             remark,
+             sort,
+             tactics,
+             state
+             )
+            values
+             (?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	<operation name="selectByParentId" multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from s_param where parent_id=? order by sort,id
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByParentIdPaging" multiplicity="many" paging="true">
+   		<sql>
+   			<![CDATA[
+                select * from s_param  where parent_id = ? order by sort,id
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from s_param where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByPath" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select id,parent_id,path,name,value,remark,sort,tactics,state from s_param where path=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from s_param where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="deleteByParentId" >
+   		<sql>
+   			<![CDATA[
+                   delete from s_param where parent_id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="countChildren" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select count(id) from s_param where parent_id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_param set parent_id=?,path=?,name=?,value=?,remark=?,sort=?,tactics=?,state=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+</table>

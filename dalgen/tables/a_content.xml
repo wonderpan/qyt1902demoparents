@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="a_content">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO a_content (id,  title, links , picAddress , seoTitle , seoKeyWord , seoDescription , content , remarks , sort , browsingCount , status , isComment , isTop , isRecommend ,isHot ,userName,createTime,updateTime,articalType)
+			VALUES
+                (?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_content where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_content where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	<operation name="updateNewsAll" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_content where id=?  for UPDATE
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateByTypeId" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update a_content set  title=?, links=?, picAddress=? , seoTitle=?, seoKeyWord=?, seoDescription=?, content=?, remarks=?, sort=?,
+                  isComment=?, isTop=?, isRecommend=?,isHot=?,userName=?,updateTime=?,articalType=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="delete" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from a_content where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="selectPageListByInput" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="userName" javatype="java.lang.String"/>
+			<param name="title" javatype="java.lang.String"/>
+			<param name="keyWord" javatype="java.lang.String"/>
+			<param name="statusList" javatype="java.util.List"/>
+			<param name="articalTypeId" javatype="java.lang.Long"/>
+			<param name="gtmCreateBegin" javatype="java.lang.String"/>
+			<param name="gtmCreateEnd" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from a_content where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from a_content
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="userName"  prepend="and">
+					    userName = #userName#
+				    </isNotEmpty>
+				    <isNotEmpty property="title"  prepend="and">
+					    title = #title#
+				    </isNotEmpty>
+				    <isNotEmpty property="seoTitle"  prepend="and">
+					    seoTitle = #seoTitle#
+				    </isNotEmpty>
+				     <isNotEmpty property="seoKeyWord"  prepend="and">
+					    seoKeyWord = #seoKeyWord#
+				    </isNotEmpty>
+				    <isNotEmpty property="statusList"  prepend="and">
+					    <iterate property="statusList" open="(" close=")" conjunction="or">
+					   	 status=#statusList[]#
+					    </iterate>
+				    </isNotEmpty>
+				    <isNotEmpty property="articalTypeId"  prepend="and">
+					    articalType = #articalTypeId#
+				    </isNotEmpty>
+				   <isNotEmpty property="keyWord"  prepend="and">
+					    (seoTitle like '%$keyword$%' or name like '%$seoKeyWord$%')
+				    </isNotEmpty>
+				    <isNotEmpty property="gtmCreateBegin" prepend="and"> 
+				  	  date_format(createTime,'%Y-%m-%d')  >= #gtmCreateBegin# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gtmCreateEnd" prepend="and"> 
+				    	#gtmCreateEnd# >= date_format(createTime,'%Y-%m-%d') 
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateById" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update a_content set  title=?, content=?, remarks=?, updateTime=?,articalType=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateStatusById" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update a_content set  status=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectTop5"  multiplicity="many">
+		<extraparams>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="size" javatype="int"/>
+			<param name="articalType" javatype="java.util.List"></param>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from a_content 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from a_content  where status=#status# 
+	    	    <isNotEmpty property="articalType"  prepend="and">
+	    	    	articalType in
+					    <iterate property="articalType" open="(" close=")" conjunction=",">
+					   	 #articalType[]#
+					    </iterate>
+				    </isNotEmpty>
+				   ORDER BY createTime desc
+				   limit 0,#size# 
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateCountById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                update a_content set  browsingCount=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectInformation" multiplicity="many"
+		paging="true" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_content where articalType=? and status=? ORDER BY createTime desc
+   			]]>
+		</sql>
+	</operation>
+		<operation name="queryById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_content where id=? 
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectcontentListByarticalType" paramtype="primitive" multiplicity="many">
+	<extraparams>
+			<param name="articalType" javatype="java.lang.String"/>
+			<param name="count" javatype="int"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from a_content 
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    select * from a_content  where articalType=#articalType# and status=1
+				   ORDER BY createTime desc
+				   limit 0,#count# 
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="selectcontentListByBrowsingCount" paramtype="primitive" multiplicity="many">
+	<extraparams>
+			<param name="articalType" javatype="java.lang.String"/>
+			<param name="count" javatype="int"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from a_content 
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    select * from a_content  where 1=1 
+	    	    <isNotEmpty property="articalType"  prepend="and">
+					articalType=#articalType# 
+				</isNotEmpty>
+				ORDER BY browsingCount desc
+				limit 0,#count# 
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="selectContent" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from a_content where status!=0 ORDER BY createTime desc
+   			]]>
+		</sql>
+	</operation>
+	
+		<operation name="updateIsTop" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                update a_content set  istop='N' where istop='Y'
+   			]]>
+		</sql>
+	</operation>
+</table> 

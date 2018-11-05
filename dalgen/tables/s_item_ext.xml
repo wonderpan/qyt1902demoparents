@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item_ext" autoSwitchDataSrc="true">
+	<column name="price" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into s_item_ext(id,title,description,detail,json_properties,json_img_static)
+            values
+             (?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById">
+		<sql>
+   			<![CDATA[
+                select * from s_item_ext where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByIdForUpdata">
+		<sql>
+   			<![CDATA[
+                select * from s_item_ext where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+
+
+	<operation name="updateByID" paramtype="object">
+		<sql>
+   			<![CDATA[ 
+                   update s_item_ext set title=?,description=?,detail=?,json_properties=?,json_img_static=? 
+				   where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="delete" paramtype="primitive">
+		<sql>
+            <![CDATA[
+            	delete from s_item_ext where id=? 
+             ]]>
+		</sql>
+	</operation>
+
+
+</table>

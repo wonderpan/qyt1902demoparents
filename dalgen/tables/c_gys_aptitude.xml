@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_gys_aptitude">
+     <operation name="selectgysAptitudeModelsByGysid"  paramtype="primitive" multiplicity="many" paging="true">
+		<extraparams>
+    	    <param name="gysid" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from c_gys_aptitude where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from c_gys_aptitude where 1=1
+                ${cdata-end}
+                <dynamic>
+				    <isNotEmpty property="gysid" prepend="and"> gysid=#gysid# </isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+	<operation name="selectGysAptitudeById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_gys_aptitude where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+            insert into c_gys_aptitude
+            (id,gysid,aptitudeName,imgAptitude,status,reason,gmtCreate,gmtoverdue,gmtAudit,auditorLoginId)
+            values
+             (?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="updateGysAptitude" paramtype="object">
+		<sql>
+			<![CDATA[
+                update c_gys_aptitude set aptitudeName=?,imgAptitude=?,status=?,gmtCreate=?,gmtoverdue=? 
+	        	where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	<operation name="updateGysAptitudeStatus" paramtype="object">
+		<sql>
+			<![CDATA[
+                update c_gys_aptitude set status=?,reason=?,gmtAudit=? ,auditorLoginId=? 
+	        	where id= ?	
+   			]]>
+		</sql>
+	</operation>
+</table>

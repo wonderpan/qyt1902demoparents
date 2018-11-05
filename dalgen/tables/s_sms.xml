@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_sms">
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_sms
+            (id,sender,origin,mobile,content,status,gmt_send,gmt_create,fail_num)
+            values (?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	<operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from s_sms where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from s_sms where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                update s_sms set status=?,gmt_send=?,fail_num=? where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByWaitSend" paramtype="primitive" multiplicity="many"  paging="true">
+		<extraparams>
+			<param name="items" javatype="java.util.List"/>
+			<param name="gmtCreateStart" javatype="java.util.Date"/>
+			<param name="gmtCreateEnd" javatype="java.util.Date"/>
+			<param name="failNum" javatype="int"/>
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+                select *  from s_sms
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+			    ${cdata-start}
+				select id  from s_sms
+				where status='I' and gmt_create >= #gmtCreateStart# and gmt_create < #gmtCreateEnd# and fail_num < #failNum#
+			    ${cdata-end}
+			    <dynamic>
+				    <isNotEmpty property="items"> 
+					    <iterate property="items" prepend=" and " open=" id%10 in (" close=")" conjunction=",">
+							   #items[]#
+						</iterate>
+					</isNotEmpty>
+				</dynamic>
+				order by id asc
+			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectSMSManagement" paramtype="primitive" multiplicity="many"  paging="true">
+		<extraparams>
+			<param name="mobile" javatype="java.lang.String"/>
+			<param name="gysid" javatype="java.lang.String"/>
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+               select *  from s_sms	where mobile like '%$mobile$%'
+   			]]>
+   		</sql>
+   		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                 select *  from s_sms	where mobile like '%$mobile$%'
+                ${cdata-end}
+                <dynamic>
+                <isNotEmpty property="gysid" prepend="and"> s_sms.sender=#gysid#</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+		
+	</operation>
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from s_sms where id=?
+   			]]>
+   		</sql>
+	</operation> 
+</table>

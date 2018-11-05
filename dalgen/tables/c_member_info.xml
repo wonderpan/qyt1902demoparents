@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_member_info">
+
+
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+           insert into c_member_info
+            (id,member_id,name,gender,
+            birthday,identity_card,img_head,img_identity_card,
+            identity_card_status,gmt_identity_valid,integral)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?)
+
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectByMemberId" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_info where member_id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectByMemberIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_info where member_id=? for update
+   			]]>
+		</sql>
+	</operation>
+
+
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_info where id=? for update
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_info where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateMemberInfo" paramtype="object">
+		<sql>
+   			<![CDATA[
+               update c_member_info  set gmt_identity_valid=?,
+                name=?,gender=?,birthday=?,
+              identity_card_status=?,
+            identity_card=?,img_head=?,img_identity_card=?
+	        	where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	<operation name="updateMenberInfoStatus" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                update c_member_info  set identity_card_status=? where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateStatusBymemberid" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                update c_member_info  set identity_card_status=? where member_id= ?	
+   			]]>
+		</sql>
+	</operation>
+</table>

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item_type">
+    <!---->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+				
+				INSERT INTO s_item_type 
+				(id,code, name, parent_id, status, sort, logo,is_leaf,type_no) 
+				VALUES ( ?, ?, ?, ?, ?, ?, ?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<!---->
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_type where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectAll"  multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_type
+   			]]>
+   		</sql>
+	</operation>
+		<!---->
+	<operation name="selectByCode">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_type
+                where code = ?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByKeyword"  multiplicity="many"  paging="true">
+		 <extraparams>
+			 <param name="code" javatype="java.lang.String"/>
+			 <param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+				  
+				select * from s_item_type
+                where 1=1
+				  
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+			       ${cdata-start}
+				select * from s_item_type
+                where 1=1
+				   ${cdata-end}
+				   <dynamic>
+				      <isNotEmpty property="code" prepend="and"> code like '$code$.%' </isNotEmpty>
+				      <isNotEmpty property="name" prepend="and"> name like '%$name$%' </isNotEmpty>
+				  </dynamic>
+				    order by sort,code 			
+				   ]]>
+   		</sqlmap>
+	</operation>
+	<operation name="selectByCodeAndName"  multiplicity="many"  paging="true">
+		 <extraparams>
+			 <param name="parentId" javatype="java.lang.Long"/>
+			 <param name="code" javatype="java.lang.String"/>
+			 <param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+				  
+				select * from s_item_type
+                where 1=1
+				  
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+			       ${cdata-start}
+				select * from s_item_type
+                where 1=1
+				   ${cdata-end}
+				   <dynamic>
+             		  <isGreaterThan property="parentId" compareValue="-1" prepend="and"> parent_id =#parentId# </isGreaterThan>
+				      <isLessThan prepend="and" property="parentId" compareValue="0"> parent_id >0 </isLessThan>
+				      <isNotEmpty property="code" prepend="and"> code like '$code$.%' </isNotEmpty>
+				      <isNotEmpty property="name" prepend="and"> name like '%$name$%' </isNotEmpty>
+				  </dynamic>
+				    order by sort,code 			
+				   ]]>
+   		</sqlmap>
+	</operation>
+			<!---->
+	<operation name="selectByParent"  multiplicity="many">
+	    <extraparams>
+			<param name="parentId" javatype="java.lang.Long"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+               	select * from s_item_type
+   			]]>
+   		</sql>
+   		<sqlmap>
+   		   <![CDATA[
+               select * from s_item_type where 1=1
+                 <dynamic>
+				 	<isNotEmpty property="parentId"  prepend="and">
+		        		parent_id = #parentId# 
+		        	</isNotEmpty>		        	
+			    </dynamic>
+			    order by sort
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	<operation name="selectAllChildByParent"  multiplicity="many">
+	    <extraparams>
+			<param name="code" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item_type 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   		   <![CDATA[
+                select * from s_item_type 
+                where code like '$code$.%'and code!=#code#
+                 order by code asc,sort asc
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	<operation name="getItemTypeByCode"  >
+   		<sql>
+   			<![CDATA[
+                select * from s_item_type 
+                where code=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="getItemTypeLeafChildByCode"  multiplicity="many" >
+		<extraparams>
+			<param name="code" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item_type t
+               WHERE  (t.code like '$code$.%' or t.code='$code$') and is_leaf='T'
+   			]]>
+   		</sql>
+	</operation>
+	
+	<!---->
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_item_type set code=?,name=?,parent_id=?,logo=?,sort=?,status=?,is_leaf=?,type_no=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+    <operation name="updateSortByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_item_type set sort=?  where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="deleteByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   delete from s_item_type where  id=?
+   			]]>
+   		</sql>
+	</operation> 
+
+    <operation name="selectByCodes"  multiplicity="many">
+		 <extraparams>
+			<param name="codes" javatype="java.util.List"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+				  
+				select * from s_item_type
+                where 1=1
+				  
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+			       ${cdata-start}
+				select * from s_item_type
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+				      and code in 
+					 <iterate property="codes" conjunction="," open="(" close=")">
+					  #codes[]#
+					 </iterate>
+			 </dynamic>
+				    order by sort asc,code asc
+				   ]]>
+   		</sqlmap>
+	</operation>
+		<operation name="selectByNotCodesAndParentId"  multiplicity="many">
+		 <extraparams>
+			<param name="codes" javatype="java.util.List"/>
+			 <param name="parentId" javatype="java.lang.Long"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+				  
+				select * from s_item_type
+                where 1=1
+				  
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+			       ${cdata-start}
+				select * from s_item_type
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+				   	<isGreaterThan property="parentId" compareValue="-1" prepend="and"> parent_id =#parentId# </isGreaterThan>
+				   <isNotEmpty property="codes" prepend="and"> code not in
+						<iterate property="codes" conjunction="," close=")" open="(" >
+									#codes[]#
+								</iterate>
+					</isNotEmpty>	
+			 </dynamic>
+				    order by sort asc,code asc
+				   ]]>
+   		</sqlmap>
+	</operation>
+	   <operation name="selectByCodesAndParentId"  multiplicity="many">
+		 <extraparams>
+			<param name="codes" javatype="java.util.List"/>
+			 <param name="parentId" javatype="java.lang.Long"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+				  
+				select * from s_item_type
+                where 1=1
+				  
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+			       ${cdata-start}
+				select * from s_item_type
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+				 	<isGreaterThan property="parentId" compareValue="-1" prepend="and"> parent_id =#parentId# </isGreaterThan>
+				   <isNotEmpty property="codes" prepend="and"> code  in
+						<iterate property="codes" conjunction="," close=")" open="(" >
+									#codes[]#
+								</iterate>
+					</isNotEmpty>					
+			 </dynamic>
+				    order by sort asc,code asc
+				   ]]>
+   		</sqlmap>
+	</operation>
+	
+	
+	
+	<operation name="selectLeafByName"  multiplicity="many">
+	    <extraparams>
+			<param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item_type 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   		   <![CDATA[
+                select * from s_item_type 
+                where name like '%$name$%' and is_leaf='T' 
+                 order by sort asc,code asc
+   			]]>
+   		</sqlmap>
+	</operation>
+
+	<operation name="getItemAmountByParentCode" paramtype="primitive">
+		<extraparams>
+			<param name="code" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select count(id) from s_item_type
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+   			${cdata-start}
+                select count(id) from s_item_type where is_leaf = 'T' and code like '$code$.%' 
+             ${cdata-end}
+   			]]>
+   		</sqlmap>
+     </operation>
+
+	 <!--??????????????????????-->
+	<operation name="queryTtemTypeByName" multiplicity="many" paging="true">
+	    <extraparams>
+	        <param name="itemTypeName" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+		   select *
+		   from s_item_type item 
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+   			${cdata-start}
+			select  distinct f.* 
+			from s_item_type f,s_item_type s 
+			where f.code like CONCAT('%',s.code,'%') and f.is_leaf = 'T'  
+			and s.name like '%$itemTypeName$%' order by f.parent_id,f.id
+             ${cdata-end}
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	<operation name="selectItemTypeByLikeName"  paramtype="primitive" multiplicity="many">
+	    <extraparams>
+			<param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+               	select id from s_item_type
+   			]]>
+   		</sql>
+   		<sqlmap>
+   		   <![CDATA[
+               select id from s_item_type where 1=1
+                 <dynamic>
+				 	<isNotEmpty property="name"  prepend="and">
+		        		name like '%$name$%'
+		        	</isNotEmpty>		        	
+			    </dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	<operation name="selectItemTypeByEqualseName"  paramtype="primitive" multiplicity="many">
+   		<sql>
+   			<![CDATA[
+               	select * from s_item_type where name=? 
+   			]]>
+   		</sql>
+	</operation>
+</table>

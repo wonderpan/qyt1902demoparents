@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="control_pin">
+    <operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO control_pin (id, sitem_id, member_in, area_in, gysid, create_time, create_adminid)
+			VALUES
+				(?, ?, ?, ?, ?, ?, ?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from control_pin where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByGysIdAndItemId" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from control_pin where sitem_id=? and gysid=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByItemId" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from control_pin where sitem_id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	
+	<operation name="updateByGysIdAndItemId" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                update control_pin set member_in=?, area_in=?
+                where sitem_id=? and gysid=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateByItemId" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                update control_pin set member_in=?, area_in=?
+                where sitem_id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="updateById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                update control_pin set member_in=?, area_in=?
+                where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="deleteById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from control_pin where id=?
+   			]]>
+   		</sql>
+	</operation> 
+</table>

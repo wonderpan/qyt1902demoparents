@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="full_cut_rule">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO full_cut_rule (id, full_cut_activity_id, full_price, cut_price)
+			VALUES
+                (?, ?, ?, ?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectByActivityid" multiplicity="many">
+        <extraparams>
+			<param name="activityid" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from full_cut_rule 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from full_cut_rule where full_cut_activity_id=#activityid#
+   			]]>
+		</sqlmap>
+     </operation>
+     <operation name="delByActivityId" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                  delete from full_cut_rule where full_cut_activity_id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="delByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                  delete from full_cut_rule where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="updateById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update full_cut_rule set  full_price=?, cut_price=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="selectByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                  select * from full_cut_rule where id=?
+   			]]>
+   		</sql>
+	</operation> 
+</table> 

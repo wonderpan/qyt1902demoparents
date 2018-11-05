@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_seckill">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO s_seckill (id,sitemid , name, normal, productaddress , approvenum , itemimg , price , special_price , isPurchase , Purchase_num , begin_time,end_time,status,gysid,create_time,create_adminid,examine_time,examine_adminid,pici,sitemsaasid,stock2)
+			VALUES
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?)
+
+             ]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByGysid" paramtype="primitive" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="keyword" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="gysid" javatype="java.lang.String"/>
+			<param name="Time" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+			<![CDATA[
+                select * from s_seckill where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select * from s_seckill where 1=1
+                ${cdata-end}
+                <dynamic>
+				    <isNotEmpty property="status" prepend="and"> 
+						status=#status#
+				    </isNotEmpty>
+					<isNotEmpty property="keyword" prepend="and"> name like '%$keyword$%' </isNotEmpty>
+					<isNotEmpty property="gysid" prepend="and"> gysid=#gysid#</isNotEmpty>
+					<isNotEmpty property="Time" prepend="and"> DATE(end_time) >= #Time# and #Time# >= DATE(begin_time)</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<!-- 查询所有活动中的 商品ID -->
+	<operation name="selectByStatus" paramtype="primitive" multiplicity="many">
+		<extraparams>
+			<param name="time" javatype="java.lang.String"/>
+			<param name="gysid" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+			<![CDATA[
+                select sitemid from s_seckill where status='1' 
+   			]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select sitemid from s_seckill where status='1' 
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="time" prepend="and"> DATE(end_time) >= #time# and #time# >= DATE(begin_time) </isNotEmpty>
+					<isNotEmpty property="gysid" prepend="and"> gysid=#gysid#</isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+	<!-- 修改状态 -->
+	<operation name="upStatusById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_seckill set status=?,examine_time=?,examine_adminid=? 
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="delById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                  delete from s_seckill where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                 select * from s_seckill where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateSpecialById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_seckill set sitemid=? , name=?, normal=?, productaddress=? , approvenum=? , itemimg =?, price=? , special_price=? , isPurchase=? , Purchase_num =?, begin_time=?,end_time=?,sitemsaasid=?,pici=?,stock2=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="selectByItemIdForTime" paramtype="primitive">
+		<extraparams>
+			<param name="time" javatype="java.lang.String"/>
+			<param name="itemId" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+			<![CDATA[
+                select * from s_seckill where status='1' 
+   			]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select * from s_seckill where status='1' 
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="time" prepend="and"> DATE(end_time) >= #time# and #time# >= DATE(begin_time) </isNotEmpty>
+					<isNotEmpty property="itemId" prepend="and"> sitemid=#itemId#</isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+	<operation name="selectByItemId" paramtype="primitive" multiplicity="many">
+		<extraparams>
+			<param name="time" javatype="java.lang.String"/>
+			<param name="itemId" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                   select * from s_seckill where 1=1
+   			]]>
+   		</sql>
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select * from s_seckill where 1=1 
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="time" prepend="and"> DATE(end_time) > #time# </isNotEmpty>
+					<isNotEmpty property="itemId" prepend="and"> sitemid=#itemId#</isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+</table> 

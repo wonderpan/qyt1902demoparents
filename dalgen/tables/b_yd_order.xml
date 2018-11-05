@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="b_yd_order">
+	<column name="price" javatype="com.caozong.util.money.Money" />
+	<column name="total_price" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+		<![CDATA[
+			insert into b_yd_order (id,yd_order_no,order_no,order_source,cardNo,member_name,pro_id,
+				pro_code,pro_img,pro_name,amount,unit,price,status,status_content,
+				gmt_update,delivery_cycle,gmt_create,gmt_timeout,ydorder_pro_norms,total_price)
+			values
+			 (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+		<![CDATA[
+			select * from b_yd_order where id=?
+		]]>
+		</sql>
+	</operation>
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+		<![CDATA[
+			select * from b_yd_order where id=? for update
+		]]>
+		</sql>
+	</operation>
+	<operation name="selectByOrderNo" paramtype="primitive">
+		<sql>
+		<![CDATA[
+			select * from b_yd_order where order_no=?
+		]]>
+		</sql>
+	</operation>
+	<operation name="selectByOrderNoForUpdate" paramtype="primitive">
+		<sql>
+		<![CDATA[
+			select * from b_yd_order where order_no=? for update
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateById" paramtype="object">
+		<sql>
+		<![CDATA[
+			update b_yd_order set
+				yd_order_no = ?,order_no = ?,order_source = ?,cardNo = ?,
+				member_name = ?,pro_id = ?,pro_code = ?,pro_img = ?,
+				pro_name = ?,amount = ?,unit = ?,price = ?,status = ?,
+				status_content = ?,gmt_update = ?,delivery_cycle = ?,
+				gmt_create = ?,gmt_timeout = ?,ydorder_pro_norms = ?,
+				total_price=?
+			where id=?
+		]]>
+		</sql>
+	</operation>
+
+	<operation name="selectPageListByInput" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="ydOrderNo" javatype="java.lang.String"/>
+			<param name="orderNo" javatype="java.lang.String"/>
+			<param name="orderSource" javatype="java.util.List"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="memberName" javatype="java.lang.String"/>
+			<param name="proId" javatype="java.lang.Long"/>
+			<param name="proCode" javatype="java.lang.String"/>
+			<param name="proName" javatype="java.lang.String"/>
+			<param name="status" javatype="java.util.List"/>
+			<param name="gmtCreateBegin" javatype="java.lang.String"/>
+			<param name="gmtCreateEnd" javatype="java.lang.String"/>
+			<param name="gmtTimeoutBegin" javatype="java.lang.String"/>
+			<param name="gmtTimeoutEnd" javatype="java.lang.String"/>
+			<param name="timeout"  javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+		<![CDATA[
+			select * from b_yd_order where 1=1
+		]]>
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			${cdata-start}
+			  select * from b_yd_order
+			  where 1=1
+			${cdata-end} 
+			<dynamic>
+				<isNotEmpty property="ydOrderNo"  prepend="and">
+					yd_order_no = #ydOrderNo#
+				</isNotEmpty>
+				<isNotEmpty property="orderNo"  prepend="and">
+					order_no = #orderNo#
+				</isNotEmpty>
+				<isNotEmpty property="orderSource"  prepend="and">
+					 <iterate property="orderSource" open="(" close=")" conjunction="or">
+							order_source=#orderSource[]#
+					 </iterate>
+				</isNotEmpty>				
+			   <isNotEmpty property="cardNo"  prepend="and">
+					 cardNo =#cardNo#
+				</isNotEmpty>
+				<isNotEmpty property="memberName"  prepend="and">
+					member_name like '%$memberName$%'
+				</isNotEmpty>
+				<isNotEmpty property="proId"  prepend="and">
+					pro_id like '%$proId$%'
+				</isNotEmpty>	
+				<isNotEmpty property="proCode"  prepend="and">
+					pro_code = #proCode#
+				</isNotEmpty>
+				<isNotEmpty property="proName"  prepend="and">
+					pro_name like '%$proName$%'
+				</isNotEmpty>
+				<isNotEmpty property="status"  prepend="and">
+					<iterate property="status" open="(" close=")" conjunction="or">
+						status=#status[]#
+					</iterate>
+				</isNotEmpty>
+				<isNotEmpty property="gmtCreateBegin" prepend="and"> 
+					date_format(gmt_create,'%Y-%m-%d')  >= #gmtCreateBegin# 
+				</isNotEmpty>
+				<isNotEmpty property="gmtCreateEnd" prepend="and"> 
+					#gmtCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				</isNotEmpty>
+				<isNotEmpty property="gmtTimeoutBegin" prepend="and"> 
+					date_format(gmt_timeout,'%Y-%m-%d')  >= #gmtTimeoutBegin# 
+				</isNotEmpty>
+				<isNotEmpty property="gmtTimeoutEnd" prepend="and"> 
+					#gmtTimeoutEnd# >= date_format(gmt_timeout,'%Y-%m-%d') 
+				</isNotEmpty>
+				<isNotEmpty property="timeout"  prepend="and">
+					timeout= #timeout#
+				</isNotEmpty>	
+			</dynamic>
+		]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectListByCardNoAndStatus" multiplicity="many">
+		<extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+		<![CDATA[
+			select * from b_yd_order where 1=1
+		]]>
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			${cdata-start}
+			  select * from b_yd_order
+			  where 1=1
+			${cdata-end} 
+			<dynamic>				
+			   <isNotEmpty property="cardNo"  prepend="and">
+					 cardNo =#cardNo#
+				</isNotEmpty>
+				<isNotEmpty property="status"  prepend="and">
+					status=#status#
+				</isNotEmpty>
+			</dynamic>
+		]]>
+		</sqlmap>
+	</operation>
+	
+</table>

@@ -1,0 +1,1020 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item" autoSwitchDataSrc="true">
+	<column name="price" javatype="com.caozong.util.money.Money" />
+	<column name="retail_price" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into s_item (id,cardNo,nickName,type_id,sale_type_id,brand_id,brand_name,code,name,alias,keywords,img_item,price,bound,
+            status,sale_count,access_count,gmt_create,gmt_update,produceAddress,approveNum,normal,isRecommend,ReGmtCreate,ReGmtEnd,counts,OTC,horse,takeTheWay,instructions,erpId,saasId,aptitudeStatus,aptitudeReason,retail_price,zbzs,zjbzs,isMultiple,least_num,drug_code,bar_code,is_hotmedicinal)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	
+	<operation name="selectByCodeAndCardNo" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item where code=? and cardNo=?
+   			]]>
+		</sql>
+	</operation>
+	
+	
+	<operation name="selectByCode" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item where code=? 
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectBySaasId" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item where saasId=? 
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByNameAndCardNo" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item where name=? and cardNo=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByName" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item where name=? 
+   			]]>
+		</sql>
+	</operation>
+
+	
+	<operation name="selectByApproveNumAndCardNo" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from s_item where approveNum=? and cardNo=?
+   			]]>
+		</sql>
+	</operation>
+	
+	
+	<operation name="selectByApproveNum" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from s_item where approveNum=? 
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByCodeForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item where code=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateById" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update s_item set cardNo=?,nickName=?,
+                type_id=?,sale_type_id=?,brand_id=?,
+                brand_name=?,code=?,name=?,
+                alias=?,keywords=?,img_item=?,price=?,
+                bound=?,status=?,sale_count=?,access_count=?,gmt_create=?,gmt_update=?,isRecommend=?,ReGmtCreate=?,ReGmtEnd=?
+            	,produceAddress=?,approveNum=?,normal=?,counts=?,OTC=?,horse=?,takeTheWay=?,instructions=?,erpId=?,saasId=?,aptitudeStatus=?,aptitudeReason=?
+            	,retail_price=?,zbzs=?,zjbzs=?,isMultiple=?,least_num=?,drug_code=? ,bar_code=?,batch_number=?,expiry_date=?,is_index_show=?,is_hotmedicinal=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectPageListByInput" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="keyword" javatype="java.lang.String"/>
+			<param name="alias" javatype="java.lang.String"/>
+			<param name="model" javatype="java.lang.String"/>
+			<param name="brandId" javatype="java.lang.Long"/>
+			<param name="code" javatype="java.lang.String"/>
+			<param name="name" javatype="java.lang.String"/>
+			<param name="statusList" javatype="java.util.List"/>
+			<param name="gtmCreateBegin" javatype="java.lang.String"/>
+			<param name="gtmCreateEnd" javatype="java.lang.String"/>
+			<param name="gmtUpdateStart" javatype="java.lang.String"/>
+			<param name="gmtUpdateEnd" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from s_item
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="statusList"  prepend="and">
+					    <iterate property="statusList" open="(" close=")" conjunction="or">
+					   	 status=#statusList[]#
+					    </iterate>
+				    </isNotEmpty>
+				    <isNotEmpty property="brandId"  prepend="and">
+					    brand_id = #brandId#
+				    </isNotEmpty>
+				   <isNotEmpty property="keyword"  prepend="and">
+					    (code like '%$keyword$%' or alias like '%$keyword$%'   or name like '%$keyword$%')
+				    </isNotEmpty>
+				    <isNotEmpty property="alias"  prepend="and">
+					    alias like '%$alias$%'
+				    </isNotEmpty>
+				   <isNotEmpty property="model"  prepend="and">
+					    model = #model#
+				    </isNotEmpty>
+				    <isNotEmpty property="code"  prepend="and">
+					    code like '%$code$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="name"  prepend="and">
+					    name like '%$name$%'
+				    </isNotEmpty>
+				     <isNotEmpty property="gtmCreateBegin" prepend="and"> 
+				  	  date_format(gmt_create,'%Y-%m-%d')  >= #gtmCreateBegin# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gtmCreateEnd" prepend="and"> 
+				    	#gtmCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtUpdateStart" prepend="and"> 
+				  	  date_format(gmt_update,'%Y-%m-%d')  >= #gmtUpdateStart# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtUpdateEnd" prepend="and"> 
+				    	#gmtUpdateEnd# >= date_format(gmt_update,'%Y-%m-%d') 
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+
+    <operation name="selectProductByModuleAuthCondition"
+		multiplicity="many" paging="true">
+		<extraparams>
+			<param name="moduleCode" javatype="java.lang.String" />
+			<param name="moduleStatus" javatype="java.lang.String" />
+			<param name="itemName" javatype="java.lang.String" />
+			<param name="itemCode" javatype="java.lang.String" />
+			<param name="brandName" javatype="java.lang.String" />
+			<param name="typeIds" javatype="java.util.List" />
+			<param name="keyWord" javatype="java.lang.String" />
+			<param name="taxSign" javatype="java.lang.String" />
+			<param name="gmtUpdateStart" javatype="java.lang.String" />
+			<param name="gmtUpdateEnd" javatype="java.lang.String" />
+			<param name="timeSort" javatype="java.lang.String" />
+			<param name="status" javatype="java.util.List" />
+
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from s_item 
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+                 <isNotEmpty property="moduleCode">
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="01">
+				    	 jc_status = #moduleStatus#
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="02">
+				    	gh_status = #moduleStatus#
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="03">
+				    	bz_status = #moduleStatus#
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="04">
+				    	wl_status = #moduleStatus#
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="05">
+				    	bx_status = #moduleStatus#
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="06">
+				    	ls_status = #moduleStatus#
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="07">
+				    	ts_status = #moduleStatus#
+				    </isEqual>
+                </isNotEmpty>
+				    <isNotEmpty property="itemName"  prepend="and">
+					    name like '%$itemName$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="itemCode"  prepend="and">
+					    code = #itemCode#
+				    </isNotEmpty>
+				    <isNotEmpty property="brandName"  prepend="and">
+					    brand_name like '%$brandName$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="keyWord"  prepend="and">
+					    keywords like '%$keyWord$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="taxSign"  prepend="and">
+					    tax_sign = #taxSign#
+				    </isNotEmpty>
+				    <isNotEmpty property="typeIds"  prepend="and">
+					    <iterate property="typeIds" open="(" close=")" conjunction="or">
+					   	 type_id=#typeIds[]#
+					    </iterate>
+				    </isNotEmpty>
+				     <isNotEmpty property="gmtUpdateStart" prepend="and"> 
+				  	  	date_format(gmt_update,'%Y-%m-%d')  >= #gmtUpdateStart# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtUpdateEnd" prepend="and"> 
+				    	 #gmtUpdateEnd# >= date_format(gmt_update,'%Y-%m-%d')
+				    </isNotEmpty>
+				    <isNotEmpty property="status" prepend="and"> 
+				        <iterate property="status" open="(" close=")" conjunction="OR">
+					   	 status = #status[]#
+					    </iterate>
+				    </isNotEmpty>
+				    
+				    <isNotEmpty property="timeSort"  prepend="order by">
+						 gmt_update $timeSort$
+					</isNotEmpty>
+	
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="selectItemAuthEditPageList"
+		multiplicity="many" paging="true">
+		<extraparams>
+			<param name="cardNo" javatype="java.lang.String" />
+			<param name="moduleCode" javatype="java.lang.String" />
+			<param name="itemName" javatype="java.lang.String" />
+			<param name="itemCode" javatype="java.lang.String" />
+			<param name="brandId" javatype="java.lang.Long" />
+			<param name="typeIds" javatype="java.util.List" />
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from s_item 
+                where  1=1 and (status ='01' or status = '05' or status = '00')
+                ${cdata-end} 
+                <dynamic>
+                 <isNotEmpty property="moduleCode">
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="JC">
+				    	 jc_status = '01'
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="GH">
+				    	gh_status = '01'
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="BZ">
+				    	bz_status = '01'
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="WL">
+				    	wl_status = '01'
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="BX">
+				    	bx_status = '01'
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="LS">
+				    	ls_status = '01'
+				    </isEqual>
+				    <isEqual   property="moduleCode"  prepend="and"  compareValue="TS">
+				    	ts_status = '01'
+				    </isEqual>
+                </isNotEmpty>
+                
+                	<isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				    
+				    
+				    <isNotEmpty property="itemName"  prepend="and">
+					    name like '%$itemName$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="itemCode"  prepend="and">
+					    code like '%$itemCode$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="brandId"  prepend="and">
+					    brand_id = #brandId#
+				    </isNotEmpty>
+				    <isNotEmpty property="typeIds"  prepend="and">
+					    <iterate property="typeIds" open="(" close=")" conjunction="or">
+					   	 type_id=#typeIds[]#
+					    </iterate>
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+
+
+	<operation name="updateByIs">
+		<extraparams>
+			<param name="status" javatype="java.lang.String" />
+			<param name="idsList" javatype="java.util.List" />
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                   update s_item set status=''
+                where id is null
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                update s_item set status = #status#
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+				    <isNotEmpty property="idsList"  prepend="and">
+					    <iterate property="idsList" open="(" close=")" conjunction="or">
+					   	 id=#idsList[]#
+					    </iterate>
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+    
+    <operation name="updatePrice" paramtype="primitive">
+        <sql>
+            <![CDATA[
+           update s_item set price=? where id=? 
+             ]]>
+        </sql>
+    </operation>
+	<operation name="delete" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from s_item where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+     <!-- ?????????????????????????????? -->
+    <operation name="selectUpdatePriceByItemTypeBatchVersion" paramtype="primitive"   multiplicity="many">
+        <extraparams>
+			<param name="items" javatype="java.util.List"/>
+			<param name="fetchNum" javatype="java.lang.Integer"/>
+			<param name="leafTypeIdList" javatype="java.util.List"/>
+			<param name="lastVersion" javatype="java.lang.Integer"/>
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+                select id from s_item 
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       select id from s_item  where 1=1
+		       <dynamic>
+				    <isNotEmpty property="items"> 
+					    <iterate property="items" prepend=" and " open=" id%10 in (" close=")" conjunction=",">
+							   #items[]#
+						</iterate>
+					</isNotEmpty>
+				    <isNotEmpty property="leafTypeIdList" prepend=" and"> 
+					    <iterate property="leafTypeIdList" open="(" close=")" conjunction="or">
+					   	 type_id=#leafTypeIdList[]#
+					    </iterate>
+					</isNotEmpty>
+				    <isNotEmpty property="lastVersion" prepend=" and"> 
+						  batch &lt; #lastVersion#
+					</isNotEmpty>
+  			   </dynamic>
+  			   and status = 04 order by cardNo asc
+  			   limit 0 , #fetchNum# 
+			]]> 
+		</sqlmap>
+	</operation> 
+    <operation name="selectExistsItemByTypeId"  paramtype="primitive" >
+		<extraparams>
+			<param name="typeId" javatype="java.lang.Long"/>
+		</extraparams>
+        <sql>
+            <![CDATA[
+		        select count(id) from s_item where type_id = 'typeId'
+		    ]]>
+        </sql>
+		<sqlmap>
+            <![CDATA[
+		        select count(id) from s_item where type_id = #typeId# limit 0,1
+		    ]]>
+        </sqlmap>
+    </operation>
+    
+    <operation name="selectChainRegItem" multiplicity="many" paging="true">
+    	<extraparams>
+			<param name="keyword" javatype="java.lang.String" />
+			<param name="productName" javatype="java.lang.String" />
+			<param name="productBrand" javatype="java.lang.String" />
+			<param name="typeIdList" javatype="java.util.List"/>
+		</extraparams>
+        <sql>
+        	<![CDATA[
+		       	select * from s_item where status = "04" and is_chain = "T"
+			]]>
+        </sql>
+        <sqlmap>
+   		   <![CDATA[
+               select * from s_item where status = "04" and is_chain = "T" 
+                 <dynamic>
+                    <isNotEmpty property="keyword"  prepend="and">
+					    (name like '%$keyword$%' or brand_name like '%$keyword$%'
+					     <isNotEmpty property="typeIdList" prepend="or"> 
+						     <iterate property="typeIdList" open="(" close=")" conjunction="or">
+						   	 	 type_id = #typeIdList[]#
+						     </iterate>
+					     </isNotEmpty>
+				         )
+				    </isNotEmpty>
+			        <isNotEmpty property="productName"  prepend="and">
+					    name like '%$productName$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="productBrand"  prepend="and">
+					    brand_name like '%$productBrand$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="typeIdList" prepend="and">
+					    <iterate property="typeIdList" open="(" close=")" conjunction="or">
+					   	 type_id=#typeIdList[]#
+					    </iterate>
+					</isNotEmpty>
+			    </dynamic>
+   			]]>
+   		</sqlmap>
+    </operation>
+	
+	 <operation name="selectLastUseType" paramtype="primitive" multiplicity="many">
+        <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="size" javatype="java.lang.Integer"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+              select DISTINCT type_id from s_item  where cardNo='' 
+              order by s_item.gmt_create desc
+   			]]>
+   		</sql>
+		<sqlmap>
+			select t.* from(
+			select DISTINCT type_id from s_item  where cardNo=#cardNo#
+              order by s_item.gmt_create desc) t limit 0,#size#
+   		</sqlmap>
+     </operation>
+	<operation name="selectByBrandIdAndStatus" multiplicity="many">
+        <extraparams>
+			<param name="brandId" javatype="java.lang.Long"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from s_item  where brand_id=#brandId# and status=#status#
+   			]]>
+		</sqlmap>
+     </operation>
+	<operation name="selectByHostSaleByType" multiplicity="many">
+        <extraparams>
+			<param name="typeId" javatype="java.lang.Long"/>
+			<param name="size" javatype="int"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from s_item  where type_id=#typeId#
+				   ORDER BY s_item.sale_count
+				   limit 0,#size#
+   			]]>
+		</sqlmap>
+     </operation>
+     <operation name="selectByCardNo" multiplicity="many" paging="true">
+        <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from s_item  where cardNo=#cardNo#
+   			]]>
+		</sqlmap>
+     </operation>
+    
+     <operation name="selectByCardNoAndStatus" multiplicity="many">
+        <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from s_item  where cardNo=#cardNo# and status=#status#
+   			]]>
+		</sqlmap>
+     </operation>
+     
+     
+     <operation name="selectByTypeIdAndStatus" multiplicity="many">
+        <extraparams>
+			<param name="typeId" javatype="java.lang.Long"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from s_item  where type_id=#typeId# and status=#status#
+   			]]>
+		</sqlmap>
+     </operation>
+     
+     <operation name="selectHotSaleMedicinal" multiplicity="many">
+        <extraparams>
+        	<param name="cardNo" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="size" javatype="int"/>
+			<param name="is_hotmedicinal" javatype="int"/>
+			<param name="is_index_show" javatype="int"/>
+			
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item WHERE 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from s_item WHERE 1=1
+	    	     
+				   
+		       <dynamic>
+				    <isNotEmpty property="cardNo" prepend=" and"> 
+					   	 cardNo=#cardNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="status" prepend=" and"> 
+					   	 status=#status#
+				    </isNotEmpty>
+				    <isNotEqual property="is_index_show"  compareValue="-1" prepend="and">
+					    is_index_show = #is_index_show#
+				    </isNotEqual>
+				    <isNotEqual property="is_index_show"  compareValue="-1" prepend="and">
+					    is_hotmedicinal = #is_hotmedicinal#
+				    </isNotEqual>
+  			   </dynamic>
+  			   
+  			   ORDER BY s_item.sale_count desc
+				   limit 0,#size#
+   			]]>
+		</sqlmap>
+     </operation>
+    
+    
+     <operation name="selectRecommendMedicinal" multiplicity="many">
+        <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="isRecommend" javatype="java.lang.String"/>
+			<param name="ReGmtEnd" javatype="java.lang.String"/>
+			<param name="size" javatype="int"/>
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       select * from s_item  where 1=1
+		       <dynamic>
+				    <isNotEmpty property="cardNo" prepend=" and"> 
+					   	 cardNo=#cardNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="status" prepend=" and"> 
+					   	 status=#status#
+				    </isNotEmpty>
+				    <isNotEmpty property="isRecommend" prepend=" and"> 
+					   	 isRecommend=#isRecommend#
+				    </isNotEmpty>
+				    <isNotEmpty property="ReGmtEnd" prepend="and"> 
+				    	#ReGmtEnd# >= date_format(ReGmtEnd,'%Y-%m-%d') 
+				    </isNotEmpty>
+  			   </dynamic>
+  			    ORDER BY s_item.ReGmtEnd desc
+  			    limit 0,#size# 
+			]]> 
+		</sqlmap>
+	</operation> 
+     
+    <operation name="selectByTypeId" multiplicity="many" paging="true">
+        <extraparams>
+			<param name="typeId" javatype="java.lang.Long"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from s_item  where type_id=#typeId# and status=#status#
+   			]]>
+		</sqlmap>
+     </operation>
+     
+     <operation name="selectFirstItemByTypeId" multiplicity="many" paging="true">
+        <extraparams>
+        	<param name="cardNo" javatype="java.lang.String"/>
+			<param name="typeIds" javatype="java.util.List"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from s_item
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+   			  		<isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				 	<isNotEmpty property="status"  prepend="and">
+					    status = #status#
+				    </isNotEmpty>
+				   <isNotEmpty property="typeIds" prepend="and"> type_id in
+						<iterate property="typeIds" conjunction="," close=")" open="(" >
+									#typeIds[]#
+								</iterate>
+					</isNotEmpty>
+					<isNotEqual property="is_index_show"  compareValue="-1" prepend="and">
+					    is_index_show = #is_index_show#
+				    </isNotEqual>
+			 </dynamic>
+   			]]>
+		</sqlmap>
+     </operation>
+     <operation name="selectByIds" multiplicity="many">
+     	<extraparams>
+			<param name="Ids" javatype="java.util.List"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1 and is_index_show = 1 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from s_item
+                where 1=1 and is_index_show = 1 
+				   ${cdata-end}
+   			  <dynamic>
+				   <isNotEmpty property="ids" prepend="and"> id in
+						<iterate property="ids" conjunction="," close=")" open="(" >
+									#ids[]#
+						</iterate>
+					</isNotEmpty>
+			 </dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectMedicinalByInput" multiplicity="many" paging="true">
+        <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="keyWord" javatype="java.lang.String"/>
+			<param name="name" javatype="java.lang.String"/>
+			<param name="approveNum" javatype="java.lang.String"/>
+			<param name="productAddress" javatype="java.lang.String"/>
+			<param name="normal" javatype="java.lang.String"/>
+			<param name="typeId" javatype="java.lang.Long"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from s_item
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="typeId"  prepend="and">
+					    type_id = #typeId#
+				    </isNotEmpty>
+				    <isNotEmpty property="name"  prepend="and">
+					    name like '%$name$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="approveNum"  prepend="and">
+					    approveNum like '%$approveNum$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="productAddress"  prepend="and">
+					    produceAddress like '%$productAddress$%'
+				    </isNotEmpty>				    
+				    <isNotEmpty property="normal"  prepend="and">
+					    normal like '%$normal$%'
+				    </isNotEmpty>
+				   <isNotEmpty property="keyWord"  prepend="and">
+					    (name like '%$keyWord$%' or alias like '%$keyWord$%'    or normal like '%$keyWord$%' or approveNum like '%$keyWord$%' or produceAddress like '%$keyWord$%')
+				    </isNotEmpty>
+				   <isNotEmpty property="status"  prepend="and">
+					    status = #status#
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation> 
+	
+	
+	 
+	 
+	 
+	<operation name="selectRecommends" multiplicity="many" paging="true">
+        <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="isRecommend" javatype="java.lang.String"/>
+			<param name="ReGmtEnd" javatype="java.lang.String"/>
+			
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       ${cdata-start}
+                select * from s_item
+                where 1=1
+                ${cdata-end} 
+		       <dynamic>
+				    <isNotEmpty property="cardNo" prepend="and"> 
+					   	 cardNo=#cardNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="status" prepend="and"> 
+					   	 status=#status#
+				    </isNotEmpty>
+				    <isNotEmpty property="isRecommend" prepend="and"> 
+					   	 isRecommend=#isRecommend#
+				    </isNotEmpty>
+				    <isNotEmpty property="ReGmtEnd" prepend="and"> 
+				    	#ReGmtEnd# >= date_format(ReGmtEnd,'%Y-%m-%d') 
+				    </isNotEmpty>
+  			   </dynamic>
+  			   ORDER BY s_item.ReGmtEnd desc
+			]]> 
+		</sqlmap>
+	</operation> 
+	
+	<operation name="selectZuiXin" multiplicity="many">
+        <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="size" javatype="int"/>
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       ${cdata-start}
+                select * from s_item
+                where 1=1
+                ${cdata-end} 
+		       <dynamic>
+				    <isNotEmpty property="cardNo" prepend="and"> 
+					   	 cardNo=#cardNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="status" prepend="and"> 
+					   	 status=#status#
+				    </isNotEmpty>
+  			   </dynamic>
+  			   ORDER BY gmt_create desc 
+  			   limit 0,#size#
+			]]> 
+		</sqlmap>
+	</operation>
+	
+	<operation name="selectFirstItemOrderByPrice" multiplicity="many" paging="true">
+        <extraparams>
+        	<param name="cardNo" javatype="java.lang.String"/>
+			<param name="typeIds" javatype="java.util.List"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from s_item
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+   			  		<isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				 	<isNotEmpty property="status"  prepend="and">
+					    status = #status#
+				    </isNotEmpty>
+				   <isNotEmpty property="typeIds" prepend="and"> type_id in
+						<iterate property="typeIds" conjunction="," close=")" open="(" >
+									#typeIds[]#
+								</iterate>
+					</isNotEmpty>
+			 </dynamic>
+			ORDER BY price desc
+   			]]>
+		</sqlmap>
+     </operation>
+	
+	<operation name="selectFirstItemOrderBySale" multiplicity="many" paging="true">
+        <extraparams>
+        	<param name="cardNo" javatype="java.lang.String"/>
+			<param name="typeIds" javatype="java.util.List"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from s_item
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+   			  		<isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				 	<isNotEmpty property="status"  prepend="and">
+					    status = #status#
+				    </isNotEmpty>
+				   <isNotEmpty property="typeIds" prepend="and"> type_id in
+						<iterate property="typeIds" conjunction="," close=")" open="(" >
+									#typeIds[]#
+								</iterate>
+					</isNotEmpty>
+			 </dynamic>
+			ORDER BY sale_count desc
+   			]]>
+		</sqlmap>
+     </operation>
+     
+     <operation name="selectFirstItemOrderByAccess" multiplicity="many" paging="true">
+        <extraparams>
+        	<param name="cardNo" javatype="java.lang.String"/>
+			<param name="typeIds" javatype="java.util.List"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_item where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from s_item
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+   			  		<isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				 	<isNotEmpty property="status"  prepend="and">
+					    status = #status#
+				    </isNotEmpty>
+				   <isNotEmpty property="typeIds" prepend="and"> type_id in
+						<iterate property="typeIds" conjunction="," close=")" open="(" >
+									#typeIds[]#
+								</iterate>
+					</isNotEmpty>
+			 </dynamic>
+			ORDER BY access_count desc
+   			]]>
+		</sqlmap>
+     </operation>
+     
+     <operation name="updateByitemId">
+		<sql>
+   			<![CDATA[
+                 update s_item set aptitudeStatus =?,aptitudeReason=? where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectNoInId" multiplicity="many">
+		<extraparams>
+        	<param name="cardNo" javatype="java.lang.String"/>
+        	<param name="name" javatype="java.lang.String"/>
+			<param name="listId" javatype="java.util.List"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_item where status='04' 
+   			]]>
+		</sql>
+		<sqlmap>
+		<![CDATA[
+	    	    ${cdata-start}
+					select * from s_item where status='04' 
+				   ${cdata-end}
+			<dynamic>
+					<isNotEmpty property="name" prepend="and">
+					    (name like '%$name$%' or alias like '%$name$%')
+				    </isNotEmpty>
+					<isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				<isNotEmpty property="listId" prepend="and"> id not in
+					<iterate property="listId" open="(" close=")" conjunction=",">  
+       					  #listId[]#  
+        			</iterate>
+				</isNotEmpty>
+			 </dynamic>
+			ORDER BY access_count desc limit 0 , 20
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectByDrugCode" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from s_item where drug_code=? and cardNo=?
+   			]]>
+		</sql>
+	</operation>
+</table>

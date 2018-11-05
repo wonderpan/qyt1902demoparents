@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item_attr_val">
+	
+    <!---->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+				
+				INSERT INTO s_item_attr_val (id, attr_id,  value) VALUES (?, ?, ?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<!---->
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_attr_val where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByAttrId" multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_attr_val 
+                where   attr_id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<!---->
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_item_attr_val set value=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+		<operation name="deleteByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   delete from s_item_attr_val where  id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+</table>

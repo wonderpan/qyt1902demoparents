@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_member_work">
+
+
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_member_work
+            (id,member_id,organization,business_type,
+			scale,gmt_begin,gmt_end,department,job,remark)
+            values
+             (?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectByMemberId" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_member_work where member_id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_work where id=? for update
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_work where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateMemberWork" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update c_member_work  set
+               organization=?,business_type=?,
+			scale=?,gmt_begin=?,gmt_end=?,department=?,job=?,remark=?
+	        	where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from c_member_work where id=?
+   			]]>
+   		</sql>
+	</operation>
+
+</table>

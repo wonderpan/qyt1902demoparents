@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_consult">
+	
+    <!---->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+				
+				
+				INSERT INTO s_consult (id, reply_content, content, cardNo, gmt_create, manage, state, answer_person,gmt_operate,item_code) 
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?);
+
+             ]]>
+        </sql>
+    </operation>
+	
+	<!---->
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select id, reply_content, content, cardNo, gmt_create, manage, state, answer_person,gmt_operate,item_code from s_consult where id=?
+   			]]>
+   		</sql>
+	</operation>
+		<!---->
+
+	<operation name="selectByParams"  multiplicity="many"  paging="true">
+		 <extraparams>
+			
+			<param name="cardNo" javatype="java.lang.String"/>
+			 <param name="itemCode" javatype="java.lang.String"/>
+			  <param name="state" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+				  
+				 select id, reply_content, content, cardNo, gmt_create, manage, state, answer_person,gmt_operate,item_code  from s_consult
+                where 1=1
+				  
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+			       ${cdata-start}
+				 select id, reply_content, content, cardNo, gmt_create, manage, state, answer_person,gmt_operate,item_code  from s_consult
+                where 1=1
+				   ${cdata-end}
+				   <dynamic>
+             		
+				   <isNotEmpty property="cardNo" prepend="and"> cardNo = #cardNo# </isNotEmpty>
+				   
+				   <isNotEmpty property="itemCode" prepend="and"> item_code =#itemCode#</isNotEmpty>
+				  
+				   <isNotEmpty property="state" prepend="and"> state =#state#</isNotEmpty>
+				  </dynamic>
+				    order by gmt_create desc 			
+				   ]]>
+   		</sqlmap>
+	</operation>
+
+
+	
+	<!---->
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_consult set reply_content=?,content=?,state=?,item_code=?,gmt_operate=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="deleteByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   delete from s_consult where  id=?
+   			]]>
+   		</sql>
+	</operation> 
+
+	<operation name="updateConsultStatusByParam" paramtype="primitive">
+        <sql>
+            <![CDATA[
+           update s_consult set state=?,gmt_operate=?  where id=? 
+             ]]>
+        </sql>
+    </operation>
+	
+</table>

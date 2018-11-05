@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="a_type">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO a_type (id, title, parentId, typeIdList, picAddress, remarks, seoTitle, seoKeyWord, seoDescription,parentName)
+			VALUES
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_type where id=? 
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectTypeByParentId" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from a_type where parentId=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_type where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateByTypeId" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update a_type set title=?,parentId=?,typeIdList=?,picAddress=?,remarks=?,seoTitle=?,seoKeyWord=?,seoDescription=?,parentName=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="delete" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from a_type where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+     <operation name="selectByParentIds" multiplicity="many">
+		<extraparams>
+			<param name="Ids" javatype="java.util.List"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from a_type where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from a_type
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+				   <isNotEmpty property="ids" prepend="and"> parentId in
+						<iterate property="ids" conjunction="," close=")" open="(" >
+									#ids[]#
+						</iterate>
+					</isNotEmpty>
+			 </dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="selectByParentId" multiplicity="many" paging="true">
+		<extraparams>
+			<param name="parentId" javatype="java.lang.Long"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from a_type where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from a_type
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+				   <isNotEmpty property="parentId" prepend="and">
+				   	 parentId=#parentId#
+					</isNotEmpty>
+			 </dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="deleteByParentId" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from a_type where parentId=? 
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="updateTitlByTypeId" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update a_type set title=?  where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateTitlByparentId" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update a_type set parentName=?  where parentId=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectAll" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from a_type
+   			]]>
+		</sql>
+		
+	</operation>
+	<operation name="selectTypeIdList" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select typeIdList from a_type where id=? 
+   			]]>
+		</sql>
+	</operation>
+	<operation name="updateById" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update a_type set title=?,parentId=?,typeIdList=?,picAddress=?,remarks=?,seoTitle=?,seoKeyWord=?,seoDescription=?,parentName=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="queryAllType" multiplicity="many" paging="true">
+		<sql>
+   			<![CDATA[
+       SELECT
+	*
+FROM
+	a_type 
+   			]]>
+		</sql>
+	</operation>
+	<operation name="queryType" multiplicity="many">
+		<sql>
+   			<![CDATA[
+       SELECT
+	*
+FROM
+	a_type WHERE id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="getAllType" multiplicity="many">
+		<sql>
+   			<![CDATA[
+       SELECT * FROM a_type 
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="getAllParentId" multiplicity="many">
+		<sql>
+   			<![CDATA[
+       SELECT * FROM a_type where parentId=?
+   			]]>
+		</sql>
+	</operation>
+	
+</table> 

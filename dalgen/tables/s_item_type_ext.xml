@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item_type_ext">
+    <!---->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+				
+				INSERT INTO s_item_type_ext 
+				(id, property) 
+				VALUES (?, ?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<!---->
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_type_ext where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="deleteByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   delete from s_item_type_ext where  id=?
+   			]]>
+   		</sql>
+	</operation> 
+
+	<operation name="updateById">
+   		<sql>
+   			<![CDATA[
+                   update s_item_type_ext set property=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+</table>

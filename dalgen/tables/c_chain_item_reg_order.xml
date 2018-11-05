@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_chain_item_reg_order">
+	<column name="bail_total" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_chain_item_reg_order (id,order_no,member_id,item_name,img_item,item_code,item_brand,reg_type,reg_num,bail_total,gmt_create,gmt_pay_end,bail_status)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="updateOrder" paramtype="object">
+        <sql>
+            <![CDATA[
+           	update c_chain_item_reg_order set 
+			order_no=?,member_id=?,item_name=?,item_brand=?,
+            img_item=?,item_code=?,reg_type=?,reg_num=?,bail_total=?,
+            gmt_create=?,gmt_pay_end=?,bail_status=?
+           	where id=?
+             ]]>
+        </sql>
+    </operation>
+    <operation name="delete" paramtype="primitive">
+    	<sql>
+            <![CDATA[
+            	delete from c_chain_item_reg_order where id=? 
+             ]]>
+        </sql>
+    </operation>
+    <operation name="selectPageList" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="memberId" javatype="java.lang.Long" />
+			<param name="searchKeywords" javatype="java.lang.String" />
+			<param name="itemBrand" javatype="java.lang.String" />
+			<param name="gtmCreateBegin" javatype="java.lang.String" />
+			<param name="gtmCreateEnd" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg_order where bail_status = "01"
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+                select * from c_chain_item_reg_order where bail_status = "01" and 1=1
+                <dynamic>
+                	<isNotEmpty property="memberId" prepend="and"> 
+				    	member_id = #memberId#
+				    </isNotEmpty>
+					<isNotEmpty property="searchKeywords"  prepend="and">
+					    (item_name like '%$searchKeywords$%' or item_code like '%$searchKeywords$%')
+				    </isNotEmpty>
+				    <isNotEmpty property="itemBrand"  prepend="and">
+					    item_brand like '%$itemBrand$%'
+				    </isNotEmpty>
+				     <isNotEmpty property="gtmCreateBegin" prepend="and"> 
+				  	  date_format(gmt_create,'%Y-%m-%d')  >= #gtmCreateBegin# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gtmCreateEnd" prepend="and"> 
+				    	#gtmCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectOrderByNameOrCodeOrTime"  paramtype="primitive" multiplicity="many" >
+    	<extraparams>
+			<param name="itemName" javatype="java.lang.String" />
+			<param name="itemCode" javatype="java.lang.String"/>
+			<param name="gmtCreate" javatype="java.lang.String"/>
+		</extraparams>
+        <sql>
+        	<![CDATA[
+		       	select * from c_chain_item_reg_order
+			]]>
+        </sql>
+        <sqlmap>
+   		   <![CDATA[
+               select * from c_chain_item_reg_order where 1=1
+                 <dynamic>
+			        <isNotEmpty property="itemName"  prepend="and">
+					    item_name = #itemName#
+				    </isNotEmpty>
+				    <isNotEmpty property="itemCode"  prepend="and">
+					    item_code = #itemCode#
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtCreate" prepend=" and"> 
+					    gmt_create = #gmtCreate#
+					</isNotEmpty>
+			    </dynamic>
+   			]]>
+   		</sqlmap>
+    </operation>
+    <operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg_order where id=?
+   			]]>
+		</sql>
+	</operation> 
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg_order where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectIdList" paramtype="primitive" multiplicity="many">
+		<extraparams>
+			<param name="orderIds" javatype="java.util.List"/>
+			<param name="fetchNum" javatype="java.lang.Integer"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select id from c_chain_item_reg_order
+   			]]>
+		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       select id from c_chain_item_reg_order  where 1=1
+		       <dynamic>
+				    <isNotEmpty property="orderIds"> 
+					    <iterate property="orderIds" prepend=" and " open="(" close=")" conjunction="or">
+							   id%10 = #orderIds[]#
+						</iterate>
+					</isNotEmpty>
+  			   </dynamic>
+  			   and now() >= gmt_pay_end  
+  			   and bail_status = "01" order by id asc
+  			   limit 0 , #fetchNum# 
+			]]> 
+		</sqlmap>
+	</operation>
+	<operation name="selectByOrderNo" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg_order where order_no=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByOrderNoForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg_order where order_no=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+</table>

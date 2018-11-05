@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_fund">
+    <column name="total_money" javatype="com.caozong.util.money.Money" />
+    <column name="freeze_money" javatype="com.caozong.util.money.Money" />
+    <column name="caution_money" javatype="com.caozong.util.money.Money" />
+    <column name="draw_money" javatype="com.caozong.util.money.Money" />
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into c_fund
+            (cardNo,name,total_money,freeze_money,caution_money,draw_money,password,gmt_create,gmt_operate,status)
+            values
+             (?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+
+    <operation name="selectByCardNo" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from c_fund where cardNo=?
+   			]]>
+   		</sql>
+     </operation>
+    <operation name="selectByCardNoForUpdate" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from c_fund where cardNo=? FOR UPDATE
+   			]]>
+   		</sql>
+     </operation>
+     
+     <operation name="update" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                update c_fund set total_money=?,freeze_money=?,caution_money=?,draw_money=?,password=?,gmt_operate=?,status=?
+	        	where cardNo= ?	
+   			]]>
+   		</sql>
+     </operation>
+     
+     <operation name="updatePassword" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                update c_fund set password=?
+	        	where cardNo= ?	
+   			]]>
+   		</sql>
+     </operation>
+	
+     <operation name="updateStatus" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                update c_fund set status=?
+	        	where cardNo= ?	
+   			]]>
+   		</sql>
+     </operation>
+     <operation name="selectListByPage" paramtype="primitive"  multiplicity="many"  paging="true">
+    	<extraparams>
+    	    <param name="name" javatype="java.lang.String"/>
+    	    <param name="orderBy" javatype="java.lang.String"/>
+    	    <param name="sort" javatype="java.lang.String"/>
+		    <param name="startDate" javatype="java.lang.String"/>
+			<param name="endDate" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from c_fund where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from c_fund where 1=1
+                ${cdata-end}
+                <dynamic>
+				   <isNotEmpty property="name" prepend="and"> name=#name# </isNotEmpty>
+				   <isNotEmpty property="startDate" prepend="and"> date_format(gmt_create,'%Y-%m-%d')  >= #startDate# </isNotEmpty>
+				   <isNotEmpty property="endDate" prepend="and"> #endDate# >= date_format(gmt_create,'%Y-%m-%d') </isNotEmpty>
+				</dynamic>
+				<dynamic  prepend="order by">
+					<isEmpty property="orderBy"> gmt_create desc </isEmpty>
+					<isNotEmpty property="orderBy"> $orderBy$ 
+						<isNotEmpty property="sort"> $sort$ </isNotEmpty> 
+						<isEmpty property="sort"> desc </isEmpty>
+					</isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+     </operation>
+     
+     <operation name="selectListByInput" paramtype="primitive"  multiplicity="many"  paging="true">
+    	<extraparams>
+    	    <param name="name" javatype="java.lang.String"/>
+    	    <param name="status" javatype="java.lang.Integer"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from c_fund where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from c_fund where 1=1
+                ${cdata-end}
+                <dynamic>
+				   <isNotEmpty property="name" prepend="and"> name like '%$name$%' </isNotEmpty>
+				   <isNotEmpty property="status" prepend="and"> status=#status# </isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+     </operation>
+</table>

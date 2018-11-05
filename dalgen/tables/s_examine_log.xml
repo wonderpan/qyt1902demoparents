@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_examine_log">
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_examine_log
+            (id,table_name,table_id,action,content,before_status,operator,gmt_create)
+            values
+             (?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from s_examine_log where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectPageingByTableId" paramtype="primitive" multiplicity="many"  paging="true">
+   		<sql>
+   			<![CDATA[
+                select * from s_examine_log where table_id=? and table_name=? order by id desc
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByTableId" paramtype="primitive" multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from s_examine_log where table_id=? and table_name=? order by gmt_create desc
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByAction" paramtype="primitive" multiplicity="many" >
+   		<sql>
+   			<![CDATA[
+                select * from s_examine_log where table_id=? and table_name=? and action=? order by id desc
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectLastLogByTableIdAction" paramtype="primitive" >
+		<extraparams>
+			<param name="table" javatype="java.lang.String"/>
+			<param name="tableId" javatype="java.lang.Long"/>
+			<param name="action" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_examine_log 
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+                select * from s_examine_log where table_id=#tableId# and table_name=#table# and action=#action# order by id desc LIMIT 0,1
+   			]]>
+   		</sqlmap>
+	</operation>
+	<operation name="selectLastLogByTableId" paramtype="primitive" >
+		<extraparams>
+			<param name="table" javatype="java.lang.String"/>
+			<param name="tableId" javatype="java.lang.Long"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_examine_log 
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+                select * from s_examine_log where table_id=#tableId# and table_name=#table# order by id desc LIMIT 0,1
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	<operation name="deleteById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from s_examine_log where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<operation name="deleteByTableId" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from s_examine_log where table_id=? and table_name=?
+   			]]>
+   		</sql>
+	</operation> 
+</table>

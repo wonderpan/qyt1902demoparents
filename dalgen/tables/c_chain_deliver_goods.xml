@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_chain_deliver_goods">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_chain_deliver_goods (id,order_id,amount,json_fee)
+            values
+             (?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="updateDeliverGoods" paramtype="object">
+        <sql>
+            <![CDATA[
+           	update c_chain_deliver_goods set 
+			order_id=?,amount=?,json_fee=?
+           	where id=?
+             ]]>
+        </sql>
+    </operation>
+    <operation name="delete" paramtype="primitive">
+    	<sql>
+            <![CDATA[
+            	delete from c_chain_deliver_goods where id=? 
+             ]]>
+        </sql>
+    </operation>
+    <operation name="deleteByOrderId" paramtype="primitive">
+    	<sql>
+            <![CDATA[
+            	delete from c_chain_deliver_goods where order_id=? 
+             ]]>
+        </sql>
+    </operation>
+	<operation name="selectDeliverGoods"  paramtype="primitive" multiplicity="many" >
+        <sql>
+        	<![CDATA[
+		       	select * from c_chain_deliver_goods
+			]]>
+        </sql>
+    </operation>
+    <operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_deliver_goods where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByOrderId" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_deliver_goods where order_id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByOrderIdForUpdate" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_deliver_goods where order_id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+</table>

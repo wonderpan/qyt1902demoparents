@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="b_brand_correct">
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into b_brand_correct(id,brand_id,name,logo,detail,cardNo,nick_name,auth_type,item,status,gmt_submit,remark,operate)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select * from b_brand_correct where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByCardNo"  multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from b_brand_correct where cardNo=?
+   			]]>
+   		</sql>
+	</operation>
+	
+   <operation name="selectByStatus"   multiplicity="many">
+   		<extraparams>
+			<param name="brandId" javatype="java.lang.long"/>
+			<param name="statusList" javatype="java.util.List"/>
+		</extraparams>
+   	<sql>
+   		<![CDATA[
+            select * from b_brand_correct	
+   		]]>
+   	</sql>
+   	<sqlmap>
+   			<![CDATA[
+   			${cdata-start}
+                select * from b_brand_correct where 1=1  
+             ${cdata-end}
+				<dynamic>
+				<isNotEmpty property="brandId" prepend="and">  brand_id =#brandId# </isNotEmpty>
+				<isNotEmpty property="statusList" prepend="and"> status  in
+						<iterate property="statusList" conjunction="," close=")" open="(" >
+							#statusList[]#
+						</iterate>
+				</isNotEmpty>
+				order by gmt_submit
+				</dynamic>
+   			]]>
+   	</sqlmap>
+	</operation>
+
+	<operation name="updateById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update b_brand_correct set brand_id=?,name=?,logo=?,detail=?,cardNo=?,gmt_submit=?,
+                   item=?,nick_name=?,auth_type=?,status=?,remark=?,operate=? where id=?
+   			]]>
+   		</sql>
+	</operation> 
+   
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from b_brand where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<operation name="selectCorrectByCondition"  multiplicity="many"   paging="true">
+	    <extraparams>
+			<param name="nickName" javatype="java.lang.String"/>
+			<param name="brandName" javatype="java.lang.String"/>
+			<param name="authType" javatype="java.lang.String"/>
+			<param name="startDate" javatype="java.lang.String"/>
+			<param name="endDate" javatype="java.lang.String"/>
+			<param name="statusList" javatype="java.util.List"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from b_brand_correct 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from b_brand_correct 
+                where 1=1
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="nickName" prepend="and"> nick_name like  '%$nickName$%'  </isNotEmpty>
+					<isNotEmpty property="brandName" prepend="and"> name like  '%$brandName$%'  </isNotEmpty>
+					<isNotEmpty property="authType" prepend="and">
+						auth_type =#authType#
+					</isNotEmpty>
+					<isNotEmpty property="startDate" prepend="and"> 
+					    DATE_FORMAT(gmt_submit,'%Y-%m-%d') >= #startDate#
+                    </isNotEmpty>
+					<isNotEmpty property="endDate" prepend="and">
+						 #endDate# >= DATE_FORMAT(gmt_submit,'%Y-%m-%d') 
+					</isNotEmpty>
+					<isNotEmpty property="statusList" prepend="and"> status  in
+						<iterate property="statusList" conjunction="," close=")" open="(" >
+							#statusList[]#
+						</iterate>
+				</isNotEmpty>
+				</dynamic>
+				order by gmt_submit
+   			]]>
+   		</sqlmap>
+	</operation>
+	<operation name="selectByInput"  multiplicity="many"   paging="true">
+	    <extraparams>
+			<param name="nickName" javatype="java.lang.String"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from b_brand_correct where cardNo='cardNo'
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from b_brand_correct where cardNo=#cardNo#
+                where 1=1
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="nickName" prepend="and"> nick_name like  '%$nickName$%'  </isNotEmpty>
+					<isNotEmpty property="name" prepend="and"> name like  '%$brandName$%'  </isNotEmpty>
+				</dynamic>
+				order by gmt_submit
+   			]]>
+   		</sqlmap>
+	</operation>
+
+</table>

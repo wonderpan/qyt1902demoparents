@@ -1,0 +1,898 @@
+2016-04-07 17:42:07,976 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:07,990 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:07,991 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:07,992 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:07,992 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:07,995 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:07,996 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:07,998 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,000 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,001 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,001 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,003 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,003 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,004 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,005 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,006 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,007 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,008 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,009 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,009 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,011 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,012 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,012 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,013 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,014 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,015 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,016 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,017 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,018 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,019 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,020 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,020 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,021 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,022 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,023 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,024 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,024 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,025 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,025 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,026 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,026 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,027 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,028 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,028 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,029 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,029 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,029 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,030 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,031 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,031 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,032 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,034 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,034 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,035 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,035 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,036 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,036 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,037 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,037 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,038 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,038 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,039 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,039 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,040 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,040 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,041 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,047 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,054 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,055 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,055 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,056 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,056 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,057 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,058 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,058 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,059 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,063 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,066 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,067 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,067 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,068 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,069 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,069 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,070 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,071 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,071 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,072 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,072 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,074 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,075 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,075 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,076 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,077 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,078 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,078 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,079 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,080 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,081 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,082 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,082 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,083 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,084 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,084 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,085 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,086 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,086 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,087 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,087 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,088 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,094 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,094 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,094 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,095 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,096 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,096 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,097 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,097 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,098 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,098 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,098 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,099 - ResourceManager : found operation/opbody-delete.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,100 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,100 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,100 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,101 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,102 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,102 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,103 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,104 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,105 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,105 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,106 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,107 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,108 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,108 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,109 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,110 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,110 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,111 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,112 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,113 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,114 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,114 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,115 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,116 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,117 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,117 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,118 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,119 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,120 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,121 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,121 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,122 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-04-07 17:42:08,126 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:34,754 - Log4JLogSystem initialized using logfile velocity.log
+2016-10-21 09:50:34,770 - ************************************************************** 
+2016-10-21 09:50:34,770 - Starting Jakarta Velocity v1.4
+2016-10-21 09:50:34,771 - RuntimeInstance initializing.
+2016-10-21 09:50:34,771 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-10-21 09:50:34,771 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 09:50:34,771 - Using logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 09:50:34,779 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-10-21 09:50:34,793 - Resource Loader Instantiated: middlegen.KindFileResourceLoader
+2016-10-21 09:50:34,793 - FileResourceLoader : initialization starting.
+2016-10-21 09:50:34,793 - FileResourceLoader : adding path 'templates/mergedir'
+2016-10-21 09:50:34,794 - FileResourceLoader : initialization complete.
+2016-10-21 09:50:34,794 - ClasspathResourceLoader : initialization starting.
+2016-10-21 09:50:34,794 - ClasspathResourceLoader : initialization complete.
+2016-10-21 09:50:34,799 - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-10-21 09:50:34,799 - Default ResourceManager initialization complete.
+2016-10-21 09:50:34,803 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-10-21 09:50:34,808 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-10-21 09:50:34,812 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-10-21 09:50:34,816 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-10-21 09:50:34,818 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-10-21 09:50:34,863 - Created: 20 parsers.
+2016-10-21 09:50:34,874 - Velocimacro : initialization starting.
+2016-10-21 09:50:34,904 - Velocimacro : adding VMs from VM library template : VM_global_library.vm
+2016-10-21 09:50:34,961 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2016-10-21 09:50:34,967 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:34,967 - Velocimacro :  VM library template macro registration complete.
+2016-10-21 09:50:34,967 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-10-21 09:50:34,967 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-10-21 09:50:34,967 - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2016-10-21 09:50:34,967 - Velocimacro : messages on  : VM system will output logging messages
+2016-10-21 09:50:34,967 - Velocimacro : autoload off  : VM system will not automatically reload global library macros
+2016-10-21 09:50:34,967 - Velocimacro : initialization complete.
+2016-10-21 09:50:34,967 - Velocity successfully started.
+2016-10-21 09:50:36,063 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,148 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,237 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,252 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,317 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,321 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,334 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,341 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,344 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,345 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,348 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,395 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,396 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,397 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,398 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,400 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,402 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,402 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,403 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,407 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,408 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,409 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,410 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,467 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,513 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,515 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,517 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,520 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,521 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,522 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,523 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,524 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,526 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,526 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,528 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,529 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,530 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,531 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,533 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,534 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,536 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,577 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,578 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 09:50:36,593 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:44,668 - Log4JLogSystem initialized using logfile velocity.log
+2016-10-21 10:25:44,668 - ************************************************************** 
+2016-10-21 10:25:44,669 - Starting Jakarta Velocity v1.4
+2016-10-21 10:25:44,669 - RuntimeInstance initializing.
+2016-10-21 10:25:44,669 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-10-21 10:25:44,669 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:25:44,669 - Using logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:25:44,671 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-10-21 10:25:44,675 - Resource Loader Instantiated: middlegen.KindFileResourceLoader
+2016-10-21 10:25:44,675 - FileResourceLoader : initialization starting.
+2016-10-21 10:25:44,675 - FileResourceLoader : adding path 'templates/mergedir'
+2016-10-21 10:25:44,675 - FileResourceLoader : initialization complete.
+2016-10-21 10:25:44,675 - ClasspathResourceLoader : initialization starting.
+2016-10-21 10:25:44,675 - ClasspathResourceLoader : initialization complete.
+2016-10-21 10:25:44,676 - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-10-21 10:25:44,677 - Default ResourceManager initialization complete.
+2016-10-21 10:25:44,678 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-10-21 10:25:44,679 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-10-21 10:25:44,681 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-10-21 10:25:44,682 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-10-21 10:25:44,683 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-10-21 10:25:44,712 - Created: 20 parsers.
+2016-10-21 10:25:44,722 - Velocimacro : initialization starting.
+2016-10-21 10:25:44,722 - Velocimacro : adding VMs from VM library template : VM_global_library.vm
+2016-10-21 10:25:44,725 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2016-10-21 10:25:44,729 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:44,730 - Velocimacro :  VM library template macro registration complete.
+2016-10-21 10:25:44,730 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-10-21 10:25:44,730 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-10-21 10:25:44,730 - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2016-10-21 10:25:44,730 - Velocimacro : messages on  : VM system will output logging messages
+2016-10-21 10:25:44,730 - Velocimacro : autoload off  : VM system will not automatically reload global library macros
+2016-10-21 10:25:44,730 - Velocimacro : initialization complete.
+2016-10-21 10:25:44,730 - Velocity successfully started.
+2016-10-21 10:25:45,619 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,632 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,649 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,654 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,657 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,658 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,661 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,664 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,665 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,666 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,667 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,673 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,674 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,675 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,676 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,680 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,681 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,682 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,683 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,685 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,687 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,687 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,689 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,691 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,696 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,697 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,698 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,698 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,699 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,700 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,700 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,701 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,702 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,702 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,703 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,704 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,704 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,705 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,706 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,706 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,708 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,712 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,713 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:25:45,714 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:37,243 - Log4JLogSystem initialized using logfile velocity.log
+2016-10-21 10:32:37,244 - ************************************************************** 
+2016-10-21 10:32:37,244 - Starting Jakarta Velocity v1.4
+2016-10-21 10:32:37,244 - RuntimeInstance initializing.
+2016-10-21 10:32:37,244 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-10-21 10:32:37,244 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:32:37,244 - Using logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:32:37,246 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-10-21 10:32:37,251 - Resource Loader Instantiated: middlegen.KindFileResourceLoader
+2016-10-21 10:32:37,251 - FileResourceLoader : initialization starting.
+2016-10-21 10:32:37,251 - FileResourceLoader : adding path 'templates/mergedir'
+2016-10-21 10:32:37,251 - FileResourceLoader : initialization complete.
+2016-10-21 10:32:37,251 - ClasspathResourceLoader : initialization starting.
+2016-10-21 10:32:37,251 - ClasspathResourceLoader : initialization complete.
+2016-10-21 10:32:37,253 - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-10-21 10:32:37,253 - Default ResourceManager initialization complete.
+2016-10-21 10:32:37,254 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-10-21 10:32:37,256 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-10-21 10:32:37,258 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-10-21 10:32:37,260 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-10-21 10:32:37,261 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-10-21 10:32:37,296 - Created: 20 parsers.
+2016-10-21 10:32:37,306 - Velocimacro : initialization starting.
+2016-10-21 10:32:37,306 - Velocimacro : adding VMs from VM library template : VM_global_library.vm
+2016-10-21 10:32:37,309 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2016-10-21 10:32:37,314 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:37,314 - Velocimacro :  VM library template macro registration complete.
+2016-10-21 10:32:37,314 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-10-21 10:32:37,314 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-10-21 10:32:37,314 - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2016-10-21 10:32:37,314 - Velocimacro : messages on  : VM system will output logging messages
+2016-10-21 10:32:37,314 - Velocimacro : autoload off  : VM system will not automatically reload global library macros
+2016-10-21 10:32:37,314 - Velocimacro : initialization complete.
+2016-10-21 10:32:37,314 - Velocity successfully started.
+2016-10-21 10:32:38,113 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,126 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,146 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,148 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,151 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,152 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,155 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,158 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,160 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,161 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,164 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,171 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,173 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,174 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,175 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,179 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,181 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,182 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,184 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,188 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,190 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,191 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,193 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,197 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,205 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,205 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,206 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,207 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,207 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,208 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,209 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,209 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,210 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,211 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,212 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,212 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,213 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,214 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,215 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,216 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,217 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,223 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,223 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:32:38,224 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:53,454 - Log4JLogSystem initialized using logfile velocity.log
+2016-10-21 10:53:53,454 - ************************************************************** 
+2016-10-21 10:53:53,455 - Starting Jakarta Velocity v1.4
+2016-10-21 10:53:53,455 - RuntimeInstance initializing.
+2016-10-21 10:53:53,455 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-10-21 10:53:53,455 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:53:53,455 - Using logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:53:53,457 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-10-21 10:53:53,461 - Resource Loader Instantiated: middlegen.KindFileResourceLoader
+2016-10-21 10:53:53,461 - FileResourceLoader : initialization starting.
+2016-10-21 10:53:53,461 - FileResourceLoader : adding path 'templates/mergedir'
+2016-10-21 10:53:53,461 - FileResourceLoader : initialization complete.
+2016-10-21 10:53:53,461 - ClasspathResourceLoader : initialization starting.
+2016-10-21 10:53:53,461 - ClasspathResourceLoader : initialization complete.
+2016-10-21 10:53:53,463 - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-10-21 10:53:53,463 - Default ResourceManager initialization complete.
+2016-10-21 10:53:53,464 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-10-21 10:53:53,465 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-10-21 10:53:53,467 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-10-21 10:53:53,468 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-10-21 10:53:53,469 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-10-21 10:53:53,498 - Created: 20 parsers.
+2016-10-21 10:53:53,507 - Velocimacro : initialization starting.
+2016-10-21 10:53:53,507 - Velocimacro : adding VMs from VM library template : VM_global_library.vm
+2016-10-21 10:53:53,510 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2016-10-21 10:53:53,515 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:53,515 - Velocimacro :  VM library template macro registration complete.
+2016-10-21 10:53:53,515 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-10-21 10:53:53,515 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-10-21 10:53:53,515 - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2016-10-21 10:53:53,515 - Velocimacro : messages on  : VM system will output logging messages
+2016-10-21 10:53:53,515 - Velocimacro : autoload off  : VM system will not automatically reload global library macros
+2016-10-21 10:53:53,515 - Velocimacro : initialization complete.
+2016-10-21 10:53:53,515 - Velocity successfully started.
+2016-10-21 10:53:54,329 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,343 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,362 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,365 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,368 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,369 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,372 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,375 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,376 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,376 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,378 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,385 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,386 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,387 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,388 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,390 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,391 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,392 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,393 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,396 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,398 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,399 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,400 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,403 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,408 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,409 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,409 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,410 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,411 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,411 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,412 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,413 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,414 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,414 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,415 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,416 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,416 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,417 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,418 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,418 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,420 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,424 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,425 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:53:54,426 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:22,434 - Log4JLogSystem initialized using logfile velocity.log
+2016-10-21 10:56:22,434 - ************************************************************** 
+2016-10-21 10:56:22,434 - Starting Jakarta Velocity v1.4
+2016-10-21 10:56:22,434 - RuntimeInstance initializing.
+2016-10-21 10:56:22,434 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-10-21 10:56:22,434 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:56:22,434 - Using logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:56:22,437 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-10-21 10:56:22,441 - Resource Loader Instantiated: middlegen.KindFileResourceLoader
+2016-10-21 10:56:22,441 - FileResourceLoader : initialization starting.
+2016-10-21 10:56:22,441 - FileResourceLoader : adding path 'templates/mergedir'
+2016-10-21 10:56:22,441 - FileResourceLoader : initialization complete.
+2016-10-21 10:56:22,441 - ClasspathResourceLoader : initialization starting.
+2016-10-21 10:56:22,441 - ClasspathResourceLoader : initialization complete.
+2016-10-21 10:56:22,442 - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-10-21 10:56:22,443 - Default ResourceManager initialization complete.
+2016-10-21 10:56:22,444 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-10-21 10:56:22,445 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-10-21 10:56:22,447 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-10-21 10:56:22,448 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-10-21 10:56:22,449 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-10-21 10:56:22,478 - Created: 20 parsers.
+2016-10-21 10:56:22,487 - Velocimacro : initialization starting.
+2016-10-21 10:56:22,487 - Velocimacro : adding VMs from VM library template : VM_global_library.vm
+2016-10-21 10:56:22,490 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2016-10-21 10:56:22,495 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:22,495 - Velocimacro :  VM library template macro registration complete.
+2016-10-21 10:56:22,495 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-10-21 10:56:22,495 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-10-21 10:56:22,495 - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2016-10-21 10:56:22,495 - Velocimacro : messages on  : VM system will output logging messages
+2016-10-21 10:56:22,495 - Velocimacro : autoload off  : VM system will not automatically reload global library macros
+2016-10-21 10:56:22,495 - Velocimacro : initialization complete.
+2016-10-21 10:56:22,495 - Velocity successfully started.
+2016-10-21 10:56:23,519 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,534 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,554 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,557 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,560 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,561 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,564 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,566 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,567 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,568 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,570 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,577 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,578 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,579 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,580 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,583 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,584 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,585 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,586 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,588 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,589 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,590 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,591 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,613 - ResourceManager : found operation/opbody-delete.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,614 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,614 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,615 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,617 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,618 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,619 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,620 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,621 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,622 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,623 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,624 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,626 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,627 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,628 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,628 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,630 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,635 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,636 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,637 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,638 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,638 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,642 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,642 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,643 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,645 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,645 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,646 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,647 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,649 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,650 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,650 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,651 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,652 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,652 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,653 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,653 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,654 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,654 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,655 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,656 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,657 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,658 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,658 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,659 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,659 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,663 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,664 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:56:23,665 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:12,317 - Log4JLogSystem initialized using logfile velocity.log
+2016-10-21 10:58:12,318 - ************************************************************** 
+2016-10-21 10:58:12,318 - Starting Jakarta Velocity v1.4
+2016-10-21 10:58:12,318 - RuntimeInstance initializing.
+2016-10-21 10:58:12,318 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2016-10-21 10:58:12,318 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:58:12,318 - Using logger class middlegen.DontCloseLog4JLogSystem
+2016-10-21 10:58:12,321 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2016-10-21 10:58:12,325 - Resource Loader Instantiated: middlegen.KindFileResourceLoader
+2016-10-21 10:58:12,325 - FileResourceLoader : initialization starting.
+2016-10-21 10:58:12,325 - FileResourceLoader : adding path 'templates/mergedir'
+2016-10-21 10:58:12,325 - FileResourceLoader : initialization complete.
+2016-10-21 10:58:12,325 - ClasspathResourceLoader : initialization starting.
+2016-10-21 10:58:12,325 - ClasspathResourceLoader : initialization complete.
+2016-10-21 10:58:12,327 - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2016-10-21 10:58:12,327 - Default ResourceManager initialization complete.
+2016-10-21 10:58:12,328 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2016-10-21 10:58:12,330 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2016-10-21 10:58:12,332 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2016-10-21 10:58:12,334 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2016-10-21 10:58:12,335 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2016-10-21 10:58:12,368 - Created: 20 parsers.
+2016-10-21 10:58:12,376 - Velocimacro : initialization starting.
+2016-10-21 10:58:12,377 - Velocimacro : adding VMs from VM library template : VM_global_library.vm
+2016-10-21 10:58:12,380 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2016-10-21 10:58:12,386 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:12,387 - Velocimacro :  VM library template macro registration complete.
+2016-10-21 10:58:12,387 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2016-10-21 10:58:12,387 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2016-10-21 10:58:12,387 - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2016-10-21 10:58:12,387 - Velocimacro : messages on  : VM system will output logging messages
+2016-10-21 10:58:12,387 - Velocimacro : autoload off  : VM system will not automatically reload global library macros
+2016-10-21 10:58:12,387 - Velocimacro : initialization complete.
+2016-10-21 10:58:12,387 - Velocity successfully started.
+2016-10-21 10:58:13,196 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,209 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,220 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,223 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,228 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,229 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,233 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,235 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,236 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,237 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,239 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,242 - ResourceManager : found operation/opbody-delete.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,243 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,243 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,245 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,250 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,251 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,252 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,253 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,256 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,264 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,265 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,266 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,267 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,268 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,269 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,269 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,270 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,271 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,272 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,273 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,274 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,274 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,276 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,280 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,280 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2016-10-21 10:58:13,282 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,058 - Log4JLogSystem initialized using logfile velocity.log
+2018-11-05 11:16:50,101 - ************************************************************** 
+2018-11-05 11:16:50,102 - Starting Jakarta Velocity v1.4
+2018-11-05 11:16:50,102 - RuntimeInstance initializing.
+2018-11-05 11:16:50,102 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-11-05 11:16:50,102 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2018-11-05 11:16:50,102 - Using logger class middlegen.DontCloseLog4JLogSystem
+2018-11-05 11:16:50,109 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2018-11-05 11:16:50,123 - Resource Loader Instantiated: middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,123 - FileResourceLoader : initialization starting.
+2018-11-05 11:16:50,123 - FileResourceLoader : adding path 'templates/mergedir'
+2018-11-05 11:16:50,123 - FileResourceLoader : initialization complete.
+2018-11-05 11:16:50,123 - ClasspathResourceLoader : initialization starting.
+2018-11-05 11:16:50,123 - ClasspathResourceLoader : initialization complete.
+2018-11-05 11:16:50,126 - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2018-11-05 11:16:50,126 - Default ResourceManager initialization complete.
+2018-11-05 11:16:50,128 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-11-05 11:16:50,131 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-11-05 11:16:50,133 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-11-05 11:16:50,135 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-11-05 11:16:50,136 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-11-05 11:16:50,157 - Created: 20 parsers.
+2018-11-05 11:16:50,163 - Velocimacro : initialization starting.
+2018-11-05 11:16:50,163 - Velocimacro : adding VMs from VM library template : VM_global_library.vm
+2018-11-05 11:16:50,165 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2018-11-05 11:16:50,168 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,169 - Velocimacro :  VM library template macro registration complete.
+2018-11-05 11:16:50,169 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-11-05 11:16:50,169 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-11-05 11:16:50,169 - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2018-11-05 11:16:50,169 - Velocimacro : messages on  : VM system will output logging messages
+2018-11-05 11:16:50,169 - Velocimacro : autoload off  : VM system will not automatically reload global library macros
+2018-11-05 11:16:50,169 - Velocimacro : initialization complete.
+2018-11-05 11:16:50,169 - Velocity successfully started.
+2018-11-05 11:16:50,294 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,336 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,362 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,366 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,370 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,371 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,375 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,379 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,381 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,381 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,382 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,395 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,396 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,397 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,397 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,409 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,410 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,411 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,412 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,413 - ResourceManager : found operation/opbody-delete.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,413 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,414 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,414 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,416 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,416 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,417 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,417 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,418 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,436 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,438 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,438 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,439 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,440 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,441 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,442 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,443 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,445 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,445 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,446 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,447 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,448 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,449 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,450 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,450 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,451 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,452 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,452 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,453 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,457 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,458 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:16:50,459 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,485 - Log4JLogSystem initialized using logfile velocity.log
+2018-11-05 11:25:34,485 - ************************************************************** 
+2018-11-05 11:25:34,485 - Starting Jakarta Velocity v1.4
+2018-11-05 11:25:34,485 - RuntimeInstance initializing.
+2018-11-05 11:25:34,485 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-11-05 11:25:34,486 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2018-11-05 11:25:34,486 - Using logger class middlegen.DontCloseLog4JLogSystem
+2018-11-05 11:25:34,487 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2018-11-05 11:25:34,490 - Resource Loader Instantiated: middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,490 - FileResourceLoader : initialization starting.
+2018-11-05 11:25:34,490 - FileResourceLoader : adding path 'templates/mergedir'
+2018-11-05 11:25:34,490 - FileResourceLoader : initialization complete.
+2018-11-05 11:25:34,490 - ClasspathResourceLoader : initialization starting.
+2018-11-05 11:25:34,490 - ClasspathResourceLoader : initialization complete.
+2018-11-05 11:25:34,491 - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2018-11-05 11:25:34,491 - Default ResourceManager initialization complete.
+2018-11-05 11:25:34,492 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-11-05 11:25:34,493 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-11-05 11:25:34,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-11-05 11:25:34,496 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-11-05 11:25:34,496 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-11-05 11:25:34,513 - Created: 20 parsers.
+2018-11-05 11:25:34,518 - Velocimacro : initialization starting.
+2018-11-05 11:25:34,518 - Velocimacro : adding VMs from VM library template : VM_global_library.vm
+2018-11-05 11:25:34,520 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2018-11-05 11:25:34,522 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,522 - Velocimacro :  VM library template macro registration complete.
+2018-11-05 11:25:34,522 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-11-05 11:25:34,522 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-11-05 11:25:34,522 - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2018-11-05 11:25:34,522 - Velocimacro : messages on  : VM system will output logging messages
+2018-11-05 11:25:34,522 - Velocimacro : autoload off  : VM system will not automatically reload global library macros
+2018-11-05 11:25:34,522 - Velocimacro : initialization complete.
+2018-11-05 11:25:34,522 - Velocity successfully started.
+2018-11-05 11:25:34,612 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,621 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,632 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,633 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,635 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,635 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,638 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,639 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,640 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,641 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,641 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,645 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,646 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,647 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,647 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,648 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,649 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,650 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,650 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,651 - ResourceManager : found operation/opbody-delete.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,652 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,652 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,653 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,654 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,654 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,655 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,655 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,657 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,661 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,662 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,662 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,662 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,663 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,663 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,664 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,664 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,665 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,665 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,666 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,666 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,667 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,667 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,668 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,668 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,669 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,670 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,670 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,671 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,675 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,675 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:34,676 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,780 - Log4JLogSystem initialized using logfile velocity.log
+2018-11-05 11:25:58,780 - ************************************************************** 
+2018-11-05 11:25:58,780 - Starting Jakarta Velocity v1.4
+2018-11-05 11:25:58,780 - RuntimeInstance initializing.
+2018-11-05 11:25:58,780 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-11-05 11:25:58,780 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2018-11-05 11:25:58,780 - Using logger class middlegen.DontCloseLog4JLogSystem
+2018-11-05 11:25:58,782 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2018-11-05 11:25:58,785 - Resource Loader Instantiated: middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,785 - FileResourceLoader : initialization starting.
+2018-11-05 11:25:58,785 - FileResourceLoader : adding path 'templates/mergedir'
+2018-11-05 11:25:58,785 - FileResourceLoader : initialization complete.
+2018-11-05 11:25:58,785 - ClasspathResourceLoader : initialization starting.
+2018-11-05 11:25:58,785 - ClasspathResourceLoader : initialization complete.
+2018-11-05 11:25:58,786 - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2018-11-05 11:25:58,786 - Default ResourceManager initialization complete.
+2018-11-05 11:25:58,787 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-11-05 11:25:58,788 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-11-05 11:25:58,789 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-11-05 11:25:58,790 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-11-05 11:25:58,791 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-11-05 11:25:58,807 - Created: 20 parsers.
+2018-11-05 11:25:58,813 - Velocimacro : initialization starting.
+2018-11-05 11:25:58,813 - Velocimacro : adding VMs from VM library template : VM_global_library.vm
+2018-11-05 11:25:58,815 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2018-11-05 11:25:58,818 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,818 - Velocimacro :  VM library template macro registration complete.
+2018-11-05 11:25:58,818 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-11-05 11:25:58,818 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-11-05 11:25:58,818 - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2018-11-05 11:25:58,818 - Velocimacro : messages on  : VM system will output logging messages
+2018-11-05 11:25:58,818 - Velocimacro : autoload off  : VM system will not automatically reload global library macros
+2018-11-05 11:25:58,818 - Velocimacro : initialization complete.
+2018-11-05 11:25:58,818 - Velocity successfully started.
+2018-11-05 11:25:58,915 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,924 - ResourceManager : found description-xml.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,933 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,935 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,936 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,937 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,939 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,941 - ResourceManager : found operation/opbody-insert.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,942 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,942 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,943 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,947 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,948 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,948 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,949 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,950 - ResourceManager : found operation/opbody-update.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,950 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,951 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,951 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,952 - ResourceManager : found operation/opbody-delete.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,953 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,953 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,954 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,955 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,955 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,956 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,956 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,957 - ResourceManager : found operation/opbody-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,962 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,962 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,963 - ResourceManager : found operation/op-insert.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,963 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,964 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,964 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,965 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,965 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,966 - ResourceManager : found operation/op-update.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,966 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,967 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,967 - ResourceManager : found operation/op-delete.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,968 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,968 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,969 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,969 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,970 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,970 - ResourceManager : found operation/op-select.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,970 - ResourceManager : found operation/op-javadoc.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,971 - ResourceManager : found operation/op-signature.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,974 - ResourceManager : found copyright.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,974 - ResourceManager : found description-java.vm with loader middlegen.KindFileResourceLoader
+2018-11-05 11:25:58,975 - ResourceManager : found do-fields.vm with loader middlegen.KindFileResourceLoader

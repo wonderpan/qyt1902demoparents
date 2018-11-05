@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_ls_inventory">
+	<column name="pro_bail" javatype="com.caozong.util.money.Money" />
+	<column name="freight" javatype="com.caozong.util.money.Money" />
+	<column name="warranty_cost" javatype="com.caozong.util.money.Money" />
+	<column name="pro_retail_bail" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into s_ls_inventory 
+            (id,member_id,member_no,member_name,pro_id,pro_name,
+			pro_barnd_name,pro_type,pro_no,img_pro,pro_status,
+			gmt_lock,lock_cause,pro_bail,freight,warranty_cost,
+			supply_pro_no,pro_retail_bail,pro_amount,
+			inventory_address_no,inventory_address,gmt_shortsell,gmt_online,pro_norms)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateAllInfoById" paramtype="object">
+		<sql>
+		<![CDATA[
+			   update s_ls_inventory set member_id = ?,member_no = ?,member_name = ?,
+			   pro_id = ?,pro_name = ?,pro_barnd_name = ?,pro_type = ?,pro_no = ?,
+			   img_pro = ?,pro_status = ?,gmt_lock = ?,lock_cause = ?,pro_bail = ?,
+			   freight = ?,warranty_cost = ?,supply_pro_no = ?,pro_retail_bail = ?,
+			   pro_amount = ?,inventory_address_no = ?,inventory_address = ?,
+			   gmt_shortsell = ?,gmt_online = ?,pro_norms = ? where id = ?
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateInfoById" paramtype="object">
+		<sql>
+		<![CDATA[
+			   update s_ls_inventory set pro_status=?,gmt_lock=?,lock_cause=?,gmt_shortsell=? where id=?
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteById" >
+		<sql>
+		<![CDATA[
+			   delete from s_ls_inventory where id=?
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectById">
+		<sql>
+		<![CDATA[
+			select * from s_ls_inventory where id=?
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpdate">
+		<sql>
+		<![CDATA[
+			select * from s_ls_inventory where id=? for UPDATE
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByProNo">
+		<sql>
+		<![CDATA[
+			select * from s_ls_inventory where pro_no=?
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByProNoForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_ls_inventory where pro_no=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectPageList" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="memberNo" javatype="java.lang.String"/>		
+			<param name="proStatus" javatype="java.lang.List"/>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="proNo" javatype="java.lang.String"/>
+			<param name="proName" javatype="java.lang.String"/>
+			<param name="proBarndName" javatype="java.lang.String"/>
+			<param name="proType" javatype="java.lang.String"/>		
+			<param name="memberName" javatype="java.lang.String"/>	
+			<param name="gmtOnlineBegin" javatype="java.lang.String"/>
+			<param name="gmtOnlineEnd" javatype="java.lang.String"/>
+			<param name="searchKeywords" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+		<![CDATA[
+			select * from s_ls_inventory
+		]]>
+		</sql>
+		<sqlmap>
+		<![CDATA[
+		    select * from s_ls_inventory where 1=1
+			<dynamic>
+				<isNotEmpty property="memberNo" prepend="and">
+					member_no = #memberNo#
+				</isNotEmpty>
+				<isNotEmpty property="proStatus" prepend="and">
+				    <iterate property="proStatus" open="(" close=")" conjunction="or">
+				   	 pro_status = #proStatus[]#
+				    </iterate>
+				</isNotEmpty>
+				<isNotEmpty property="status" prepend="and">
+					pro_status = #status#
+				</isNotEmpty>
+				<isNotEmpty property="proNo"  prepend="and">
+					pro_no = #proNo#
+				</isNotEmpty>
+				<isNotEmpty property="proName" prepend="and">
+					pro_name like '%$proName$%'
+				</isNotEmpty>
+				<isNotEmpty property="proBarndName" prepend="and">
+					 pro_barnd_name like '%$proBarndName$%'
+				</isNotEmpty>
+				<isNotEmpty property="proType" prepend="and">
+					 pro_type = #proType#
+				</isNotEmpty>	
+				<isNotEmpty property="memberName" prepend="and">
+					member_name like '%$memberName$%'
+				</isNotEmpty>
+				<isNotEmpty property="gmtOnlineBegin" prepend="and"> 
+					date_format(gmt_online,'%Y-%m-%d')  >= #gmtOnlineBegin# 
+				</isNotEmpty>
+				<isNotEmpty property="gmtOnlineEnd" prepend="and"> 
+					#gmtOnlineEnd# >= date_format(gmt_online,'%Y-%m-%d') 
+				</isNotEmpty>
+				<isNotEmpty property="searchKeywords" prepend="and">
+					pro_no = #searchKeywords# or pro_name like '%$searchKeywords$%'
+				</isNotEmpty>
+			</dynamic>
+		]]>
+		</sqlmap>
+	</operation>
+<operation name="selectByCardNoAndStatus" multiplicity="many">
+		<extraparams>
+			<param name="memberNo" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+		<![CDATA[
+			select * from s_ls_inventory
+		]]>
+		</sql>
+		<sqlmap>
+		<![CDATA[
+		    select * from s_ls_inventory where 1=1
+			<dynamic>
+				<isNotEmpty property="memberNo" prepend="and">
+					member_no = #memberNo#
+				</isNotEmpty>
+				<isNotEmpty property="status" prepend="and">
+					pro_status = #status#
+				</isNotEmpty>
+			</dynamic>
+		]]>
+		</sqlmap>
+	</operation>
+</table>

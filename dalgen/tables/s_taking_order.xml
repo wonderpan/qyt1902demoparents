@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_taking_order">
+    <column name="money" javatype="com.caozong.util.money.Money" />
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_taking_order
+            (id,order_no,num,money,operate,gmt_create,gmt_operate,remark,status) values
+             (?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+   
+    <operation name="selectBySerach" paramtype="primitive" multiplicity="many"  paging="true">
+   	    <extraparams>
+			<param name="orderNo" javatype="java.lang.String"/>
+			<param name="operate" javatype="java.lang.String"/>
+			<param name="gmtCreateStart" javatype="java.lang.String"/>
+			<param name="gmtCreateEnd" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_taking_order
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+				   ${cdata-start}
+                select * from s_taking_order
+				   ${cdata-end}
+				 <dynamic prepend="where">
+					<isNotEmpty property="orderNo" prepend="and"> 
+					   order_no like '%$orderNo$%' 
+					</isNotEmpty>
+				   <isNotEmpty property="operate" prepend="and"> 
+					   operate like '%$operate$%' 
+					</isNotEmpty>
+				   <isNotEmpty property="gmtCreateStart" prepend="and"> 
+					   DATE_FORMAT(gmt_create,'yyyy-MM-dd') >= #gmtCreateStart#
+				   </isNotEmpty>
+				    <isNotEmpty property="gmtCreateStart" prepend="and"> 
+					   #gmtCreateEnd# >= DATE_FORMAT(gmt_create,'yyyy-MM-dd')
+				   </isNotEmpty>
+				   <isNotEmpty property="status" prepend="and"> 
+					   status =#status#
+					</isNotEmpty>
+				</dynamic>   
+				 order by gmt_create desc
+   			]]>
+   		</sqlmap>
+     </operation>
+	
+    <operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+             select * from s_taking_order where id=?
+   			]]>
+   		</sql>
+     </operation>
+	
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+             select * from s_taking_order where id=? for update
+   			]]>
+   		</sql>
+     </operation>
+	
+	 <operation name="selectByOrderNo" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+             select * from s_taking_order where order_no=?
+   			]]>
+   		</sql>
+     </operation>
+	
+     <operation name="update" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                update s_taking_order set num=?,money=?,operate=?,gmt_create=?,gmt_operate=?,remark=?,status=?
+	        	where id = ?	
+   			]]>
+   		</sql>
+     </operation>
+	
+    <operation name="deleteById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from s_taking_order where id=?
+   			]]>
+   		</sql>
+	</operation> 
+</table>

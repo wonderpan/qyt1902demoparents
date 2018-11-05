@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_member_education">
+
+
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_member_education
+            (id,member_id,school_name,degree,gmt_begin,gmt_end,remark,major)
+            values
+             (?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectByMemberId" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_member_education where member_id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_education where id=? for update
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_education where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateMemberEducation" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update c_member_education  set
+                school_name=?,degree=?,gmt_begin=?,gmt_end=?,remark=?,major=?
+	        	where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from c_member_education where id=?
+   			]]>
+   		</sql>
+	</operation>
+
+</table>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_vouchers">
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+				INSERT INTO S_VOUCHERS
+					(ID,GYS_ID,GYS_NAME,AMOUNT,USE_SCOPE,NUM,ITEM_TYPE,ITEMS,RANGE_CODE,STATUS,GMT_START_TIME,GMT_END_TIME,REMARKS)
+				VALUES
+					(?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+             <selectKey resultClass="java.lang.Long"  keyProperty="id" >
+             	<![CDATA[  
+             		select last_insert_id() as id from s_vouchers limit 1
+             	]]>   
+        	</selectKey>
+		</sql>
+	</operation>
+	
+	<operation name="selectVouchers" paramtype="primitive"
+		multiplicity="many" paging="true">
+		<extraparams>
+			<param name="keyword" javatype="java.lang.String" />
+			<param name="status" javatype="java.lang.String" />
+			<param name="gysId" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			<![CDATA[
+                select * from s_vouchers where 1=1
+   			]]>
+		</sql>
+
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select s_vouchers.* from s_vouchers where s_vouchers.status != '4'
+                ${cdata-end}
+                <dynamic>					
+                	<isNotEmpty property="status" prepend="and"> s_vouchers.status = #status# </isNotEmpty>
+                	<isNotEmpty property="gysId" prepend="and"> s_vouchers.gys_id = #gysId#</isNotEmpty>
+					<isNotEmpty property="keyword" prepend="and"> s_vouchers.gys_name like '%$keyword$%'</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+
+	<operation name="delete" paramtype="primitive">
+		<extraparams>
+			<param name="id" javatype="java.lang.Long"/>
+			<param name="gysId" javatype="java.lang.Long"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+			UPDATE S_VOUCHERS SET S_VOUCHERS.STATUS = '4' WHERE S_VOUCHERS.ID IS NULL
+		</sql>
+		<sqlmap>
+			<![CDATA[
+				${cdata-start}
+				UPDATE S_VOUCHERS SET S_VOUCHERS.STATUS = #status# WHERE S_VOUCHERS.ID = #id#
+				${cdata-end} 
+				<dynamic>
+					<isNotEmpty property = "gysId" prepend=" and " > S_VOUCHERS.GYS_ID=#gysId# </isNotEmpty>
+				</dynamic>
+			]]>
+		</sqlmap>			
+	</operation>
+
+	<operation name="updateById" paramtype="object">
+		<sql>
+			UPDATE S_VOUCHERS SET S_VOUCHERS.STATUS = '4' WHERE S_VOUCHERS.ID IS NULL
+		</sql>
+		<sqlmap>
+			<![CDATA[
+				${cdata-start}
+				UPDATE S_VOUCHERS SET S_VOUCHERS.GMT_UPDATE_TIME=NOW()
+				${cdata-end}
+				<dynamic>
+					<isNotEmpty property="items" prepend=","> S_VOUCHERS.ITEMS = #items# </isNotEmpty>
+					<isNotEmpty property="itemType" prepend=","> S_VOUCHERS.ITEM_TYPE = #itemType# </isNotEmpty>
+					<isNotEmpty property="gmtStartTime" prepend=","> S_VOUCHERS.GMT_START_TIME = #gmtStartTime# </isNotEmpty>
+					<isNotEmpty property="gmtEndTime" prepend=","> S_VOUCHERS.GMT_END_TIME = #gmtEndTime# </isNotEmpty>
+					<isNotEmpty property="num" prepend=","> S_VOUCHERS.NUM = #num# </isNotEmpty>
+					<isNotEmpty property="amount" prepend=","> S_VOUCHERS.AMOUNT = #amount# </isNotEmpty>
+					<isNotEmpty property="useScope" prepend=","> S_VOUCHERS.USE_SCOPE = #useScope# </isNotEmpty>
+				</dynamic>
+				WHERE GYS_ID = #gysId# AND ID = #id#
+			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="selectVoucherById" paramtype="primitive">
+		<sql>
+			<![CDATA[ 
+				select * from s_vouchers where id = ?
+			]]> 
+		</sql>
+	</operation>
+</table> 

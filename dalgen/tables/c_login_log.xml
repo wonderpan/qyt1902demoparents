@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_login_log">
+    <!-- 登录日志 -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into c_login_log
+            (id,login_id,login_type,login_origin,member_id,gmt_login,login_ip,login_area,login_area_name)
+            values
+             (?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+    <operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from c_login_log where id=?
+   			]]>
+   		</sql>
+     </operation>
+    <operation name="selectByMemberId" paramtype="primitive"  multiplicity="many"   paging="true">
+        <extraparams>
+			<param name="memberId" javatype="java.lang.Long"/>
+			<param name="loginId" javatype="java.lang.String"/>
+			<param name="loginType" javatype="java.lang.String"/>
+			<param name="loginOrigin" javatype="java.lang.String"/>
+			<param name="gmtStart" javatype="java.lang.String"/>
+			<param name="gmtEnd" javatype="java.lang.String"/>
+			<param name="sort" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select *
+                from c_login_log
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+			    ${cdata-start}
+                 select *
+                from c_login_log where 1=1
+				${cdata-end}
+				<dynamic>
+					<isNotEmpty property="memberId" prepend="and"> member_id = #memberId# </isNotEmpty>
+					<isNotEmpty property="loginId" prepend="and"> login_id = #loginId# </isNotEmpty>
+				    <isNotEmpty property="loginType" prepend="and"> login_type = #loginType# </isNotEmpty>
+				    <isNotEmpty property="loginOrigin" prepend="and"> login_origin = #loginOrigin# </isNotEmpty>
+					<isNotEmpty property="gmtStart" prepend="and"> DATE_FORMAT(gmt_login,'%Y-%m-%d') >= #gmtStart# </isNotEmpty>
+					<isNotEmpty property="gmtEnd" prepend="and"> 
+					    DATE_FORMAT(gmt_login,'%Y-%m-%d') &lt;= #gmtEnd# 
+					</isNotEmpty>
+					<isNotEmpty property="sort"  prepend="order by">
+					      gmt_login $sort$
+					</isNotEmpty>
+					<isEmpty property="sort"  prepend="order by">
+					      gmt_login desc
+					</isEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+     </operation>
+      
+	<operation name="deleteByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from c_login_log where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="deleteByLoginID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from c_login_log where login_id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="deleteByMemberID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from c_login_log where member_id=?
+   			]]>
+   		</sql>
+	</operation >
+<!-- 	登陆日志查询SQL -->
+	<operation name="queryByLogID" paramtype="primitive" multiplicity="many" paging="true">
+	     	<sql>
+   			<![CDATA[
+                select * from c_login_log where login_id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="queryByLogsID" paramtype="primitive" multiplicity="many" paging="true">
+	     	<sql>
+   			<![CDATA[
+                select * from c_login_log 
+   			]]>
+   		</sql>
+	</operation>
+	
+</table>

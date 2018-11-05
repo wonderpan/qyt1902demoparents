@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item_type_param">
+	<operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_item_type_param(id,top_type,type_id,type_name,tactics,param_type)
+            values
+             (?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	<operation name="selectByTopType" paramtype="primitive" multiplicity="many">
+        <extraparams>
+			<param name="paramType" javatype="java.lang.String"/>
+			<param name="topType" javatype="java.lang.Long"/>
+		</extraparams>
+        <sql>
+            <![CDATA[
+          		select * from s_item_type_param 
+             ]]>
+        </sql>
+        <sqlmap>
+   			<![CDATA[
+			 select * from s_item_type_param where 1=1 
+			<dynamic>	
+				<isNotEmpty property="paramType" prepend="and"> 
+				    param_type = #paramType#
+                </isNotEmpty>	
+				<isNotEmpty property="topType" prepend="and"> 
+				    top_type = #topType#
+                </isNotEmpty>	   
+   			</dynamic>   
+            ]]>
+         </sqlmap>
+    </operation>
+    <operation name="selectByTopTypeAndParamType" paramtype="primitive" multiplicity="primitive">
+        <extraparams>
+			<param name="paramType" javatype="java.lang.String"/>
+			<param name="topType" javatype="java.lang.Long"/>
+		</extraparams>
+        <sql>
+            <![CDATA[
+          		select * from s_item_type_param 
+             ]]>
+        </sql>
+        <sqlmap>
+   			<![CDATA[
+			 select * from s_item_type_param where 1=1 
+			<dynamic>	
+				<isNotEmpty property="paramType" prepend="and"> 
+				    param_type = #paramType#
+                </isNotEmpty>	
+				<isNotEmpty property="topType" prepend="and"> 
+				    top_type = #topType#
+                </isNotEmpty>	   
+   			</dynamic>   
+            ]]>
+         </sqlmap>
+    </operation>
+
+	
+	<operation name="deleteById">
+        <sql>
+            <![CDATA[
+          		delete from s_item_type_param where  id = ?
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="deleteByNoInIds">
+		<extraparams>
+			<param name="paramType" javatype="java.lang.String"/>
+			<param name="topType" javatype="java.lang.Long"/>
+			<param name="ids" javatype="java.util.List"/>
+		</extraparams>
+        <sql>
+            <![CDATA[
+          		delete from s_item_type_param where  id = 'id'
+             ]]>
+        </sql>
+		<sqlmap>
+   			<![CDATA[
+			 select * from s_item_type_param where param_type = #paramType# and top_type = #topType#
+			<dynamic>	
+				<isNotEmpty property="topType" prepend="and"> 
+				    
+                </isNotEmpty>	   
+   			</dynamic>   
+            ]]>
+         </sqlmap>
+    </operation>
+	
+	<operation name="update" paramtype="object">
+		<sql>
+			<![CDATA[
+          		update s_item_type_param set top_type=?,type_id=?,type_name=?,tactics=?,param_type=? where  id = ?
+             ]]>
+		</sql>
+    </operation>
+	
+</table>

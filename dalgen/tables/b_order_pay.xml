@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="b_order_pay">
+	<column name="pay_money" javatype="com.caozong.util.money.Money" />
+	<column name="fund_money" javatype="com.caozong.util.money.Money" />
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into b_order_pay
+            (id,order_no,source_order_no,source,item_name,item_amount,pay_money,fund_money,gmt_start,gmt_pay,status,pay_type,detail,cardNo,qid,fail_num,backUrl)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from b_order_pay where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from b_order_pay where id=? for update
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByOrderNo" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from b_order_pay where order_no=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByOrderNoForUpdate" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from b_order_pay where order_no=? for update
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectBySourceOrderNo" paramtype="primitive" multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select  * from b_order_pay where source_order_no=? and source=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="deleteByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from b_order_pay where id=?
+   			]]>
+   		</sql>
+	</operation> 
+   
+   <operation name="updateById" paramtype="object">
+ 		<sql>
+ 			<![CDATA[
+              update b_order_pay set pay_type=?,gmt_start=?,gmt_pay=?,status=?,qid=?,fail_num=? where id= ?
+ 			]]>
+ 		</sql>
+   </operation>
+   
+   <operation name="selectPayTimeOut" paramtype="primitive"   multiplicity="many">
+        <extraparams>
+			<param name="source" javatype="java.lang.String"/>
+			<param name="m" javatype="java.lang.Integer"/>
+			<param name="items" javatype="java.util.List"/>
+			<param name="size" javatype="java.lang.Integer"/>
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+                select  id  from b_order_pay where status='status'
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       select  id  from b_order_pay 
+		       where source=#source# and status='01' and sysdate() >= date_add(gmt_start,INTERVAL #m# MINUTE) and 5>fail_num
+		       <dynamic>
+				    <isNotEmpty property="items"> 
+					    <iterate property="items" prepend=" and " open=" id%10 in (" close=")" conjunction=",">
+							   #items[]#
+						</iterate>
+					</isNotEmpty>
+  			   </dynamic>
+  			   order by id asc
+  			   limit 0 , #size# 
+			]]> 
+		</sqlmap>
+	</operation>  
+  
+</table>

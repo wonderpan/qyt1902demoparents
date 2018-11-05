@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_gysadmin">
+<operation name="insert" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                insert into s_gysadmin(id,loginName,gydName,linkman,linkaddress,linkphone,saasId,domainName,companyName,sortName,companyLogo,keywords,
+                description,serviceMobile,smsCount,rise_sell_money,full_post_money,post_money,is_enable,interface_address,qq,phone_for_receive_sms)
+                 values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_gysadmin where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectGysNoPage"  multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from s_gysadmin
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectGys"  multiplicity="many"
+		paging="true">
+		<sql>
+   			<![CDATA[
+                select * from s_gysadmin 
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateById" paramtype="primitive" >
+		<extraparams>
+			<param name="id" javatype="java.lang.Long"/>
+			<param name="gysid" javatype="java.lang.Long"/>
+			<param name="saasId" javatype="java.lang.Long"/>
+			<param name="loginName" javatype="java.lang.String"/>
+			<param name="gydName" javatype="java.lang.String"/>
+			<param name="linkman" javatype="java.lang.String"/>
+			<param name="linkaddress" javatype="java.lang.String"/>
+			<param name="linkphone" javatype="java.lang.String"/>
+			<param name="domainName" javatype="java.lang.String"/>
+			<param name="companyName" javatype="java.lang.String"/>
+			<param name="sortName" javatype="java.lang.String"/>
+			<param name="companyLogo" javatype="java.lang.String"/>
+			<param name="keywords" javatype="java.lang.String"/>
+			<param name="description" javatype="java.lang.String"/>
+			<param name="serviceMobile" javatype="java.lang.String"/>
+			<param name="smsCount" javatype="java.lang.Long"/>
+			
+			<param name="riseSellMoney" javatype="java.lang.Integer"/>
+			<param name="fullPostMoney" javatype="java.lang.Integer"/>
+			<param name="postMoney" javatype="java.lang.Long"/>
+			<param name="isEnable" javatype="java.lang.Integer"/>
+			<param name="interfaceAddress" javatype="java.lang.String"/>
+			<param name="qq" javatype="java.lang.String"/>
+			<param name="phoneForReceiveSms" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+               update s_gysadmin set id='id', loginName='loginName',gydName='gydName',linkman='linkman',linkaddress='linkaddress',linkphone='linkphone',saasId='saasId',
+               domainName='domainName',companyName='companyName',sortName='sortName',companyLogo='companyLogo',keywords='keywords',description='description',serviceMobile='serviceMobile',
+               smsCount='smsCount' ,rise_sell_money='riseSellMoney',full_post_money='fullPostMoney',post_money='postMoney',is_enable='isEnable',interface_address='interfaceAddress',
+               qq='qq',phone_for_receive_sms='phoneForReceiveSms'
+                 where  id='gysid'
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+               update s_gysadmin set id=#id#, loginName=#loginName#,gydName=#gydName#,linkman=#linkman#,linkaddress=#linkaddress#,linkphone=#linkphone#,saasId=#saasId#,
+               domainName=#domainName#,companyName=#companyName#,sortName=#sortName#,companyLogo=#companyLogo#,keywords=#keywords#,description=#description#,serviceMobile=#serviceMobile#,
+               smsCount=#smsCount# ,rise_sell_money=#riseSellMoney#,full_post_money=#fullPostMoney#,post_money=#postMoney#,is_enable=#isEnable#,interface_address=#interfaceAddress#,
+               qq=#qq#,phone_for_receive_sms=#phoneForReceiveSms#
+                 where  id=#gysid#
+   			]]>
+		</sqlmap>
+	</operation>
+</table> 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_collect">
+	<column name="price" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO s_collect (id, itemCode, cardNo, productId , productName , imgItem , price , collectTime)
+			VALUES
+                (?,?,?, ?, ?, ?, ?, ?)
+
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_collect where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_collect where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="delete" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from s_collect where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="selectByCardNo" multiplicity="many" paging="true">
+		<sql>
+   			<![CDATA[
+                select * from s_collect where cardNo=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByItemNo" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_collect where cardNo=? and itemCode=?
+   			]]>
+		</sql>
+	</operation>
+    
+    <operation name="selectByCardNos" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from s_collect where cardNo=?
+   			]]>
+		</sql>
+	</operation>
+</table> 

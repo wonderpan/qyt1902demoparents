@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+    <settings cacheModelsEnabled="true" enhancementEnabled="false" lazyLoadingEnabled="false" maxRequests="3000" maxSessions="3000" maxTransactions="3000" useStatementNamespaces="false"/>
+    <sqlMap resource="sqlmap/manual/seq-sqlmap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/operator-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/brandView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/productView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/orderView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/consult-view-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/ghOrderView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/ydOrderView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/member-audit-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/itemImg-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/aptitudeView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/itemTypeView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/articalView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/aversionView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/orderTakingView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/newType-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/memberView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/newsManage-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/aptitudegysView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/pointslView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/ItemAptitude-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/fullcutactivityView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/integralstream-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/integralRules-sqlmap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/integralGift-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/integralGiftLog-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/integralGiftLogInMyIntegral-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/controlPinView-sqlMap-mapping.xml"/>
+	<sqlMap resource="sqlmap/manual/ItemSearch-sqlMap-mapping.xml"/>
+	
+
+</sqlMapConfig>

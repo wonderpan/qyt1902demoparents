@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="buy_gifts_activity">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO buy_gifts_activity (id, sitem_id, name, normal,productaddress,approvenum,itemimg,price,isPurchase,Purchase_num,begin_time,end_time,status,gysid,create_time,create_adminid,examine_time,examine_adminid)
+			VALUES
+                (?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectByGysid" paramtype="primitive" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="keyword" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="gysid" javatype="java.lang.String"/>
+			<param name="Time" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+			<![CDATA[
+                select * from buy_gifts_activity where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select * from buy_gifts_activity where 1=1
+                ${cdata-end}
+                <dynamic>
+				    <isNotEmpty property="status" prepend="and"> 
+						status=#status#
+				    </isNotEmpty>
+					<isNotEmpty property="keyword" prepend="and"> name like '%$keyword$%' </isNotEmpty>
+					<isNotEmpty property="gysid" prepend="and"> gysid=#gysid#</isNotEmpty>
+					<isNotEmpty property="Time" prepend="and"> DATE(end_time) >= #Time# and #Time# >= DATE(begin_time)</isNotEmpty>
+				</dynamic>
+   			]]>
+   			order by create_time desc 
+		</sqlmap>
+	</operation>
+	
+	<!-- 查询所有活动中的 商品ID -->
+	<operation name="selectByStatus" paramtype="primitive" multiplicity="many">
+		<extraparams>
+			<param name="time" javatype="java.lang.String"/>
+			<param name="gysid" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+			<![CDATA[
+                select sitem_id from buy_gifts_activity where status='1' 
+   			]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select sitem_id from buy_gifts_activity where status='1' 
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="time" prepend="and">  DATE(end_time) >= #time# and #time# >= DATE(begin_time) </isNotEmpty>
+					<isNotEmpty property="gysid" prepend="and"> gysid=#gysid#</isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+	<operation name="delById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                  delete from buy_gifts_activity where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="upStatusById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update buy_gifts_activity set status=?,examine_time=?,examine_adminid=? 
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   select * from buy_gifts_activity where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update buy_gifts_activity set sitem_id=?, name=?, normal=?,productaddress=?,approvenum=?,itemimg=?,price=?,isPurchase=?,Purchase_num=?,begin_time=?,end_time=? 
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByItemIdForTime" paramtype="primitive">
+		<extraparams>
+			<param name="time" javatype="java.lang.String"/>
+			<param name="itemId" javatype="java.lang.String"/>
+		</extraparams>
+   		
+   		<sql>
+			<![CDATA[
+                select * from buy_gifts_activity where status='1' 
+   			]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select * from buy_gifts_activity where status='1' 
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="time" prepend="and">  DATE(end_time) >= #time# and #time# >= DATE(begin_time) </isNotEmpty>
+					<isNotEmpty property="itemId" prepend="and"> sitem_id=#itemId#</isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+	<operation name="selectByItemId" paramtype="primitive" multiplicity="many">
+		<extraparams>
+			<param name="time" javatype="java.lang.String"/>
+			<param name="itemId" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                   select * from buy_gifts_activity where 1=1
+   			]]>
+   		</sql>
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select * from buy_gifts_activity where 1=1 
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="time" prepend="and"> DATE(end_time) > #time# </isNotEmpty>
+					<isNotEmpty property="itemId" prepend="and"> sitem_id=#itemId#</isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+   		
+	</operation>
+</table> 

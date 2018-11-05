@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="b_brand">
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into b_brand(id,brand_id,cardNo,nick_name,auth_type,img_brand,img_auth,status,gmt_auth,auth_status,gmt_reg,gmt_submit)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select * from b_brand where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByBrandId">
+   		<sql>
+   			<![CDATA[
+                select * from b_brand 
+                where  brand_id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+
+	<operation name="selectByCardNo"  multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from b_brand where cardNo=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByStatus"  multiplicity="many"   paging="true">
+	    <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="name" javatype="java.lang.String"/>
+			<param name="startDate" javatype="java.lang.String"/>
+			<param name="endDate" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from b_brand 
+                where cardNo='cardNo'
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from b_brand 
+                where cardNo=#cardNo#
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="status" prepend="and"> status in ($status$) </isNotEmpty>
+					<isNotEmpty property="name" prepend="and"> name like #name# </isNotEmpty>
+					<isNotEmpty property="startDate" prepend="and"> 
+					    DATE_FORMAT(gmt_auth,'%Y-%m-%d') >= #startDate#
+                    </isNotEmpty>
+					<isNotEmpty property="endDate" prepend="and">
+					   #endDate# >= DATE_FORMAT(gmt_auth,'%Y-%m-%d')
+					</isNotEmpty>
+				</dynamic>
+				order by gmt_auth
+   			]]>
+   		</sqlmap>
+	</operation>	
+	
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update b_brand set brand_id=?,cardNo=?,img_brand=?,img_auth=?,status=?,gmt_auth=?,auth_status=?,gmt_submit=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateStatusById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update b_brand set status=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+    <operation name="updateAuthStatusById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update b_brand set auth_status=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from b_brand where id=?
+   			]]>
+   		</sql>
+	</operation> 
+
+	<operation name="selectForAuthEnd"  multiplicity="many">
+	    <extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="dayNum" javatype="java.lang.Integer"/>
+			<param name="size" javatype="java.lang.Integer"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from b_brand 
+                where cardNo='cardNo'
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from b_brand 
+                where cardNo=#cardNo# and gmt_auth is not null and TO_DAYS(gmt_auth)-TO_DAYS(now()) <= #dayNum#
+                order by gmt_auth asc
+                limit 0,$size$
+                ${cdata-end}
+   			]]>
+   		</sqlmap>
+	</operation>
+	<operation name="selectForUpdateById">
+   		<sql>
+   			<![CDATA[
+                select * from b_brand 
+                where  id=? for UPDATE
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectPartnerBrandByBrandIdAndCardNo">
+   		<sql>
+   			<![CDATA[
+                select * from b_brand 
+                where  brand_id=? and cardNo=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByGysAndStatus"  multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from b_brand 
+                where cardNo=? and status=?
+   			]]>
+   		</sql>
+	</operation>
+</table>

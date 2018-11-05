@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_member_partner">
+
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_member_partner
+            (id,cardNo,nickName,company_name,company_legal_person,
+            company_legal_area,company_legal_area_name,company_legal_address,
+            company_office_tel,company_office_fax,status,gmt_modify,gmt_create,phoneNumber,member_type)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="update" paramtype="object">
+		<sql>
+            <![CDATA[
+            update c_member_partner set
+				cardNo=?, 
+				nickName=?, 
+				company_name=?, 
+				company_legal_person=?, 
+				gmt_modify=?,
+				 company_legal_area=?, 
+				 company_legal_area_name=?, 
+				 company_legal_address=?, 
+				 company_office_tel=?, 
+				 company_office_fax=?, 
+				 status=?, 
+				 gmt_create=? ,
+				 phoneNumber=?,
+				 member_type=?
+            where id=?
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select *
+                from c_member_partner where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select *
+                from c_member_partner where id=? for update
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByCardNo" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_member_partner where cardNo=? order by id desc
+   			]]>
+		</sql>
+	</operation>
+	
+		<operation name="ydOrderSelectByCardNo" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_partner where cardNo=?
+   			]]>
+		</sql>
+	</operation>
+
+	<!--???????-->
+	<operation name="selectMemberPartners" paramtype="primitive" multiplicity="many"  paging="true">
+   		<extraparams>
+   			<param name="nickName" javatype="java.lang.String"/>
+			<param name="serviceType" javatype="java.lang.String"/>
+   			<param name="partnerAuthType" javatype="java.lang.String"/>
+			<param name="status" javatype="java.util.List"/>
+			<param name="gmtBegin" javatype="java.lang.String"/>
+			<param name="gmtEnd" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+              select * from c_member_partner where 1=1
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       select * from c_member_partner where 1=1
+		       <dynamic>
+				<isNotEmpty property="nickName" prepend=" and ">
+   			         nickName like '%$nickName$%'
+				</isNotEmpty> 
+				<isNotEmpty property="serviceType" prepend=" and ">
+   			         service_type = #serviceType#
+				</isNotEmpty>
+				<isNotEmpty property="partnerAuthType" prepend=" and ">
+   			         partner_auth_type = #partnerAuthType#
+				</isNotEmpty>
+				<isNotEmpty property="status" prepend=" and ">
+   			         <iterate property="status" open="(" close=")" conjunction=" or ">
+					   	 status=#status[]#
+					 </iterate>
+				</isNotEmpty>
+				<isNotEmpty property="gmtBegin" prepend="and"> date_format(gmt_create,'%Y-%m-%d') >= #gmtBegin# </isNotEmpty>
+				<isNotEmpty property="gmtEnd" prepend="and"> #gmtEnd# >= date_format(gmt_create,'%Y-%m-%d') </isNotEmpty>
+  			   </dynamic>
+			]]> 
+		</sqlmap>
+	</operation>
+	
+	<operation name="delete" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                delete  from c_member_partner where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectCompanyNameByCardNo" paramtype="primitive">
+		<extraparams>
+			<param name="companyName" javatype="java.lang.String"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+              select * from c_member_partner where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap> 
+   			<![CDATA[
+   				select mp.* from c_member mb,c_member_partner mp where mb.cardNo=mp.cardNo and mb.cardNo!=#cardNo# and mb.allstatus='Y' and mp.company_name=#companyName#
+   			]]>
+   		</sqlmap>
+	</operation>
+</table>

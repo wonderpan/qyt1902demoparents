@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="b_item_idcode" autoSwitchDataSrc="true">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+                  INSERT INTO b_item_idcode (id,gh_order_no,order_no,ghCardNo,product_id,product_code,product_idcode,
+                  gmt_shipments,gmt_receipt,gmt_test,gmt_stopservice,ls_sh_order_no)
+                  values
+                  (?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+               SELECT * FROM b_item_idcode where id =?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateById" paramtype="object">
+		<sql>
+   			<![CDATA[
+               UPDATE b_item_idcode set   
+                    gh_order_no  = ?,order_no = ?,ghCardNo = ? , ls_sh_order_no=?,
+               product_id =?,product_code =?,  product_idcode =?,
+               gmt_shipments =?,gmt_receipt =?, gmt_test =?,gmt_stopservice  =?
+               
+              where id =?               
+   			]]>
+		</sql>
+	</operation>     
+	<operation name="selectProductIdCodeByGhOrderNo" multiplicity="many">
+		<sql>
+   			<![CDATA[
+	           select product_idcode from b_item_idcode where gh_order_no=?
+	       	]]>
+		</sql>
+	</operation>
+    <operation name="selectProductIdCodeByLsOrderNo" multiplicity="many">
+		<sql>
+   			<![CDATA[
+	           select product_idcode from b_item_idcode where ls_sh_order_no=?
+	       	]]>
+		</sql>
+	</operation>
+	<operation name="selectProductIdCode"  paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[	  			     	
+	               select * from b_item_idcode where  
+	            ghCardNo =? and product_code  =?  and (ls_sh_order_no !="" or ls_sh_order_no is not null)
+	       	]]>
+		</sql>
+
+	</operation>
+	
+	
+	<operation name="updateGmtReceiptByOrderNo" paramtype="object">
+		<sql>
+		<![CDATA[
+			   update b_gh_order set gmt_receipt=? where order_no=?
+		]]>
+		</sql>
+	</operation>
+    <operation name="updateGmtTestByOrderNo" paramtype="object">
+		<sql>
+		<![CDATA[
+			   update b_gh_order set gmt_test=? where order_no=?
+		]]>
+		</sql>
+	</operation>
+	<operation name="updateGmtStopServiceByOrderNo" paramtype="object">
+		<sql>
+		<![CDATA[
+			   update b_gh_order set gmt_stopservice=? where order_no=?
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectPageListByInput" multiplicity="many" paging="true">
+		<extraparams>
+			<param name="ghOrderNo" javatype="java.lang.String"/>
+			<param name="orderNo" javatype="java.lang.String"/>
+			<param name="ghCardNo" javatype="java.lang.String"/>
+			<param name="productId" javatype="java.lang.String"/>
+			<param name="productCode" javatype="java.lang.String"/>
+			<param name="productIdCode" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+		<![CDATA[
+		 	   select * from b_item_idcode where 1=1
+		]]>
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			${cdata-start}
+			   select * from b_item_idcode where 1=1
+			${cdata-end} 
+			<dynamic>
+				<isNotEmpty property="ghOrderNo"  prepend=" and ">
+					gh_order_no = #ghOrderNo#
+				</isNotEmpty>
+				<isNotEmpty property="orderNo"  prepend=" and ">
+					order_no = #orderNo#
+				</isNotEmpty>				
+			   <isNotEmpty property="ghCardNo"  prepend=" and ">
+					 ghCardNo =#ghCardNo#
+				</isNotEmpty>
+				<isNotEmpty property="productId"  prepend=" and ">
+					 product_id   =#productId#
+				</isNotEmpty>
+				<isNotEmpty property="productCode"  prepend=" and ">
+					  product_code  =#productCode#
+				</isNotEmpty>	
+				<isNotEmpty property="productIdCode"  prepend="and">
+					product_idcode = #productIdCode#
+				</isNotEmpty>				
+			</dynamic>
+		]]>
+		</sqlmap>
+	</operation>
+    <operation name="deleteByGhOrderNo" paramtype="primitive">
+        <sql>
+            <![CDATA[
+            	 delete from b_item_idcode where gh_order_no=? 
+             ]]>
+        </sql>
+    </operation>
+		
+  
+</table>

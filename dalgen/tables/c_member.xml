@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_member" autoSwitchDataSrc="true">
+	
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+            insert into c_member
+            (id,cardNo,gmt_regist,nick_name,mobile,email,status,pwd_level,aptitudeStatus,allstatus,saasId,erpId,integral,downloadip)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectMembers" paramtype="primitive" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="keyword" javatype="java.lang.String"/>
+			<param name="allstatus" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+			<![CDATA[
+                select * from c_member where 1=1
+   			]]>
+		</sql>
+		
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+                select c_member.* from c_member  where 1=1
+                ${cdata-end}
+                <dynamic>
+				    <isNotEmpty property="allstatus"> 
+						<isEqual prepend="and" property="allstatus" compareValue = "Y">
+								c_member.allstatus='Y' 
+			            </isEqual>
+				        <isEqual prepend="and" property="allstatus" compareValue = "N">
+								c_member.allstatus!='Y' 
+			            </isEqual>
+				    </isNotEmpty>
+					<isNotEmpty property="keyword" prepend="and"> c_member.nick_name like '%$keyword$%' or c_member.mobile like '%$keyword$%' </isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="selectByCardNo" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                select * from c_member where cardNo=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByCardNoForUpdate" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                select * from c_member where cardNo=? for update
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                select * from c_member where id=? for update
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByMobile" paramtype="primitive">
+		<sql>
+			<![CDATA[
+             select * from c_member where mobile=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByEmail" paramtype="primitive">
+		<sql>
+			<![CDATA[
+               select * from c_member where email=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                select * from c_member where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByNickName" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                select * from c_member where nick_name=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateMember" paramtype="object">
+		<sql>
+			<![CDATA[
+                update c_member  set  cardNo=?, gmt_regist=?,nick_name=?, mobile=?,email=?,
+                status=?,pwd_level=?, aptitudeStatus=?,integral=?,downloadip=?
+	        	where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="bindMobile" paramtype="object">
+		<sql>
+			<![CDATA[
+                update c_member  set mobile=? 	where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="bindEmail" paramtype="object">
+		<sql>
+			<![CDATA[
+                update c_member set email=? where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="bindTwitter" paramtype="object">
+		<sql>
+			<![CDATA[
+                update c_member set twitter=? where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateAptitude" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                update c_member set aptitudeStatus=? where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteByID" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                   delete from c_member where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="findMemberByKeywords" paramtype="primitive"
+		multiplicity="many" paging="true">
+		<extraparams>
+			<param name="keywords" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+			<![CDATA[
+       select * from c_member
+   			]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+			    ${cdata-start}
+                 select * from c_member where nick_name is not null and mobile is not null
+				${cdata-end}
+				<dynamic  prepend="">
+					<isNotEmpty property="keywords" prepend="and"> 
+					     ((mobile like '%$keywords$%') or 
+					     (nick_name like '%$keywords$%') or 
+					     (email like '%$keywords$%'))
+					</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="updateMemberAptitude"  paramtype="primitive">
+		<sql>
+			<![CDATA[
+                update c_member set aptitudeStatus=?
+	        	where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	<operation name="updateMemberAllStatus"  paramtype="primitive" >
+		<sql>
+			<![CDATA[
+                update c_member set allstatus=? where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	
+	<operation name="upSaasIdByMemberId" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                update c_member  set  saasId=? where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="upErpIdByMemberId" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                update c_member set erpId=?,erpName=? where id= ?	
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateIntegralByMemberId" paramtype="primitive">
+		<sql>
+			<![CDATA[
+                update c_member  set  integral=? where id= ?	
+   			]]>
+		</sql>
+	</operation>
+</table>

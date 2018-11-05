@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_message_subscription">
+	
+	
+    <!-- ????????????? -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_message_subscription
+            (id,msg_id,title,content,sender,receiver,status,gmt_send,gmt_read)
+            values
+             (?,?,?,?,?,?,'W',?,?)
+             ]]>
+        </sql>
+    </operation>
+
+	  <!--???ID????????????-->
+    <operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select id,msg_id,title,content,sender,receiver,status,gmt_send,gmt_read
+                from s_message_subscription where id=?
+   			]]>
+   		</sql>
+     </operation>
+	
+	<operation name="selectByAccept" paramtype="primitive"  multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select id,msg_id,title,content,sender,receiver,status,gmt_send,gmt_read
+                from s_message_subscription where receiver=?
+   			]]>
+   		</sql>
+     </operation>
+     
+     <!--????????????-->
+     <operation name="countUnReading" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select count(id)
+                from s_message_subscription where  status='W' and receiver=?
+   			]]>
+   		</sql>
+     </operation>
+    <!--?????????-->
+    <operation name="selectByReceiver" paramtype="primitive" multiplicity="many"  paging="true">
+   		 <extraparams>
+			<param name="status" javatype="java.util.List"/>
+			<param name="receiver" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+           <![CDATA[
+                select id,msg_id,title,content,sender,receiver,status,gmt_send,gmt_read
+                from s_message_subscription
+   			]]>
+   		</sql>
+   		<sqlmap>
+			<![CDATA[
+			    ${cdata-start}
+				select id,msg_id,title,content,sender,receiver,status,gmt_send,gmt_read
+                from s_message_subscription  
+				${cdata-end}
+				<dynamic prepend="where">
+				    <isNotEmpty property="receiver" prepend="and">
+				    	receiver=#receiver#
+				    </isNotEmpty>
+				    <isNotEmpty property="status" prepend="and">
+				         status in 
+						 <iterate property="status" conjunction="," open="(" close=")">
+						  #status[]#
+						 </iterate>
+				    </isNotEmpty>
+				</dynamic>
+				order by gmt_send asc
+			]]> 
+		</sqlmap>
+     </operation>
+     	
+     <!--???????????-->
+     <operation name="updateMessageReading" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                update s_message_subscription set status='R',gmt_read=?
+	        	where id= ?	
+   			]]>
+   		</sql>
+     </operation>
+	
+     <!--???????????id-->
+     <operation name="deleteByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   update s_message_subscription set status='D'
+	        	where id= ?	
+   			]]>
+   		</sql>
+	</operation>
+	
+	
+	
+	  <!--???????????id-->
+     <operation name="selectHeaderLetterList"  paramtype="primitive" multiplicity="many"  paging="true">
+   		 <extraparams>
+			<param name="receiver" javatype="java.lang.String"/>
+			<param name="theme" javatype="java.lang.String"/>
+			<param name="startDate" javatype="java.lang.String"/>
+			<param name="endDate" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+           <![CDATA[
+                select id,msg_id,title,content,sender,receiver,status,gmt_send,gmt_read
+                from s_message_subscription where receiver=receiver
+   			]]>
+   		</sql>
+   		<sqlmap>
+			<![CDATA[
+			    ${cdata-start}
+				select id,msg_id,title,content,sender,receiver,status,gmt_send,gmt_read
+                from s_message_subscription where status!='D'
+				${cdata-end}
+				 <dynamic>
+				  <isNotEmpty property="receiver" prepend="and"> receiver = #receiver# </isNotEmpty>
+				    <isNotEmpty property="theme" prepend="and"> title = #theme# </isNotEmpty>
+					<isNotEmpty property="startDate" prepend="and"> gmt_send >= #startDate# </isNotEmpty>
+					<isNotEmpty property="endDate" prepend="and"> gmt_send &lt;= #endDate# </isNotEmpty>
+				</dynamic>
+				order by gmt_send desc
+			]]> 
+		</sqlmap>
+	</operation>
+	
+	
+	 <operation name="updateByIds" paramtype="primitive">
+       <extraparams>
+    	    <param name="ids" javatype="java.util.List"/>
+		     <param name="receiver" javatype="java.lang.String"/>
+		</extraparams>
+ 		<sql>
+ 			<![CDATA[
+              update s_message_subscription set status ='D'where id=ids
+ 			]]>
+ 		</sql>
+ 		<sqlmap>
+          <![CDATA[
+              ${cdata-start}
+              update s_message_subscription set status='D' where receiver=#receiver#
+                ${cdata-end}
+                 <dynamic>
+					<isNotEmpty property="ids" prepend="and"> id in
+						<iterate property="ids" open="(" close=")" conjunction=",">
+							   #ids[]#
+						</iterate>
+					</isNotEmpty>
+				</dynamic>
+			   ]]>
+        </sqlmap>
+   </operation>
+	
+	
+	 <operation name="checkMsgIdExist" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                 select count(id)
+                from s_message_subscription where msg_id  =?  ;
+   			]]>
+   		</sql>
+		
+     </operation>
+     
+     <!--  -->
+	 <operation name="selectCountUnRead" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                 select count(id)
+                from s_message_subscription where receiver=? and  status='W';
+   			]]>
+   		</sql>
+		
+     </operation>
+</table>

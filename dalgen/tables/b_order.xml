@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="b_order">
+	<column name="price" javatype="com.caozong.util.money.Money" />
+	<column name="service_fee" javatype="com.caozong.util.money.Money" />
+	<column name="totle_fee" javatype="com.caozong.util.money.Money" />
+	<column name="pay_fee" javatype="com.caozong.util.money.Money" />
+	<column name="carriage_fee" javatype="com.caozong.util.money.Money" />
+    <column name="gh_price" javatype="com.caozong.util.money.Money" />
+    <column name="integralMoney" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO b_order (id, order_no, cardNo, rece_mode, mailing_time, rece_area, rece_area_name, rece_address, rece_name, rece_phone, rece_mobile, pay_way, amount, carriage_fee,totle_fee, pay_fee, receipt_type, receipt_title, status, remarks, cancel_case_text, gmt_timeout, postpone_num, gmt_create, gmt_operate, gmt_rece, gmt_update, gmt_other,comment_status,expressCode, expressName, expressNum,gh_cardName,gysId,full_cut_id,full_cut__rule_id,order_price,isOL,isExamine,is_send_erp,integralMoney,integral)
+			VALUES
+                (?, ?, ?, ?, ?, ?, ? ,? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)
+
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from b_order where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByNum" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from b_order where order_no=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByNumForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from b_order where order_no=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from b_order where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateByOrderNum" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update b_order set status=?,gmt_operate=?
+            	where order_no=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateByOrderId" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update b_order set status=?,gmt_operate=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateCommentStatusByOrderId" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update b_order set comment_status=?,gmt_operate=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectPageListByInput" multiplicity="many"
+		paging="true">
+		<extraparams>
+		    <param name="orderNo" javatype="java.lang.String"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="keyword" javatype="java.lang.String"/>
+			<param name="statusList" javatype="java.util.List"/>
+			<param name="supplyMode" javatype="java.lang.String"/>
+			<param name="receModeList" javatype="java.util.List"/>
+			<param name="dataStatus" javatype="java.lang.String"/>
+			<param name="commentStatus" javatype="java.lang.String"/>
+			<param name="postponeNum" javatype="java.lang.Integer"/>
+			<param name="gtmCreateBegin" javatype="java.lang.String"/>
+			<param name="gtmCreateEnd" javatype="java.lang.String"/>
+			<param name="gysId" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from b_order where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from b_order
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="orderNo"  prepend="and">
+					    order_no = #orderNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="statusList"  prepend="and">
+					    <iterate property="statusList" open="(" close=")" conjunction="or">
+					   	 	status=#statusList[]#
+					    </iterate>
+				    </isNotEmpty>
+				   <isNotEmpty property="supplyMode"  prepend="and">
+					    supply_mode= #supplyMode#
+				    </isNotEmpty>
+				   <isNotEmpty property="receModeList"  prepend="and">
+				   		<iterate property="receModeList" open="(" close=")" conjunction="or">
+					   	 	rece_mode=#receModeList[]#
+					    </iterate>
+				    </isNotEmpty>
+				   <isNotEmpty property="dataStatus"  prepend="and">
+					    data_status= #dataStatus#
+				    </isNotEmpty>
+				   <isNotEmpty property="commentStatus"  prepend="and">
+					    comment_status= #commentStatus#
+				    </isNotEmpty>
+				   <isGreaterThan property="postponeNum"  prepend="and" compareValue="0">
+					    postpone_num > 0 and status='05'
+				    </isGreaterThan>
+				   <isNotEmpty property="keyword"  prepend="and">
+					    (order_no IN (SELECT d.order_no from b_order_details d where d.product_name like '%$keyword$%' ) or order_no like '%$keyword$%')
+				    </isNotEmpty>
+				     <isNotEmpty property="gtmCreateBegin" prepend="and"> 
+				  	  date_format(gmt_create,'%Y-%m-%d')  >= #gtmCreateBegin# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gtmCreateEnd" prepend="and"> 
+				    	#gtmCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				    </isNotEmpty>
+				    <isNotEmpty property="gysId"  prepend="and">
+					    gysId = #gysId#
+				    </isNotEmpty>
+				</dynamic>
+				order by gmt_create desc
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="updateById" paramtype="object">
+		<sql>
+   			<![CDATA[           	
+            	update b_order set 
+            	  order_no=?, cardNo=?, rece_mode=?, mailing_time=?, rece_area=?, rece_area_name=?, rece_address=?, 
+            	  rece_name=?, rece_phone=?, rece_mobile=?, pay_way=?, amount=?, carriage_fee=?,totle_fee=?, pay_fee=?, 
+            	  receipt_type=?, receipt_title=?, status=?, remarks=?, cancel_case_text=?, gmt_timeout=?, postpone_num=?, 
+            	  gmt_create=?, gmt_operate=?, gmt_rece=?, gmt_update=?, gmt_other=?,comment_status=?,expressCode=?, expressName=?, 
+            	  expressNum=?,gh_cardName=? ,full_cut_id=?,full_cut__rule_id=?,order_price=? 
+            	 where id=?
+            	
+   			]]>
+		</sql>
+	</operation>
+	<operation name="updateExpressByid" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update b_order set expressNum=?,expressCode=?,expressName=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectOrderByTopayDepositTime"  paramtype="primitive"   multiplicity="many">		
+		<extraparams>
+			<param name="items" javatype="java.util.List"/>
+			<param name="fetchNum" javatype="java.lang.Integer"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id from b_order 
+   			]]>
+   		</sql>
+   		<sqlmap> 
+   		     <![CDATA[
+		       select id from b_order  where status='01' and data_status='01' and now()>=gmt_timeout
+		       <dynamic>
+				    <isNotEmpty property="items"> 
+					    <iterate property="items" prepend="and" open="(" close=")" conjunction="or">
+						    RIGHT(id,1)=#items[]#
+						</iterate>
+					</isNotEmpty>			  
+  			   </dynamic> 			 
+  			   limit 0 , #fetchNum# 
+			]]> 
+   		</sqlmap>
+	</operation>
+	<operation name="selectOrderByReceiveGoodsTime"  paramtype="primitive"   multiplicity="many">		
+		<extraparams>
+			<param name="items" javatype="java.util.List"/>
+			<param name="fetchNum" javatype="java.lang.Integer"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id from b_order 
+   			]]>
+   		</sql>
+   		<sqlmap> 
+   		     <![CDATA[
+		       select id from b_order where status='05' and data_status='01' and now()>=gmt_timeout
+		       <dynamic>
+				    <isNotEmpty property="items"> 
+					    <iterate property="items" prepend="and" open="(" close=")" conjunction="or">
+						    RIGHT(id,1)=#items[]#
+						</iterate>
+					</isNotEmpty>			  
+  			   </dynamic> 			 
+  			   limit 0 , #fetchNum# 
+			]]> 
+   		</sqlmap>
+	</operation>
+	<operation name="selectOrderByPendPaymentTime"  paramtype="primitive"   multiplicity="many">		
+		<extraparams>
+			<param name="items" javatype="java.util.List"/>
+			<param name="fetchNum" javatype="java.lang.Integer"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id from b_order 
+   			]]>
+   		</sql>
+   		<sqlmap> 
+   		     <![CDATA[
+		       select id from b_order  where status='03' and data_status='01' and now()>=gmt_timeout and supply_mode='01'
+		       <dynamic>
+				    <isNotEmpty property="items"> 
+					    <iterate property="items" prepend="and" open="(" close=")" conjunction="or">
+						    RIGHT(id,1)=#items[]#
+						</iterate>
+					</isNotEmpty>			  
+  			   </dynamic> 			 
+  			   limit 0 , #fetchNum# 
+			]]> 
+   		</sqlmap>
+	</operation>
+	<operation name="selectGYSPageListByInput" multiplicity="many"
+		paging="true">
+		<extraparams>
+		    <param name="orderNo" javatype="java.lang.String"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="keyword" javatype="java.lang.String"/>
+			<param name="statusList" javatype="java.util.List"/>
+			<param name="supplyMode" javatype="java.lang.String"/>
+			<param name="receModeList" javatype="java.util.List"/>
+			<param name="dataStatus" javatype="java.lang.String"/>
+			<param name="commentStatus" javatype="java.lang.String"/>
+			<param name="postponeNum" javatype="java.lang.Integer"/>
+			<param name="gtmCreateBegin" javatype="java.lang.String"/>
+			<param name="gtmCreateEnd" javatype="java.lang.String"/>
+			<param name="gysId" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from b_order where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from b_order
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="orderNo"  prepend="and">
+					    order_no = #orderNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="cardNo"  prepend="and">
+					    cardNo = #cardNo#
+				    </isNotEmpty>
+				    <isNotEmpty property="statusList"  prepend="and">
+					    <iterate property="statusList" open="(" close=")" conjunction="or">
+					   	 	status=#statusList[]#
+					    </iterate>
+				    </isNotEmpty>
+				   <isNotEmpty property="supplyMode"  prepend="and">
+					    supply_mode= #supplyMode#
+				    </isNotEmpty>
+				   <isNotEmpty property="receModeList"  prepend="and">
+				   		<iterate property="receModeList" open="(" close=")" conjunction="or">
+					   	 	rece_mode=#receModeList[]#
+					    </iterate>
+				    </isNotEmpty>
+				   <isNotEmpty property="dataStatus"  prepend="and">
+					    data_status= #dataStatus#
+				    </isNotEmpty>
+				   <isNotEmpty property="commentStatus"  prepend="and">
+					    comment_status= #commentStatus#
+				    </isNotEmpty>
+				   <isGreaterThan property="postponeNum"  prepend="and" compareValue="0">
+					    postpone_num > 0 and status='05'
+				    </isGreaterThan>
+				   <isNotEmpty property="keyword"  prepend="and">
+					    (product_name like '%$keyword$%' or product_code like '%$keyword$%')
+				    </isNotEmpty>
+				     <isNotEmpty property="gtmCreateBegin" prepend="and"> 
+				  	  date_format(gmt_create,'%Y-%m-%d')  >= #gtmCreateBegin# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gtmCreateEnd" prepend="and"> 
+				    	#gtmCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				    </isNotEmpty>
+				    <isNotEmpty property="gysId"  prepend="and">
+					    gysId= #gysId#
+				    </isNotEmpty>
+				</dynamic>
+				order by gmt_create desc
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectorderNoBycardNo" multiplicity="many" >
+		<sql>
+   			<![CDATA[
+              select order_no from b_order where cardNo=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectPageListByCondition" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="receName" javatype="java.lang.String"/>
+			<param name="statusList" javatype="java.util.List"/>
+			<param name="gysId" javatype="java.lang.String"></param>
+			<param name="isExamine" javatype="java.lang.String"></param>
+			<param name="gtmCreateBegin" javatype="java.lang.String"/>
+			<param name="gtmCreateEnd" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from b_order where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from b_order
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="receName"  prepend="and">
+					    rece_name like '%$receName$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="statusList"  prepend="and">
+					    <iterate property="statusList" open="(" close=")" conjunction="or">
+					   	 	status=#statusList[]#
+					    </iterate>
+				    </isNotEmpty>
+				   <isNotEmpty property="gysId"  prepend="and">
+					    gysId= #gysId#
+				    </isNotEmpty>
+				    <isNotEmpty property="isExamine"  prepend="and">
+					   isExamine=#isExamine#
+				    </isNotEmpty>
+				     <isNotEmpty property="gtmCreateBegin" prepend="and"> 
+				  	  date_format(gmt_create,'%Y-%m-%d')  >= #gtmCreateBegin# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gtmCreateEnd" prepend="and"> 
+				    	#gtmCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				    </isNotEmpty>
+				</dynamic>
+				order by gmt_create desc
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectExamineOrder" multiplicity="many" paging="true">
+		<extraparams>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="gysId" javatype="java.lang.String"></param>
+			<param name="isExamine" javatype="java.lang.String"></param>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from b_order where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from b_order
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+				    <isNotEmpty property="status"  prepend="and">
+					   	 	status=#status#
+				    </isNotEmpty>
+				   <isNotEmpty property="gysId"  prepend="and">
+					    gysId= #gysId#
+				    </isNotEmpty>
+				    <isNotEmpty property="isExamine"  prepend="and">
+					   isExamine=#isExamine#
+				    </isNotEmpty>
+				</dynamic>
+				order by gmt_create desc
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="upOrderExamine" paramtype="object">
+		<sql>
+   			<![CDATA[           	
+            	update b_order set isExamine=?
+            	 where id=?
+   			]]>
+		</sql>
+	</operation>
+</table> 

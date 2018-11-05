@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_draw_account">
+    <column name="validate_money" javatype="com.caozong.util.money.Money" />
+    <!-- ?????????????? -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into c_draw_account
+            (id,cardNo,name,bank,bank_name,account_number,account_name,cert_type,cert_number,mobile,validity,type,status,gmt_create,gmt_operate,remark)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+   
+     <!--??????????????????-->
+    <operation name="selectByCardNo" paramtype="primitive" multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select *
+                from c_draw_account where cardNo=? and type=?
+   			]]>
+   		</sql>
+     </operation>
+	 <operation name="countByCardNo" paramtype="primitive">
+			<sql>
+				<![CDATA[
+                select count(id)
+                from c_draw_account where cardNo=? and type=?
+   			]]>
+			</sql>
+     </operation>
+	
+	 <!--???????????????-->
+    <operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select *
+                from c_draw_account where id=?
+   			]]>
+   		</sql>
+     </operation>
+	
+	<!--???????-->
+     <operation name="update" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                update c_draw_account set bank=?,bank_name=?,account_number=?,account_name=?,status=?,cert_type=?,
+				   cert_number=?,mobile=?,validity=?,type=?,gmt_operate=?,name=?,remark=?
+	        	where id = ?	
+   			]]>
+   		</sql>
+     </operation>
+	
+    <operation name="deleteByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from c_draw_account where id=?
+   			]]>
+   		</sql>
+	</operation> 
+</table>

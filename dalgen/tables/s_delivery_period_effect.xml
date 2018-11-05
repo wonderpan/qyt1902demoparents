@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_delivery_period_effect">
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_delivery_period_effect(id,cardNo,deliver_effect,from_week,to_week,from_time,to_time,is_valid)
+            values (?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select * from s_delivery_period_effect where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByCardNo"  multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from s_delivery_period_effect where cardNo=? 
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectCountByCardNo" >
+   		<sql>
+   			<![CDATA[
+                select count(id) from s_delivery_period_effect where cardNo=? 
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="updateValidById">
+   		<sql>
+   			<![CDATA[
+                update s_delivery_period_effect set is_valid=? where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="deleteById">
+   		<sql>
+   			<![CDATA[
+                delete s_delivery_period_effect where id=?
+   			]]>
+   		</sql>
+	</operation>
+
+</table>

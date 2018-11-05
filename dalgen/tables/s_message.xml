@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_message">	
+	
+    <!-- ??????? -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_message
+            (id,type,title,content,status,sender,bound,gmt_create,gmt_availability,operator,gmt_operate)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+    <!--???????????????-->
+    <operation name="selectByAll" paramtype="primitive" multiplicity="many"  paging="true">
+		<extraparams>
+			<param name="bound" javatype="java.lang.String"/>
+			<param name="theme" javatype="java.lang.String"/>
+			<param name="startDate" javatype="java.lang.String"/>
+			<param name="endDate" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id,type,title,content,status,sender,bound,gmt_create,gmt_availability,operator,gmt_operate
+                from s_message  where bound=bound order by gmt_create desc
+   			]]>
+   		</sql>
+		<sqlmap>
+			<![CDATA[
+			    ${cdata-start}
+				 select id,type,title,content,status,sender,bound,gmt_create,gmt_availability,operator,gmt_operate
+                from s_message 
+				${cdata-end}
+				 <dynamic prepend="where">
+				    <isNotEmpty property="bound" prepend="and"> bound = #bound# </isNotEmpty>
+				    <isNotEmpty property="theme" prepend="and"> title = #theme# </isNotEmpty>
+					<isNotEmpty property="startDate" prepend="and"> gmt_create >= #startDate# </isNotEmpty>
+					<isNotEmpty property="endDate" prepend="and"> gmt_create &lt;= #endDate# </isNotEmpty>
+				</dynamic>
+				order by gmt_create desc
+			]]> 
+		</sqlmap>
+     </operation>
+     
+     <!--???????ID?????????-->
+    <operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+               select id,type,title,content,status,sender,bound,gmt_create,gmt_availability,operator,gmt_operate
+                from s_message where id=?
+   			]]>
+   		</sql>
+     </operation>
+	
+     <!--???????-->
+     <operation name="updateMessage" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                update s_message set type=?,title=?,content=?,status=?,gmt_availability=?,operator=?,gmt_operate=?
+	        	where id= ?	
+   			]]>
+   		</sql>
+     </operation>
+	
+     <!--???????????id-->
+     <operation name="deleteByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from s_message where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	
+	 <operation name="selectLeterList" paramtype="primitive"  multiplicity="many">
+		 <sql>
+      <![CDATA[
+               select id,type,title,content,status,sender,bound,gmt_create,gmt_availability,operator,gmt_operate
+                from s_message where bound=?
+   			]]>
+			 </sql>
+    </operation>
+</table>

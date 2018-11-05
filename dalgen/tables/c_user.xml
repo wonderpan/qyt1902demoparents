@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_user">
+	
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into c_user
+            (id,member_id,login_id,password,type,enabled)
+            values
+             (?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectByloginID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from c_user where login_id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByloginIdForUpdate" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from c_user where login_id=? for update
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByMember" paramtype="primitive" multiplicity="many" paging="true">
+	    <extraparams>
+			<param name="memberId" javatype="java.lang.Long"/>
+			<param name="type" javatype="java.lang.String"/>
+			<param name="loginId" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from c_user where member_id='memberId'
+   			]]>
+   		</sql>
+		<sqlmap> <![CDATA[
+		    ${cdata-start}
+				select * from c_user where member_id=#memberId#
+			${cdata-end}
+		     <dynamic>				 
+				   <isNotEmpty property="type" prepend="and"> type = #type# </isNotEmpty>
+		           <isNotEmpty property="loginId" prepend="and"> login_id like '%$loginId$%' </isNotEmpty>				
+			 </dynamic>		
+			]]> </sqlmap>
+	</operation>
+	
+	<operation name="deleteByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from c_user where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="deleteByMemberID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from c_user where member_id=?
+   			]]>
+   		</sql>
+	</operation> 
+
+   <operation name="updateUserPassByLoginId" paramtype="object">
+ 		<sql>
+ 			<![CDATA[
+              update c_user  set  password=? where login_id= ?	
+ 			]]>
+ 		</sql>
+   </operation>
+   
+   <operation name="updateUserMainPassByMemberId" paramtype="primitive">
+ 		<sql>
+ 			<![CDATA[
+              update c_user  set  password=? where member_id= ?	and type !='SU' and member_id > 0
+ 			]]>
+ 		</sql>
+   </operation>
+   <operation name="updateById" paramtype="object">
+			<sql>
+				<![CDATA[
+              update c_user  set password=?,member_id=?,login_id=?,type=?,enabled=? where id= ?	
+ 			]]>
+			</sql>
+   </operation>
+   
+   <operation name="updateLoginId" paramtype="object">
+ 		<sql>
+ 			<![CDATA[
+              update c_user  set login_id=? where id= ?	
+ 			]]>
+ 		</sql>
+   </operation>
+   
+   <operation name="resetPwd" paramtype="object">
+ 		<sql>
+ 			<![CDATA[
+              update c_user  set password=? where member_id= ?	
+ 			]]>
+ 		</sql>
+   </operation>
+     
+</table>

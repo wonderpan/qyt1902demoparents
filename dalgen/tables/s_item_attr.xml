@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item_attr">
+	
+    <!---->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+				
+				INSERT INTO s_item_attr (id, type_id,  name) VALUES (?, ?, ?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<!---->
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_attr where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByName">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_attr where name=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByTypeId" multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_attr 
+                where   type_id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByLikeName" multiplicity="many">
+		<extraparams>
+			<param name="name" javatype="java.lang.String"/>
+			<param name="size" javatype="int"/>
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+                select * from s_item_attr 
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+                select * from s_item_attr 
+                where   name like '%$name$%' limit 0,#size#
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	<!---->
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_item_attr set name=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+		<operation name="deleteByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   delete from s_item_attr where  id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+</table>

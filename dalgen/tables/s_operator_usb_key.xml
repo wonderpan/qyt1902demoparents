@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_operator_usb_key">
+
+    <!-- 创建加密狗账号 -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_operator_usb_key
+            (id,usb_id,sha1,key_3des)
+            values
+             (?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+    
+    <!-- 查询加密狗账号 -->
+    <operation name="selectByUsbKey" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                 select id,usb_id,sha1,key_3des from s_operator_usb_key where usb_id=?
+   			]]>
+   		</sql>
+    </operation>
+     <!-- 查询加密狗 -->
+    <operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                 select id,usb_id,sha1,key_3des from s_operator_usb_key where id=?
+   			]]>
+   		</sql>
+    </operation> 
+    <!-- 删除加密狗账号 -->
+	<operation name="deleteById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from s_operator_usb_key where id=?
+   			]]>
+   		</sql>
+	</operation> 
+</table>

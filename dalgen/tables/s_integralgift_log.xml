@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table sqlname="s_integralgift_log">
+
+	<operation name="selectIntegralgiftLogList" paramtype="primitive" multiplicity="many">
+    	<sql>
+            <![CDATA[
+            	select * from s_integralgift_log
+             ]]>
+        </sql>
+	</operation>
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO s_integralgift_log (ID,s_integralGift_id,gysid,c_member_id,s_area_id,giftOrderNo,linkName,linkMobile,linkAddress,address,createTime,integral)
+			VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+</table>

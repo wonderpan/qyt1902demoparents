@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_position">
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_position
+            (id,title,code,sort,item_img_width,item_img_height,gmt_create)
+            values(?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	<operation name="selectByCode" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from s_position where code=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByCodeForUpdate" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from s_position where code=? for update
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="deleteByCode" >
+   		<sql>
+   			<![CDATA[
+                   delete from s_position where code=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateByCode" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_position set title=?,sort=?,item_img_width=?,item_img_height=?,gmt_update=?,gmt_publish=?
+				   where code=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<operation name="selectListByParam" multiplicity="many" paging="true">
+		<extraparams>
+			<param name="title" javatype="java.lang.String"/>
+			<param name="code" javatype="java.lang.String"/>
+			<param name="gtmCreateBegin" javatype="java.lang.String"/>
+			<param name="gtmCreateEnd" javatype="java.lang.String"/>
+			<param name="gmtUpdateStart" javatype="java.lang.String"/>
+			<param name="gmtUpdateEnd" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_position where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from s_position
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="title"  prepend="and">
+					    title like '%$title$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="code"  prepend="and">
+					    code = #code#
+				    </isNotEmpty>
+				     <isNotEmpty property="gtmCreateBegin" prepend="and"> 
+				  	  date_format(gmt_create,'%Y-%m-%d')  >= #gtmCreateBegin# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gtmCreateEnd" prepend="and"> 
+				    	#gtmCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtUpdateStart" prepend="and"> 
+				  	  date_format(gmt_update,'%Y-%m-%d')  >= #gmtUpdateStart# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtUpdateEnd" prepend="and"> 
+				    	#gmtUpdateEnd# >= date_format(gmt_update,'%Y-%m-%d') 
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation> 
+	<operation name="selectAll" multiplicity="many">
+	    <sql>
+   			<![CDATA[
+                select * from s_position
+   			]]>
+		</sql>
+	</operation>
+</table>

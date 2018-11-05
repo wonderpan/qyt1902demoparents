@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="b_rece_address">
+    <operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO b_rece_address (id, cardNo, name, area_code, area_name, addres, tel, mobile, postalcode, id_card, is_def)
+			VALUES
+				(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from b_rece_address where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from b_rece_address where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByCardNOF" multiplicity="many" paging="true">
+		<sql>
+   			<![CDATA[
+                select * from b_rece_address where cardNo=? order by is_def desc
+   			]]>
+		</sql>
+	</operation>
+	<operation name="updateAddressById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                update b_rece_address set name=?, area_code=?, area_name=?, addres=?, tel=?, mobile=?, postalcode=?, 
+                id_card=?, is_def=?
+                where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateDefForCardNoAndIsdef"  multiplicity="many">
+	     <extraparams>
+			<param name="isDef" javatype="java.lang.String"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                update b_rece_address set is_def=''
+                where cardNo is null
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                update b_rece_address set is_def= #isDef#
+                where cardNo = #cardNo# and is_def = 'T'
+                ${cdata-end}
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateDefForId" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                update b_rece_address set is_def=?
+                where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from b_rece_address where id=?
+   			]]>
+   		</sql>
+	</operation> 
+</table>

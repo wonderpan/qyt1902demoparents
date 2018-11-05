@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table sqlname="s_integralgift">
+
+<operation name="selectIntegralgiftList" paramtype="primitive" multiplicity="many">
+    <sql>
+            <![CDATA[
+            	select * from s_integralgift
+             ]]>
+        </sql>
+</operation>
+	<operation name="addIntegralgift" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO s_integralgift (ID,sItemId,gysid,giftType,giftAmount,giftIntegra,giftCount,surplusCount,createTime,s_admin_id)
+			VALUES (?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectIntegralgiftByIntegralgift" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	select * from s_integralgift where sItemId=? and gysid=? and giftType=? and giftAmount=? and giftIntegra=? and giftCount=? and surplusCount=? and createTime=? and s_admin_id=? 
+             ]]>
+        </sql>
+	</operation>
+	<operation name="selectIntegralgiftByID" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	select * from s_integralgift where ID=?
+             ]]>
+        </sql>
+	</operation>
+	<operation name="updateIntegralgift" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update s_integralgift set giftType=?,giftAmount=?,giftIntegra=?,giftCount=?,surplusCount=?,createTime=?,s_admin_id=?
+            	where ID=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteIntegralgiftByID" paramtype="primitive">
+    	<sql>
+            <![CDATA[
+            	delete from s_integralgift where ID=? 
+             ]]>
+        </sql>
+    </operation>
+    <operation name="updateGiftCountByID" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update s_integralgift set giftCount= ? 
+            	where ID= ?
+   			]]>
+		</sql>
+	</operation>
+</table>

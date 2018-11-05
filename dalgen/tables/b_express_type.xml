@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="b_express_type">
+	<column name="expressPrice" javatype="com.caozong.util.money.Money" />
+    <!---->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+				INSERT INTO b_express_type 
+				(id, expressName, expressPrice, createTime, updateTime)
+				VALUES (?, ?, ?, ?, ?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<!---->
+	<operation name="select">
+   		<sql>
+   			<![CDATA[
+                select * from b_express_type where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectAll"  multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from b_express_type
+   			]]>
+   		</sql>
+	</operation>
+		<!---->
+	<!---->
+	<operation name="update" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update b_express_type set expressName=?,expressPrice=?,createTime=?,updateTime=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="delete" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   delete from b_express_type where  id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<operation name="selectByKeyword"  multiplicity="many"  paging="true">
+		 <extraparams>
+			 <param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+				  
+				select * from b_express_type
+                where 1=1
+				  
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+			       ${cdata-start}
+				select * from b_express_type
+                where 1=1
+				   ${cdata-end}
+				   <dynamic>
+				      <isNotEmpty property="name" prepend="and"> expressName like '%$name$%' </isNotEmpty>
+				  </dynamic>
+				    order by createTime desc	
+				   ]]>
+   		</sqlmap>
+	</operation>
+</table>

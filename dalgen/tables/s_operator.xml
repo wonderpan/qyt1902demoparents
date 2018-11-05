@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_operator">
+	
+	
+    <!-- ????????? -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_operator
+            (id,login_id,name,password,enabled,creator,gmt_create,gmt_modify,gysid,sort)
+            values
+             (?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<!--???????????????-->
+	<operation name="selectByloginID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select id,login_id,name,password,enabled,creator,gmt_create,gmt_modify,gysid,sort from s_operator where login_id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByName" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select id,login_id,name,password,enabled,creator,gmt_create,gmt_modify,gysid,sort from s_operator where name=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<!--??????????????-->
+	<operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select id,login_id,name,password,enabled,creator,gmt_create,gmt_modify,gysid,sort from s_operator where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<!--??????????????id-->
+	<operation name="deleteByID" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete from s_operator where id=?
+   			]]>
+   		</sql>
+	</operation> 
+
+   <!--????????-->
+   <operation name="updateUserPassByLoginId" paramtype="object">
+ 		<sql>
+ 			<![CDATA[
+              update s_operator set password=? where login_id= ?
+ 			]]>
+ 		</sql>
+   </operation>
+    <!--???????????-->
+   <operation name="updateById" paramtype="object">
+ 		<sql>
+ 			<![CDATA[
+              update s_operator set name=?,password=?,enabled=?,gmt_modify=?,sort=? where id= ?
+ 			]]>
+ 		</sql>
+   </operation>  
+   <!--???????????-->
+	<operation name="selectOperatorPaging" paramtype="primitive" multiplicity="many"  paging="true">
+   		<sql>
+   			<![CDATA[
+              select id,login_id,name,password,enabled,creator,gmt_create,gmt_modify,gysid,sort from s_operator where login_id=? and name=?
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       select id,login_id,name,password,enabled,creator,gmt_create,gmt_modify,gysid,sort from s_operator
+		       where 1=1
+		       <dynamic>
+				<isNotEmpty property="loginId" prepend="and">
+   			         login_id=#loginId#
+				</isNotEmpty> 
+				<isNotEmpty property="name" prepend="and">
+   			         name=#name#
+				</isNotEmpty>
+  			   </dynamic>
+				order by sort
+			]]> 
+		</sqlmap>
+	</operation>
+</table>

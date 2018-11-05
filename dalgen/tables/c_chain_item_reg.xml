@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_chain_item_reg">
+	<column name="bail" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_chain_item_reg (id,order_id,member_id,nick_name,item_name,item_code,img_item,item_brand,reg_type,reg_area,reg_area_name,street,bail,gmt_create,gmt_end,bail_status,status,operation_log)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="updateItemReg" paramtype="object">
+        <sql>
+            <![CDATA[
+           	update c_chain_item_reg set 
+			order_id=?,member_id=?,nick_name=?,item_name=?,item_code=?,item_brand=?,
+			img_item=?,reg_type=?,reg_area=?,reg_area_name=?,street=?,bail=?,
+			gmt_create=?,gmt_end=?,bail_status=?,status=?,operation_log=?
+           	where id=?
+             ]]>
+        </sql>
+    </operation>
+    <operation name="delete" paramtype="primitive">
+    	<sql>
+            <![CDATA[
+            	delete from c_chain_item_reg where id=? 
+             ]]>
+        </sql>
+    </operation>
+    <operation name="deleteByOrderId" paramtype="primitive">
+    	<sql>
+            <![CDATA[
+            	delete from c_chain_item_reg where order_id=? 
+             ]]>
+        </sql>
+    </operation>
+    <operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg where id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByOrderId" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg where order_id=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByOrderIdForUpdate" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg where order_id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByMemberIdItemCodeStatus" paramtype="primitive">
+		<extraparams>
+			<param name="itemCode" javatype="java.lang.String" />
+			<param name="memberId" javatype="java.lang.Long" />
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select count(member_id) from c_chain_item_reg
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    select count(member_id) from c_chain_item_reg where 1=1
+                <dynamic>
+					<isNotEmpty property="memberId" prepend=" and"> 
+					    member_id = #memberId#
+					</isNotEmpty>
+				    <isNotEmpty property="itemCode" prepend=" and"> 
+					    item_code = #itemCode#
+					</isNotEmpty>
+					<isNotEmpty property="status" prepend=" and"> 
+					    status = #status#
+					</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectByOrderIdAndStatus" paramtype="primitive" multiplicity="many">
+		<extraparams>
+			<param name="orderId" javatype="java.lang.String" />
+			<param name="statusList" javatype="java.util.List"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    select * from c_chain_item_reg where 1=1
+                <dynamic>
+					<isNotEmpty property="orderId" prepend=" and"> 
+					    order_id = #orderId#
+					</isNotEmpty>
+					<isNotEmpty property="statusList" prepend=" and"> 
+					    <iterate property="statusList" open="(" close=")" conjunction="or">
+					   	 	status = #statusList[]#
+					    </iterate>
+					</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="countArea" paramtype="primitive">
+		<extraparams>
+			<param name="itemCode" javatype="java.lang.String" />
+			<param name="memberId" javatype="java.lang.String" />
+			<param name="statusList" javatype="java.util.List"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select count(member_id) from c_chain_item_reg
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    select count(member_id) from c_chain_item_reg where 1=1
+                <dynamic>
+				    <isNotEmpty property="itemCode" prepend=" and"> 
+					    item_code = #itemCode#
+					</isNotEmpty>
+					<isNotEmpty property="memberId" prepend=" and"> 
+					    member_id = #memberId#
+					</isNotEmpty>
+					<isNotEmpty property="statusList" prepend=" and"> 
+					    <iterate property="statusList" open="(" close=")" conjunction="or">
+					   	 	status = #statusList[]#
+					    </iterate>
+					</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectPageListByInput" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="status" javatype="java.lang.String" />
+			<param name="memberId" javatype="java.lang.Long" />
+			<param name="searchKeywords" javatype="java.lang.String" />
+			<param name="regAreaCode" javatype="java.lang.String" />
+			<param name="street" javatype="java.lang.String" />
+			<param name="gmtCreate" javatype="java.lang.String" />
+			<param name="gmtEnd" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from c_chain_item_reg where 1=1
+                ${cdata-end} 
+                <dynamic>
+				    <isNotEmpty property="memberId"  prepend="and">
+					    member_id = #memberId#
+				    </isNotEmpty>
+				    <isNotEmpty property="status"  prepend="and">
+					    status = #status#
+				    </isNotEmpty>
+				    <isNotEmpty property="regAreaCode"  prepend="and">
+					    reg_area = #regAreaCode#
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtCreate" prepend="and"> 
+				  	  date_format(gmt_create,'%Y-%m-%d')  >= #gmtCreate# 
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtEnd" prepend="and"> 
+				    	#gmtEnd# >= date_format(gmt_end,'%Y-%m-%d') 
+				    </isNotEmpty>
+				    <isNotEmpty property="street"  prepend="and">
+					    street like '%$street$%'
+				    </isNotEmpty>
+                	<isNotEmpty property="searchKeywords"  prepend="and">
+					    (reg_area_name like '%$searchKeywords$%' or street like '%$searchKeywords$%')
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectAlreadyRegByArea" multiplicity="many">
+		<extraparams>
+			<param name="itemCode" javatype="java.lang.String"/>
+			<param name="areaList" javatype="java.util.List"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from c_chain_item_reg where item_code=#itemCode# and (status = "01" or status = "02" or status = "03")
+                ${cdata-end} 
+                <dynamic>
+				    <isNotEmpty property="areaList" prepend=" and"> 
+					    <iterate property="areaList" open="(" close=")" conjunction="or">
+					   	 	reg_area = #areaList[]#
+					    </iterate>
+					</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+
+	<operation name="selectAlreadyRegByStreet" paramtype="primitive" multiplicity="many">
+		<extraparams>
+			<param name="itemCode" javatype="java.lang.String"/>
+			<param name="streetList" javatype="java.util.List"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from c_chain_item_reg 
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from c_chain_item_reg where item_code=#itemCode# and (status = "01" or status = "02" or status = "03")
+                ${cdata-end} 
+                <dynamic>
+				    <isNotEmpty property="streetList" prepend="and"> 
+                        <iterate property="streetList" open="(" close=")" conjunction="or">
+					   	 	concat(reg_area,street)=#streetList[]#
+					    </iterate>
+					</isNotEmpty>
+					
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	<operation name="selectCountRegByMemberId" paramtype="primitive" resultClass="int">
+		<extraparams>
+			<param name="memberId" javatype="java.lang.long"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select count(id) from c_chain_item_reg 
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select count(id) from c_chain_item_reg where member_id=#"memberId"# and (status = "02" or status = "03")
+                ${cdata-end}
+   			]]>
+		</sqlmap>
+	</operation>
+</table>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_fund_draw">
+    <column name="money" javatype="com.caozong.util.money.Money" />
+	
+    <!-- ??????????????? -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into c_fund_draw
+            (id,order_no,cardNo,money,gmt_create,status,bank,bank_name,account_number,account_name,remark,gysId,gmt_operator,operator)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	  <!--???ID??????????????  -->
+	<operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select *
+                from c_fund_draw where id=? FOR UPDATE
+   			]]>
+   		</sql>
+     </operation>
+     
+     <operation name="selectByIdForUpdate" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select *
+                from c_fund_draw where id=?
+   			]]>
+   		</sql>
+     </operation>
+     
+    <!--?????????????????????  -->
+	<operation name="selectByOrderNo" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select *
+                from c_fund_draw where order_no=?
+   			]]>
+   		</sql>
+     </operation>
+	<!-- ??????-->
+
+    <operation name="update" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                update c_fund_draw set money=?,status=?,remark=?,gmt_operator=?,operator=?
+	        	where id = ?	
+   			]]>
+   		</sql>
+     </operation>
+
+	
+    <operation name="selectByDate" paramtype="primitive"  multiplicity="many"  paging="true">
+    	<extraparams>
+    	    <param name="status" javatype="java.util.List"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+		    <param name="startDate" javatype="java.lang.String"/>
+			<param name="endDate" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select *
+                from c_fund_draw where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select *
+                from c_fund_draw where 1=1
+                ${cdata-end}
+                <dynamic>
+				   <isNotEmpty property="cardNo" prepend="and"> cardNo=#cardNo# </isNotEmpty>
+					<isNotEmpty property="startDate" prepend="and"> date_format(gmt_create,'%Y-%m-%d') >= #startDate# </isNotEmpty>
+					<isNotEmpty property="endDate" prepend="and"> #endDate# >=date_format(gmt_create,'%Y-%m-%d') </isNotEmpty>
+					<isNotEmpty property="status"> 
+						<iterate property="status" prepend=" and " open=" status in (" close=")" conjunction=",">
+								   #status[]#
+						</iterate>
+					</isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+     </operation>
+     
+</table>

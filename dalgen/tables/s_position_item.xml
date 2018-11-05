@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_position_item">
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_position_item
+            (id,position_code,title,item_no,item_url,img_url,status,sort,detail)
+            values(?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	<operation name="selectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from s_position_item where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from s_position_item where id=? for update
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_position_item set title=?,item_no=?,item_url=?,img_url=?,status=?,sort=?,detail=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	<operation name="delectById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                   delete s_position_item where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<operation name="selectListByParam" multiplicity="many" paging="true">
+		<extraparams>
+			<param name="positionCode" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+			<param name="title" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_position_item where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from s_position_item
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+				    <isNotEmpty property="positionCode"  prepend="and">
+					    position_code = #positionCode#
+				    </isNotEmpty>
+				    <isNotEmpty property="status"  prepend="and">
+					    status = #status#
+				    </isNotEmpty>
+					<isNotEmpty property="title"  prepend="and">
+					    title like '%$title$%'
+				    </isNotEmpty>
+				</dynamic>
+				<dynamic prepend="order by">
+					sort asc
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation> 
+	<operation name="selectAllByPositionCodeAndStatus" multiplicity="many">
+		<extraparams>
+			<param name="positionCode" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+	    <sql>
+   			<![CDATA[
+                select * from s_position_item where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from s_position_item
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+				    <isNotEmpty property="positionCode"  prepend="and">
+					    position_code = #positionCode#
+				    </isNotEmpty>
+				    <isNotEmpty property="status"  prepend="and">
+					    status = #status#
+				    </isNotEmpty>
+				</dynamic>
+				<dynamic prepend="order by">
+					sort desc
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+</table>

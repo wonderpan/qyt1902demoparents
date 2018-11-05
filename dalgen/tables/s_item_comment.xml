@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item_comment">
+	
+    <!---->
+    <operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+         INSERT INTO s_item_comment (id, product_sort, website_sort, logistics_sort, orderNo,
+				item_id,img_item,item_code,item_name, cardNo,nick_name, item_comment, title,item_addComment, gmt_create, state, 
+				manager, gmt_operate,is_top, level)
+				 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+             ]]>
+		</sql>
+    </operation>
+	
+	<!---->
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select id, product_sort, website_sort, logistics_sort, orderNo,
+				item_id,img_item,item_code,item_name, cardNo,nick_name, item_comment,item_addComment, title,gmt_create, state, 
+				manager, gmt_operate,is_top,level from s_item_comment where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByIdForUpdate">
+   		<sql>
+   			<![CDATA[
+                select * from s_item_comment where id=? for UPDATE
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByOrder">
+   		<sql>
+   			<![CDATA[
+                select id, product_sort, website_sort, logistics_sort, orderNo,
+				item_id,img_item,item_code,item_name, cardNo,nick_name, item_comment,item_addComment, title,gmt_create, state, 
+				manager, gmt_operate,is_top,level from s_item_comment where orderNo=?
+   			]]>
+   		</sql>
+	</operation>
+
+	<operation name="queryCommentList"  multiplicity="many"  paging="true">
+		 <extraparams>
+			 <param name="cardNo" javatype="java.lang.String"/>
+			 <param name="orderNo" javatype="java.lang.String"/>
+			 <param name="state" javatype="java.lang.String"/>
+			 <param name="itemCode" javatype="java.lang.String"/>
+			 <param name="itemName" javatype="java.lang.String"/>
+			 <param name="nickName" javatype="java.lang.String"/>
+			 <param name="gmtStart" javatype="java.lang.String"/>
+			 <param name="gmtEnd" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+				  
+				select id, product_sort, website_sort, logistics_sort, orderNo,
+				item_id,img_item,item_code,item_name, cardNo, title,nick_name, item_comment,item_addComment,gmt_create, state, 
+				manager, gmt_operate,is_top,level from s_item_comment
+				  
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+			       ${cdata-start}
+			    select id, product_sort, website_sort, logistics_sort, orderNo,
+				item_id,img_item,item_code,item_name, cardNo, title,nick_name, item_comment,item_addComment,gmt_create, state, 
+				manager, gmt_operate,is_top,level from s_item_comment
+                where 1=1
+				   ${cdata-end}
+			  <dynamic>
+				   <isNotEmpty property="cardNo" prepend="and"> cardNo =#cardNo# </isNotEmpty>
+				   <isNotEmpty property="orderNo" prepend="and"> orderNo =#orderNo# </isNotEmpty>
+				   <isNotEmpty property="state" prepend="and"> state =#state# </isNotEmpty>
+				   <isNotEmpty property="itemCode" prepend="and"> item_code =#itemCode# </isNotEmpty>
+				   <isNotEmpty property="itemName" prepend="and"> item_name like '%$itemName$%' </isNotEmpty>
+				   <isNotEmpty property="nickName" prepend="and"> nick_name like '%$nickName$%' </isNotEmpty>
+				   <isNotEmpty property="gmtStart" prepend="and">
+				       DATE_FORMAT(gmt_create,'%Y-%m-%d') >= #gmtStart#
+                   </isNotEmpty>
+				   <isNotEmpty property="gmtEnd" prepend="and"> 
+				       #gmtEnd# >= DATE_FORMAT(gmt_create,'%Y-%m-%d')
+                   </isNotEmpty>
+			  </dynamic>
+				    order by gmt_create  desc			
+		     ]]>
+   		</sqlmap>
+	</operation>
+	
+	<!---->
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_item_comment set item_comment=?,state=?,is_top=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="deleteByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   delete from s_item_comment where  id=?
+   			]]>
+   		</sql>
+	</operation> 
+
+    <operation name="updateCommentStatusByParam" paramtype="primitive">
+        <sql>
+            <![CDATA[
+           update s_item_comment set state=?,gmt_operate=?  where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="updateCommentTopByParam" paramtype="primitive">
+        <sql>
+            <![CDATA[
+           update s_item_comment set is_top=?,gmt_operate=?  where id=? 
+             ]]>
+        </sql>
+    </operation>
+    <operation name="updateLevelById" paramtype="primitive">
+        <sql>
+            <![CDATA[
+           update s_item_comment set level=?  where id=? 
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectCommentListByLevel" multiplicity="many"
+		paging="true">
+		<extraparams>
+		    <param name="itemCode" javatype="java.lang.String"/>
+			<param name="level" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_item_comment where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from s_item_comment
+                where 1=1
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="itemCode"  prepend="and">
+					    item_code = #itemCode#
+				    </isNotEmpty>
+				    and state= '02'
+				    <isNotEmpty property="level"  prepend="and">
+					    level = #level#
+				    </isNotEmpty>
+				</dynamic>
+				order by gmt_create desc
+   			]]>
+		</sqlmap>
+	</operation>
+</table>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_advertisement">
+	
+    <!---->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+				INSERT INTO s_advertisement (title, img_url, detail_url, priority, floor, type) 
+				VALUES (?, ?, ?, ?, ?, ?);
+
+             ]]>
+        </sql>
+    </operation>
+	
+	<!---->
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select id,title, img_url, detail_url, priority, floor, type from s_advertisement where id=?
+   			]]>
+   		</sql>
+	</operation>
+
+
+	
+	<!---->
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_advertisement set title=?,img_url=?,detail_url=?,priority=?,floor=?,type=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="deleteByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   delete from s_advertisement where  id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<operation name="selectByParams"  multiplicity="many"  paging="true">
+		 <extraparams>
+			<param name="type" javatype="java.lang.String"/>
+			<param name="floor" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+				select id,title, img_url, detail_url, priority, floor, type from s_advertisement 
+                where 1=1
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+			       ${cdata-start}
+				select id,title, img_url, detail_url, priority, floor, type from s_advertisement 
+                where 1=1
+				   ${cdata-end}
+				   <dynamic>
+				   <isNotEmpty property="type" prepend="and"> type = #type# </isNotEmpty>
+				  </dynamic>
+				    order by priority 			
+				   ]]>
+   		</sqlmap>
+	</operation>
+</table>

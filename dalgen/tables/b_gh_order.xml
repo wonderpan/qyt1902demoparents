@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="b_gh_order">
+	<column name="price"        javatype="com.caozong.util.money.Money" />
+	<column name="carriage_fee"   javatype="com.caozong.util.money.Money" />
+	<column name="service_fee"  javatype="com.caozong.util.money.Money" />
+	<column name="bail_fee" javatype="com.caozong.util.money.Money" />
+	<column name="settle_fee" javatype="com.caozong.util.money.Money" />
+	<column name="has_settle_fee" javatype="com.caozong.util.money.Money" />
+	
+	
+	<operation name="insert" paramtype="object">
+		<sql>
+		<![CDATA[
+			insert into b_gh_order(id,bill_type,gh_order_no,order_no,order_source,ghCardNo,ghName,
+				rece_mode,supply_mode,product_id,product_code,product_name,
+				img_item,json_model,typeId,brandId,brandName,price,carriage_fee,
+				amount,service_fee,bail_fee,settle_fee,has_settle_fee,gmt_bail_unfreeze,
+				gmt_create,gmt_shipments,gmt_timeout,gmt_receipt,gmt_test,gmt_balance,
+				timeout_minute,gmt_update,biz_status,status,status_content,
+				express_no,express_name,qh_name,qh_mobile,qh_region_code,
+				qh_region_name,qh_address,id_number,shop_cardNo,express_code)
+			values
+			 (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectById">
+		<sql>
+		<![CDATA[
+			select * from b_gh_order where id=?
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateByID" paramtype="object">
+		<sql>
+		<![CDATA[
+			  update b_gh_order set
+					bill_type = ?,gh_order_no = ?,order_no = ?,order_source = ?,ghCardNo = ?,ghName = ?,
+				rece_mode = ?,supply_mode = ?,product_id = ?,product_code = ?,product_name = ?,
+				img_item = ?,json_model = ?,typeId = ?,brandId = ?,brandName = ?,price = ?,carriage_fee = ?,
+				amount = ?,service_fee = ?,bail_fee = ?,settle_fee = ?,has_settle_fee = ?,gmt_bail_unfreeze = ?,
+				gmt_create = ?,gmt_shipments = ?,gmt_timeout = ?,gmt_receipt = ?,gmt_test = ?,gmt_balance = ?,
+				timeout_minute = ?,gmt_update = ?,biz_status = ?,status = ?,status_content = ?,
+				express_no = ?,express_name = ?,qh_name = ?,qh_mobile = ?,qh_region_code = ?,
+				qh_region_name = ?,qh_address = ?,id_number = ?,shop_cardNo = ?,express_code = ?
+
+			  where id =?
+		]]>
+		</sql>
+	</operation>
+	<operation name="updateStatusById" paramtype="object">
+		<sql>
+		<![CDATA[
+			   update b_gh_order set status=?,status_content=?,gmt_update=? where id=?
+		]]>
+		</sql>
+	</operation> 
+	<operation name="updateGmtReceiptOrderNo" paramtype="object">
+		<sql>
+		<![CDATA[
+			   update b_gh_order set gmt_receipt=?,status=?,status_content=?,gmt_update=? where gh_order_no=?
+		]]>
+		</sql>
+	</operation>
+	 
+	<operation name="updateGmtTestOrderNo" paramtype="object">
+		<sql>
+		<![CDATA[
+			   update b_gh_order set gmt_test=?,status=?,status_content=?,gmt_update=? where gh_order_no=?
+		]]>
+		</sql>
+	</operation> 
+ 
+	<operation name="deleteById" >
+		<sql>
+		<![CDATA[
+			   delete from b_gh_order where id=?
+		]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectPageListByInput" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="billTypeList" javatype="java.util.List"/>
+			<param name="ghOrderNo" javatype="java.lang.String"/>
+			<param name="orderNo" javatype="java.lang.String"/>
+			<param name="orderSourceList" javatype="java.util.List"/>
+			<param name="cardId"    javatype="java.lang.String"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="nickName" javatype="java.lang.String"/>
+			<param name="receModeList" javatype="java.util.List"/>		
+			<param name="supplyModeList" javatype="java.util.List"/>			
+			<param name="productId" javatype="java.lang.String"/>
+			<param name="productCode" javatype="java.lang.String"/>
+			<param name="productName" javatype="java.lang.String"/>
+			<param name="typeId" javatype="java.lang.String"/>
+			<param name="brandId" javatype="java.lang.String"/>
+			<param name="brandName" javatype="java.lang.String"/>
+			<param name="gmtCreateBegin" javatype="java.lang.String"/>
+			<param name="gmtCreateEnd" javatype="java.lang.String"/>
+			<param name="gmtShipmentsBegin" javatype="java.lang.String"/>
+			<param name="gmtShipmentsEnd" javatype="java.lang.String"/>
+			<param name="gmtTimeoutBegin" javatype="java.lang.String"/>
+			<param name="gmtTimeoutEnd" javatype="java.lang.String"/>
+			<param name="bizStatusList" javatype="java.util.List"/>
+			<param name="statusList" javatype="java.util.List"/>		
+		</extraparams>
+		<sql>
+		<![CDATA[
+			select * from b_gh_order where 1=1
+		]]>
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			${cdata-start}
+			  select * from b_gh_order
+			  where 1=1
+			${cdata-end} 
+			<dynamic>
+				<isNotEmpty property="billTypeList"  prepend="and">
+					 <iterate property="billTypeList" open="(" close=")" conjunction="or">
+							bill_type=#billTypeList[]#
+					 </iterate>
+				</isNotEmpty>
+				<isNotEmpty property="ghOrderNo"  prepend="and">
+					gh_order_no = #ghOrderNo#
+				</isNotEmpty>
+				<isNotEmpty property="orderNo"  prepend="and">
+					order_no = #orderNo#
+				</isNotEmpty>
+				<isNotEmpty property="orderSourceList"  prepend="and">
+					 <iterate property="orderSourceList" open="(" close=")" conjunction="or">
+							order_source=#orderSourceList[]#
+					 </iterate>
+				</isNotEmpty>	
+				<isNotEmpty property="cardId"  prepend="and">
+					 cardId =#cardId#
+				</isNotEmpty>	
+			   <isNotEmpty property="cardNo"  prepend="and">
+					 cardNo =#cardNo#
+				</isNotEmpty>
+				<isNotEmpty property="nickName"  prepend="and">
+					nickName like '%$nickName$%'
+				</isNotEmpty>
+				<isNotEmpty property="receModeList"  prepend="and">
+					<iterate property="receModeList" open="(" close=")" conjunction="or">
+						rece_mode=#receModeList[]#
+					</iterate>
+				</isNotEmpty>					
+				<isNotEmpty property="supplyModeList"  prepend="and">
+					<iterate property="supplyModeList" open="(" close=")" conjunction="or">
+						supply_mode=#supplyModeList[]#
+					</iterate>
+				</isNotEmpty>				
+				<isNotEmpty property="productId"  prepend="and">
+					product_id =#productId#
+				</isNotEmpty>
+				<isNotEmpty property="productCode"  prepend="and">
+					product_code =#productCode#
+				</isNotEmpty>
+
+				<isNotEmpty property="productName"  prepend="and">
+					product_name like '%$productName$%'
+				</isNotEmpty>	
+				<isNotEmpty property="typeId"  prepend="and">
+					typeId =#typeId#
+				</isNotEmpty>
+				<isNotEmpty property="brandId"  prepend="and">
+					brandId =#brandId#
+				</isNotEmpty>
+				<isNotEmpty property="brandName"  prepend="and">
+					brandName =#brandName#
+				</isNotEmpty>
+
+				<isNotEmpty property="gmtCreateBegin" prepend="and"> 
+					date_format(gmt_create,'%Y-%m-%d')  >= #gmtCreateBegin# 
+				</isNotEmpty>
+				<isNotEmpty property="gmtCreateEnd" prepend="and"> 
+					#gmtCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				</isNotEmpty>				
+				<isNotEmpty property="gmtShipmentsBegin" prepend="and"> 
+					date_format(gmt_shipments,'%Y-%m-%d')  >= #gmtShipmentsBegin# 
+				</isNotEmpty>
+				<isNotEmpty property="gmtShipmentsEnd" prepend="and"> 
+					#gmtShipmentsEnd# >= date_format(gmt_shipments,'%Y-%m-%d') 
+				</isNotEmpty>						
+				<isNotEmpty property="gmtTimeoutBegin" prepend="and"> 
+					date_format(gmt_timeout,'%Y-%m-%d')  >= #gmtTimeoutBegin# 
+				</isNotEmpty>
+				<isNotEmpty property="gmtTimeoutEnd" prepend="and"> 
+					#gmtTimeoutEnd# >= date_format(gmt_timeout,'%Y-%m-%d') 
+				</isNotEmpty>				
+				<isNotEmpty property="bizStatusList"  prepend="and">
+					 <iterate property="bizStatusList" open="(" close=")" conjunction="or">
+							biz_status=#bizStatusList[]#
+					 </iterate>
+				</isNotEmpty>
+				<isNotEmpty property="statusList"  prepend="and">
+					 <iterate property="statusList" open="(" close=")" conjunction="or">
+							status=#statusList[]#
+					 </iterate>
+				</isNotEmpty>			
+			</dynamic>
+		]]>
+		</sqlmap>
+	</operation>	
+	
+	
+	<operation name="selectPageList" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="billType" javatype="java.lang.String"/>
+			<param name="bizStatusList" javatype="java.util.List"/>
+			<param name="ghCardNo" javatype="java.lang.String"/>
+			<param name="ghOrderNo" javatype="java.lang.String"/>
+			<param name="orderNo" javatype="java.lang.String"/>
+			<param name="productName" javatype="java.lang.String"/>
+			<param name="receType" javatype="java.lang.String"/>		
+			<param name="supplyType" javatype="java.lang.String"/>			
+			<param name="gmtCreateBegin" javatype="java.lang.String"/>
+			<param name="gmtCreateEnd" javatype="java.lang.String"/>
+			<param name="status" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+		<![CDATA[
+			select * from b_gh_order
+		]]>
+		</sql>
+		<sqlmap>
+		<![CDATA[
+		    select * from b_gh_order where 1=1
+			<dynamic>
+				<isNotEmpty property="billType"  prepend="and">
+					 bill_type=#billType#
+				</isNotEmpty>
+				<isNotEmpty property="bizStatusList"  prepend="and">
+					 <iterate property="bizStatusList" open="(" close=")" conjunction="or">
+							biz_status=#bizStatusList[]#
+					 </iterate>
+				</isNotEmpty>
+				<isNotEmpty property="ghCardNo"  prepend="and">
+					 ghCardNo = #ghCardNo#
+				</isNotEmpty>
+				<isNotEmpty property="ghOrderNo"  prepend="and">
+					gh_order_no like '%$ghOrderNo$%'
+				</isNotEmpty>
+				<isNotEmpty property="orderNo"  prepend="and">
+					order_no like '%$orderNo$%'
+				</isNotEmpty>
+				<isNotEmpty property="productName"  prepend="and">
+					 product_name like '%$productName$%'
+				</isNotEmpty>
+				<isNotEmpty property="receType"  prepend="and">
+					rece_mode=#receType#
+				</isNotEmpty>					
+				<isNotEmpty property="supplyType"  prepend="and">
+					supply_mode=#supplyType#
+				</isNotEmpty>				
+				<isNotEmpty property="gmtCreateBegin" prepend="and"> 
+					date_format(gmt_create,'%Y-%m-%d')  >= #gmtCreateBegin# 
+				</isNotEmpty>
+				<isNotEmpty property="gmtCreateEnd" prepend="and"> 
+					#gmtCreateEnd# >= date_format(gmt_create,'%Y-%m-%d') 
+				</isNotEmpty>
+				<isNotEmpty property="status"  prepend="and">
+					status=#status#
+				</isNotEmpty>
+			</dynamic>
+		]]>
+		</sqlmap>
+	</operation>	
+</table>

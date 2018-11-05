@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_member_integralstream">
+
+	<operation name="selectIntegralstreamList"  
+		multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_member_integralstream
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectmembersignlog" paramtype="primitive">
+		<extraparams>
+			<param name="CMemberId" javatype="java.lang.String" />
+			<param name="createTime" javatype="java.lang.String" />
+			<param name="integralType" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+   			<![CDATA[
+              select count(*) from c_member_integralstream  where  1=1
+   			]]>
+		</sql>
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+              select count(*) from c_member_integralstream  where  1=1 
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="cmemberId" prepend="and"> c_member_id=#cmemberId#</isNotEmpty>
+					<isNotEmpty property="createTime" prepend="and"> DATE(createTime) = #createTime# </isNotEmpty>
+					<isNotEmpty property="integralType" prepend="and"> integralType=#integralType#</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+
+	</operation>
+
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+            insert into c_member_integralstream
+            (c_member_id,integralType,integralValue,oldIntegral,newIntegral,createTime,orderNo)
+            values
+             (?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+
+</table> 

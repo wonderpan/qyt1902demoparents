@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_points">
+	<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+            insert into c_points
+            (id,cardNo,type,points,sumPoints,gmt_create,remark)
+            values
+             (?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+</table>

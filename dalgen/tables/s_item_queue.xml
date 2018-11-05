@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_item_queue">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into s_item_queue (productNo)
+            values(?)
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item_queue where productNo=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_item_queue where productNo=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+
+
+	<operation name="deleteById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                delete from s_item_queue where productNo=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="select"  paramtype="primitive"   multiplicity="many">		
+		<extraparams>
+			<param name="items" javatype="java.util.List"/>
+			<param name="fetchNum" javatype="java.lang.Integer"/>
+		</extraparams>	
+   		<sql>
+   			<![CDATA[
+                select productNo from s_item_queue 
+   			]]>
+   		</sql>
+   		<sqlmap> 
+   		     <![CDATA[
+		       select productNo from s_item_queue  where 1=1
+		       <dynamic>
+				    <isNotEmpty property="items"> 
+					    <iterate property="items" prepend="and " open="RIGHT(productNo,1) in (" close=")" conjunction=",">
+						    #items[]#
+						</iterate>
+					</isNotEmpty>			  
+  			   </dynamic> 			 
+  			   limit 0 , #fetchNum# 
+			]]> 
+   		</sqlmap>
+	</operation>
+		
+</table>

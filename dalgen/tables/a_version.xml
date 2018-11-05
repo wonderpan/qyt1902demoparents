@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="a_version">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO a_version (id, title, content,typeid,createUser,createTime)
+			VALUES
+                (?,?,?,?,?,?)
+
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectByID" paramtype="object">
+		<sql>
+            <![CDATA[
+           	select * from a_version where id=?
+
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectVersionById" paramtype="primitive">
+		<sql>
+            <![CDATA[
+           	select * from a_version where id=?
+
+             ]]>
+		</sql>
+	</operation>
+	<operation name="delete" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from a_version where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="upAversion" paramtype="primitive" >
+    <sql>
+            <![CDATA[
+            	update  a_version set title=? ,content=? , typeid=?  where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="selectByTypeid" multiplicity="many" >
+		<sql>
+            <![CDATA[
+           	select * from a_version where typeid=?
+             ]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectTOP1"  multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from a_version 
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    select * from a_version 
+				   ORDER BY id 
+				   limit 0,1 
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="select"  paramtype="primitive" multiplicity="many" paging="true">
+		<sql>
+   			<![CDATA[
+                select * from a_version where 1=1
+   			]]>
+		</sql>
+	</operation>
+	<operation name="updateVersion" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update a_version set title=?,content=?,createUser=?,createTime=? where id=?
+   			]]>
+   		</sql>
+	</operation>
+</table> 

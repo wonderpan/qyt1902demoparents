@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_module">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO s_module (id, name, address, parentId, isPrivate)
+			VALUES
+                (?, ?, ?, ?, ?)
+
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_module where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from s_module where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateByTypeId" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update s_module set name=?,address=?,parentId=?,isPrivate=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="delete" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from s_module where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+     <operation name="selectByParentIds" multiplicity="many">
+		<extraparams>
+			<param name="Ids" javatype="java.util.List"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_module where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from s_module
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+				   <isNotEmpty property="ids" prepend="and"> parentId in
+						<iterate property="ids" conjunction="," close=")" open="(" >
+									#ids[]#
+						</iterate>
+					</isNotEmpty>
+			 </dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="selectByParentId" multiplicity="many" paging="true">
+		<extraparams>
+			<param name="parentId" javatype="java.lang.Long"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_module where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+				select * from a_type
+                where 1=1
+				   ${cdata-end}
+   			  <dynamic>
+				   <isNotEmpty property="parentId" prepend="and">
+				   	 parentId=#parentId#
+					</isNotEmpty>
+			 </dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="deleteByParentId" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from s_module where parentId=? 
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectAllModules" multiplicity="many" paging="true">
+		<sql>
+   			<![CDATA[
+                select * from s_module 
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectAll" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from s_module 
+   			]]>
+		</sql>
+	</operation>
+</table> 

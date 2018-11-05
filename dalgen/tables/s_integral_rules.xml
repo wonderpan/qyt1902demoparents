@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table sqlname="s_integral_rules">
+
+<operation name="selectIntegralRulesModelByID" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	select * from s_integral_rules where ID=? 
+             ]]>
+        </sql>
+</operation>
+
+<operation name="selectIntegralRulesModel" paramtype="primitive" multiplicity="many"
+		paging="true">
+		<extraparams>
+			<param name="gysid" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+			<![CDATA[
+                select * from s_integral_rules where 1=1
+   			]]>
+		</sql>
+		
+		<sqlmap>
+			<![CDATA[
+   			    ${cdata-start}
+           select * from s_integral_rules where 1=1
+                ${cdata-end}
+                <dynamic>
+					<isNotEmpty property="gysid" prepend="and"> s_integral_rules.gysid=#gysid#</isNotEmpty>
+				</dynamic>
+   			]]>
+		</sqlmap>
+	</operation>
+
+<operation name="insert" paramtype="object">
+		<sql>
+			<![CDATA[
+           insert into s_integral_rules
+            (id,gysid,reg,sign,orderAmount,orderComment,orderArrived)
+            values
+             (?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+<operation name="changeIntegralRule" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update s_integral_rules set reg=?,sign=?,orderAmount=?,orderComment=?,orderArrived=?
+            	where ID=?
+   			]]>
+		</sql>
+	</operation>
+</table>

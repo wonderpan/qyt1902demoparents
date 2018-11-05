@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_member_complaint">
+	
+	<operation name="selectMemberComplaint"  paramtype="primitive" multiplicity="many" paging="true">
+		<extraparams>
+    	    <param name="state" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from c_member_complaint where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+                select * from c_member_complaint where 1=1
+				    <isNotEmpty property="state" prepend="and"> state=#state# </isNotEmpty>
+				ORDER BY complainTime desc
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	<operation name="selectComplaintById"  paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_member_complaint where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateComplaint" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update c_member_complaint set state=?,dispose=?,disposeMan=?,disposeTime=? where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="insertComplaint" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_member_complaint
+            (id,cardNo,complainTitle,complainContent,complainTime,state,dispose,disposeMan,disposeTime,mobile)
+            values
+             (?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectComplaintByCardNo"  paramtype="primitive"  multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_member_complaint where cardNo=?
+   			]]>
+		</sql>
+	</operation>
+	
+</table>

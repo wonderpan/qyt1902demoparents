@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_area">
+	 <column name="ratio" javatype="float" />
+	
+    <!-- 创建基本代码信息 -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_area(id,code,name,level,parent,ratio,flag,py_name,py_short_name)
+            values
+             (?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<!--获取指定的地区信息-->
+	<operation name="selectByCode">
+   		<sql>
+   			<![CDATA[
+                select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area where code=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<!--获取指定的地区信息-->
+	<operation name="selectByNameLevel">
+   		<sql>
+   			<![CDATA[
+                select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area where name=? and level = ?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<!--获取指定的地区信息-->
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<!--获取指定的地区下级信息-->
+	<operation name="selectByParent"  multiplicity="many">
+		<extraparams>
+			<param name="parent" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area
+   			]]>
+   		</sql>
+   		<sqlmap> 
+   		<![CDATA[
+				select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area where parent=#parent#	
+			]]> 
+		</sqlmap>
+	</operation>
+	
+	<!--根据名称查询-->
+	<operation name="selectLikeName" multiplicity="many">
+	    <extraparams>
+			<param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area
+   			]]>
+   		</sql>
+		<sqlmap> <![CDATA[
+				select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area where name like '%$name$%'	
+			]]> </sqlmap>
+	</operation>
+	
+	<!--根据等级查询-->
+	<operation name="selectByLevel" multiplicity="many">
+		<extraparams>
+			<param name="level" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area
+   			]]>
+   		</sql>
+		<sqlmap> <![CDATA[
+				select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area where level = #level#	
+			]]> </sqlmap>
+	</operation>
+	
+
+	
+	<!--更新信息，根据ID-->
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_area set code=?,name=?,level=?,parent=?,flag=?,py_name=?,py_short_name=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	
+	<!--更新三包费用系数，根据ID-->
+	<operation name="updateRatioByID">
+   		<sql>
+   			<![CDATA[
+                   update s_area set ratio=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<!--更新三包费用系数，根据ID-->
+	<operation name="updateRatioByLikeCode">
+	    <extraparams>
+	        <param name="ratio" javatype="float"/>
+			<param name="code" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                   update s_area set ratio='ratio'
+				   where code like 'code'
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			      ${cdata-start}
+                   update s_area set ratio=#ratio#
+				   where code like '$code$%'
+				   ${cdata-end}
+   			]]>
+   		</sqlmap>
+   		
+	</operation>
+	
+	<!--删除基本代码信息，根据ID-->
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from s_area where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<!--更具code查询所有-->
+	<operation name="selectAreasByCode" multiplicity="many">
+	    <extraparams>
+			<param name="code" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                   select id,code,name,level,parent,ratio,flag,py_name,py_short_name from  s_area where code like '$code$%' order by code
+   			]]>
+   		</sql>
+	</operation>
+	
+	<!--更具code查询所有-->
+	<operation name="selectAreasByCodes" multiplicity="many">
+	 <extraparams>
+			<param name="codes" javatype="java.util.List"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                   select id,code,name,level,parent,ratio,flag,py_name,py_short_name from  s_area
+   			]]>
+   		</sql>
+   		
+   		<sqlmap>
+   			<![CDATA[
+							
+				${cdata-start}
+				 select id,code,name,level,parent,ratio,flag,py_name,py_short_name from  s_area where  1=1
+				${cdata-end}
+				<dynamic>
+				    <isNotEmpty property="codes" prepend="and">
+				         code in 
+						<iterate property="codes" open="(" close=")" conjunction=",">
+								#codes[]#
+							</iterate>
+				    </isNotEmpty>
+				</dynamic>
+							 order by code
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	
+
+	
+		<!--查询所有-->
+	<operation name="selectAll" paramtype="primitive" multiplicity="many" paging="true">
+	 <extraparams>
+			<param name="areaCode" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                   select id,code,name,level,parent,ratio,flag,py_name,py_short_name from  s_area 
+   			]]>
+   		</sql>
+   		
+   		<sqlmap>
+   			<![CDATA[
+							
+				${cdata-start}
+				 select id,code,name,level,parent,ratio,flag,py_name,py_short_name from  s_area where 1=1
+				${cdata-end}
+				<dynamic>
+				    <isNotEmpty property="areaCode" prepend="and"> parent=#areaCode# </isNotEmpty>
+				     <isNotEmpty property="areaCode" prepend="or"> code=#areaCode# </isNotEmpty>
+				</dynamic>
+			 order by code
+   			]]>
+   		</sqlmap>
+	</operation>
+	<!--获取指定的地区下级信息-->
+	<operation name="selectAreaPageListByParent"  multiplicity="many"  paging="true">
+		<extraparams>
+			<param name="parent" javatype="java.lang.String"/>
+			<param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area
+   			]]>
+   		</sql>
+   		
+   		<sqlmap>
+   			<![CDATA[
+				select id,code,name,level,parent,ratio,flag,py_name,py_short_name from s_area where parent=#parent# and flag='01'
+				<dynamic>
+				    <isNotEmpty property="name" prepend="and"> name like '%$name$%' </isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+			<!--查询所有-->
+	<operation name="selectByAreaCode" paramtype="primitive" multiplicity="many" paging="true">
+	 <extraparams>
+			<param name="areaCode" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                   select id,code,name,level,parent,ratio,flag,py_name,py_short_name from  s_area 
+   			]]>
+   		</sql>
+   		
+   		<sqlmap>
+   			<![CDATA[
+							
+				${cdata-start}
+				 select id,code,name,level,parent,ratio,flag,py_name,py_short_name from  s_area where 1=1
+				${cdata-end}
+				<dynamic>
+				    <isNotEmpty property="areaCode" prepend="and"> code=#areaCode# </isNotEmpty>
+				</dynamic>
+			 order by code
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	<!--统计特殊区域的数量-->
+	<operation name="selectTSByParenrCode">
+	    <extraparams>
+	        <param name="ratio" javatype="float"/>
+			<param name="code" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                   select count(id) from s_area
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			      ${cdata-start}
+                  select COUNT(id) from s_area where ratio!=#ratio# and parent LIKE '$code$%'
+				   ${cdata-end}
+   			]]>
+   		</sqlmap>
+   		
+	</operation>
+	
+</table>

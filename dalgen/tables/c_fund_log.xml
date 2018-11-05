@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_fund_log">
+    <column name="change_money" javatype="com.caozong.util.money.Money" />
+	<column name="total_money" javatype="com.caozong.util.money.Money" />
+	<column name="draw_money" javatype="com.caozong.util.money.Money" />
+	<column name="freeze_money" javatype="com.caozong.util.money.Money" />
+	<column name="caution_money" javatype="com.caozong.util.money.Money" />
+    <!-- ??????????? -->
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into c_fund_log
+            (id,cardNo,type,change_money,gmt_operate,total_money,draw_money,freeze_money,caution_money,detail_json,name,source,opeartor)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+   
+    <operation name="selectByDate" paramtype="primitive"  multiplicity="many"  paging="true">
+    	<extraparams>
+    	    <param name="types" javatype="java.util.List"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+			<param name="source" javatype="java.lang.String"/>
+		    <param name="startDate" javatype="java.lang.String"/>
+			<param name="endDate" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from c_fund_log where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from c_fund_log where 1=1
+                ${cdata-end}
+                <dynamic>
+				   <isNotEmpty property="cardNo" prepend="and"> cardNo=#cardNo# </isNotEmpty>
+				   <isNotEmpty property="type" prepend="and"> type=#type# </isNotEmpty>
+				   <isNotEmpty property="startDate" prepend="and"> date_format(gmt_operate,'%Y-%m-%d')  >= #startDate# </isNotEmpty>
+				   <isNotEmpty property="endDate" prepend="and"> #endDate# >= date_format(gmt_operate,'%Y-%m-%d') </isNotEmpty>
+				   <isNotEmpty property="types"> 
+					    <iterate property="types" prepend=" and " open="type in (" close=")" conjunction=",">
+							   #types[]#
+						</iterate>
+					</isNotEmpty>
+				</dynamic>
+				order by id desc
+   			]]>
+   		</sqlmap>
+     </operation>
+     
+      <operation name="selectByInput" paramtype="primitive"  multiplicity="many"  paging="true">
+    	<extraparams>
+			<param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from c_fund_log where name like '%$name$%' 
+   			]]>
+   		</sql>
+     </operation>
+     
+     <operation name="selectByNameAndCardNo" paramtype="primitive"  multiplicity="many"  paging="true">
+    	<extraparams>
+			<param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from c_fund_log where name like '%$name$%' and cardNo=?
+   			]]>
+   		</sql>
+     </operation>
+     
+     <operation name="selectByDates" paramtype="primitive"  multiplicity="many"  paging="true">
+    	<extraparams>
+			<param name="name" javatype="java.lang.String"/>
+			<param name="type" javatype="java.lang.String"/>
+		    <param name="startDate" javatype="java.lang.String"/>
+			<param name="endDate" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from c_fund_log where 1=1
+   			]]>
+   		</sql>
+   		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from c_fund_log where 1=1
+                ${cdata-end}
+                <dynamic>
+				   <isNotEmpty property="name" prepend="and"> name like '%$name$%' </isNotEmpty>
+				   <isNotEmpty property="type" prepend="and"> type=#type# </isNotEmpty>
+				   <isNotEmpty property="startDate" prepend="and"> date_format(gmt_operate,'%Y-%m-%d')  >= #startDate# </isNotEmpty>
+				   <isNotEmpty property="endDate" prepend="and"> #endDate# >= date_format(gmt_operate,'%Y-%m-%d') </isNotEmpty>
+				</dynamic>
+				order by id desc
+   			]]>
+   		</sqlmap>
+     </operation>
+</table>

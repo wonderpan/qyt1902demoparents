@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="a_comment">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO a_comment (id,parentId , cardNo, userName, userIp , context , isLock , createTime , isReply , replyContext , replyTime , articalId)
+			VALUES
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
+
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_comment where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_comment where id=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateById" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update a_comment set parentId=?, cardNo=?, userName=?, userIp=?, context=?, isLock=?, createTime=?, isReply=?, replyContext=?, replyTime=?, articalId=?
+            	where id=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByArticalIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from a_comment where articalId=? for UPDATE
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="updateByArticalId" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update a_comment set cardNo=?, userName=?, userIp=?, context=?, isLock=?, createTime=?, isReply=?, replyContext=?, replyTime=?, articalId=?
+            	where articalId=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteById" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from a_comment where id=? 
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="deleteByArticalId" paramtype="primitive">
+    <sql>
+            <![CDATA[
+            	delete from a_comment where articalId=? 
+             ]]>
+        </sql>
+    </operation>
+    
+    <operation name="selectByArticalId" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from a_comment where articalId=?
+   			]]>
+		</sql>
+	</operation>
+</table> 

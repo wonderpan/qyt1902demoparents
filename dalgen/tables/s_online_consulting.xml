@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_online_consulting">
+
+	<operation name="selectSOnlineConsulting"  paramtype="primitive" multiplicity="many" paging="true">
+		<extraparams>
+    	    <param name="gysId" javatype="java.lang.String"/>
+			<param name="state" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from s_online_consulting where 1=1
+   			]]>
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+   			    ${cdata-start}
+                select * from s_online_consulting where 1=1
+                ${cdata-end}
+                <dynamic>
+				    <isNotEmpty property="gysId" prepend="and"> gysId=#gysId# </isNotEmpty>
+					<isNotEmpty property="state" prepend="and"> state=#state# </isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+
+	<operation name="selectSOnlineConsultingById"  paramtype="primitive">
+	<sql>
+   			<![CDATA[
+                select * from s_online_consulting where id=?
+   			]]>
+		</sql>
+	</operation>
+		<operation name="update" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_online_consulting set consultReply=?,replyTime=?,state=?,userId=? 
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+</table> 

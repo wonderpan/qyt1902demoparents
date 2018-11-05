@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="s_brand_store">
+	
+    <operation name="insert" paramtype="object">
+        <sql>
+            <![CDATA[
+            insert into s_brand_store(id,status,name,logo,detail,owner,pingyin,pingyin_ab,
+            gmt_reg,gmt_modify,login_id)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+        </sql>
+    </operation>
+	
+	<operation name="selectById">
+   		<sql>
+   			<![CDATA[
+                select id,status,name,logo,detail,owner,pingyin,pingyin_ab,gmt_reg,gmt_modify,login_id from s_brand_store where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByBrandName" multiplicity="many">
+	<extraparams>
+			<param name="name" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_brand_store where name like '%$name$%' and status=1
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="selectByIdForUpDate">
+   		<sql>
+   			<![CDATA[
+                select id,status,name,logo,detail,owner,pingyin,pingyin_ab,gmt_reg,gmt_modify,login_id from s_brand_store where id=? for update
+   			]]>
+   		</sql>
+	</operation>
+
+	<operation name="selectByNameWithValid" multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from s_brand_store where name like ? and status = 1
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="selectByPingyin"  multiplicity="many">
+	    <extraparams>
+			<param name="pingyin" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id,status,name,logo,detail,owner,pingyin,pingyin_ab,gmt_reg,gmt_modify,login_id from s_brand_store 
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	${cdata-start}
+                select id,status,name,logo,detail,owner,pingyin,pingyin_ab,gmt_reg,gmt_modify,login_id from s_brand_store
+			where status=1
+		    ${cdata-end} 
+				<dynamic prepend="and">
+					<isNotEmpty property="pingyin">
+				        upper(pingyin) like '$pingyin$%' or upper(pingyin) like '$pingyin$%'
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+	
+	<operation name="selectByFirstPingyinChar"  multiplicity="many">
+	    <extraparams>
+			<param name="key" javatype="java.lang.String"/>
+			<param name="cardNo" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select id,status,name,logo,detail,owner,pingyin,pingyin_ab,gmt_reg,gmt_modify,login_id from s_brand_store 
+                
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	${cdata-start}
+                select id,status,name,logo,detail,owner,pingyin,pingyin_ab,gmt_reg,gmt_modify,login_id from s_brand_store
+                where status=1 and FIND_IN_SET(SUBSTR(pingyin_ab,1,1),#key#) 
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="cardNo"  prepend=" and ">
+				        status not in (select status from b_brand where cardNo=#cardNo# and status is not null)
+				    </isNotEmpty>
+				</dynamic>
+                order by pingyin_ab asc
+			
+   			]]>
+   		</sqlmap>
+	</operation>
+
+	
+	<operation name="updateByID" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_brand_store set status=?,name=?,logo=?,detail=?,pingyin=?,pingyin_ab=?,owner=?,
+                   gmt_reg=?,gmt_modify=?,login_id=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+	<operation name="update" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update s_brand_store set status=?,name=?,logo=?,detail=?,pingyin=?,pingyin_ab=?,owner=?,
+                   gmt_reg=?,gmt_modify=?,login_id=?
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+	
+
+	
+	
+	<operation name="deleteById" >
+   		<sql>
+   			<![CDATA[
+                   delete from s_brand_store where id=?
+   			]]>
+   		</sql>
+	</operation> 
+	
+	<operation name="selectAll"  multiplicity="many" paging="true">
+	    <extraparams>
+			<param name="name" javatype="java.lang.String"/>
+			<param name="gmtRegStart" javatype="java.lang.String"/>
+			<param name="gmtRegEnd" javatype="java.lang.String"/>
+			<param name="gmtModifyStart" javatype="java.lang.String"/>
+			<param name="gmtModifyEnd" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_brand_store 
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	    ${cdata-start}
+                select * from s_brand_store
+                where status = 1
+                ${cdata-end} 
+                <dynamic>
+					<isNotEmpty property="name"  prepend="and">
+					    name like '%$name$%'
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtRegStart"  prepend="and">
+					    date_format(gmt_reg,'%Y-%m-%d') >= #gmtRegStart#
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtRegEnd"  prepend="and">
+					     #gmtRegEnd# >= date_format(gmt_reg,'%Y-%m-%d')
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtModifyStart"  prepend="and">
+					    date_format(gmt_modify,'%Y-%m-%d') >= #gmtModifyStart#
+				    </isNotEmpty>
+				    <isNotEmpty property="gmtModifyEnd"  prepend="and">
+					     #gmtModifyEnd# >= date_format(gmt_modify,'%Y-%m-%d')
+				    </isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+	<operation name="selectByCardNoAndKeyWord"  multiplicity="many" paging="true">
+	    <extraparams>
+			<param name="keyWord" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+                select * from s_brand_store where 1=1
+   			]]>
+   		</sql>
+		<sqlmap>
+   			<![CDATA[
+	    	${cdata-start}
+                select * from s_brand_store
+			where 1=1
+		    ${cdata-end} 
+				<dynamic prepend="and">
+					<isNotEmpty property="keyWord" prepend="and">
+					 (name like '%$keyWord$%' or  detail like '%$keyWord$%' or pingyin like '%$keyWord$%' or pingyin_ab like '%$keyWord$%' or login_id like '%$keyWord$%' or owner like '%$keyWord$%')
+					</isNotEmpty>
+				</dynamic>
+   			]]>
+   		</sqlmap>
+	</operation>
+	<operation name="selectByStatus"  multiplicity="many">
+   		<sql>
+   			<![CDATA[
+                select * from s_brand_store 
+                where status=?
+   			]]>
+   		</sql>
+	</operation>
+</table>

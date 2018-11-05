@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="c_partner_business">
+	<column name="bail" javatype="com.caozong.util.money.Money" />
+	<column name="lowerLimit_bail" javatype="com.caozong.util.money.Money" />
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            insert into c_partner_business
+            (id,partner_id,cardNo,service_type,status,nickName,
+            gmt_open,gmt_create,gmt_lock,partner_auth_type,bail)
+            values
+             (?,?,?,?,?,?,?,?,?,?,?)
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="update" paramtype="object">
+		<sql>
+            <![CDATA[
+            update c_partner_business set
+           	partner_id=?,cardNo=?,service_type=?,
+            status=?,nickName=?,gmt_open=?,
+            gmt_create=?,gmt_lock=?,
+            partner_auth_type=?,bail=?
+            where id=?
+             ]]>
+		</sql>
+	</operation>
+
+	<operation name="selectById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select *
+                from c_partner_business where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectByIdForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select *
+                from c_partner_business where id=? for update
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="deleteById" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+               delete from c_partner_business where id=?
+   			]]>
+		</sql>
+	</operation>
+
+	<operation name="selectByCardNo" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_partner_business where cardNo=?
+   			]]>
+		</sql>
+	</operation>
+	<operation name="selectByNickName" paramtype="primitive" multiplicity="many">
+		<sql>
+   			<![CDATA[
+                select * from c_partner_business where nickName=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectLastBusinessByCardNo" paramtype="primitive">
+	 	<extraparams>
+			<param name="cardNo" javatype="java.lang.String"/>
+		</extraparams>
+		<sql>
+   			<![CDATA[
+                select * from c_partner_business where cardNo='' order by id desc
+   			]]> 
+		</sql>
+		<sqlmap>
+   			<![CDATA[
+                select * from c_partner_business where cardNo=#cardNo# order by id desc limit 0,1
+   			]]> 
+		</sqlmap>
+	</operation>
+	
+	<operation name="selectByCardNoAndstatusEqualsSDForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_partner_business  where cardNo=? 
+                and status='SD' for update
+   			]]>
+		</sql>
+	</operation>
+	
+	<!--???????-->
+	<operation name="selectPageListOfPartnerBusinesses" paramtype="primitive" multiplicity="many"  paging="true">
+   		<extraparams>
+   			<param name="serviceType" javatype="java.lang.String"/>
+   			<param name="nickName" javatype="java.lang.String"/>
+   			<param name="partnerAuthType" javatype="java.lang.String"/>
+			<param name="businessStatusEnum" javatype="java.lang.String"/>
+			<param name="gmtBegin" javatype="java.lang.String"/>
+			<param name="gmtEnd" javatype="java.lang.String"/>
+		</extraparams>
+   		<sql>
+   			<![CDATA[
+              select * from c_partner_business where 1=1
+   			]]>
+   		</sql>
+		<sqlmap> 
+		    <![CDATA[
+		       select * from c_partner_business where 1=1 and partner_auth_type is not null
+		       <dynamic>
+		       <isNotEmpty property="serviceType" prepend="and">
+   			         service_type=#serviceType#
+				</isNotEmpty> 
+				<isNotEmpty property="nickName" prepend="and">
+   			         nickName like '%$nickName$%'
+				</isNotEmpty> 
+				<isNotEmpty property="partnerAuthType" prepend="and">
+   			         partner_auth_type = #partnerAuthType#
+				</isNotEmpty>
+				<isNotEmpty property="businessStatusEnum" prepend="and">
+   			         status=#businessStatusEnum#
+				</isNotEmpty>
+				<isNotEmpty property="gmtBegin" prepend="and"> date_format(gmt_open,'%Y-%m-%d') >= #gmtBegin# </isNotEmpty>
+				<isNotEmpty property="gmtEnd" prepend="and"> #gmtEnd# >= date_format(gmt_open,'%Y-%m-%d') </isNotEmpty>
+  			   </dynamic>
+			]]> 
+		</sqlmap>
+	</operation>
+
+	<operation name="selectByCardNoAndServiceType" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_partner_business where cardNo=? and service_type=?
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="selectByCardNoAndServiceTypeForUpdate" paramtype="primitive">
+		<sql>
+   			<![CDATA[
+                select * from c_partner_business where cardNo=? and service_type=? for update
+   			]]>
+		</sql>
+	</operation>
+	
+	<operation name="updateLowerLimitBailByCardNoServiceType" paramtype="object">
+		<sql>
+   			<![CDATA[
+                update c_partner_business set lowerLimit_bail=?
+            	where cardNo=? and service_type=?
+   			]]>
+		</sql>
+	</operation>
+</table>

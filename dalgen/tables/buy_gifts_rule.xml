@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="GBK"?>
+<table sqlname="buy_gifts_rule">
+	<operation name="insert" paramtype="object">
+		<sql>
+            <![CDATA[
+            INSERT INTO buy_gifts_rule (id, buy_gifts_activity_id, buy_num, gifts_num) 
+			VALUES
+                (?, ?, ?, ?)
+             ]]>
+		</sql>
+	</operation>
+	<operation name="selectByActivityid" multiplicity="many" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                select * from buy_gifts_rule where buy_gifts_activity_id=?
+   			]]>
+   		</sql>
+     </operation>
+	<operation name="delByActivityId" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                  delete from buy_gifts_rule where buy_gifts_activity_id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="delById" paramtype="primitive">
+   		<sql>
+   			<![CDATA[
+                  delete from buy_gifts_rule where id=?
+   			]]>
+   		</sql>
+	</operation>
+	<operation name="updateById" paramtype="object">
+   		<sql>
+   			<![CDATA[
+                   update buy_gifts_rule set buy_num=?,gifts_num=?  
+				   where id=?
+   			]]>
+   		</sql>
+	</operation>
+</table> 
