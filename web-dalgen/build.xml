@@ -11,7 +11,7 @@
 	<property name="dir.conf" value="${user.home}/.middlegen/conf" />
 	<property name="dir.lib" value="${user.home}/.middlegen/lib" />
 	<property name="dir.target" value="${basedir}/target" />
-	<property name="dir.deploy" value="${basedir}/../webcommon-dal/src/main" />
+	<property name="dir.deploy" value="${basedir}/../web-common-dal/src/main" />
 
 	<!-- properties for middlegen plugin -->
 	<property name="middlegen.templates" value="templates" />
@@ -107,7 +107,7 @@
 				<fileproducer destination="${middlegen.destination}/resources" template="${middlegen.templates}/sqlmap.vm" filename="sqlmap/auto/sqlmap-auto.xml" />
 
 				<!-- 生成DAO beans的Spring配置文件 -->
-				<fileproducer destination="${middlegen.destination}/resources/META-INF/spring" template="${middlegen.templates}/beans-dal-dao.vm" filename="webcommon-dal-dao.xml" />
+				<fileproducer destination="${middlegen.destination}/resources/META-INF/spring" template="${middlegen.templates}/beans-dal-dao.vm" filename="web-common-dal-dao.xml" />
 			</iwallet>
 		</middlegen>
 		<echo message="DAL生成已成功!" />

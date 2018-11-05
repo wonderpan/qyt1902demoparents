@@ -97,4 +97,5 @@
     <!--<include table="tables/s_seckill.xml"/>-->
     <!--<include table="tables/s_activity_user_detail.xml"/>-->
     <include table="tables/s_pic.xml"/>
+    <include table="tables/a_comment.xml"/>
 </tables>

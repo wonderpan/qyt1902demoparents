@@ -11,10 +11,11 @@ import com.wonder.wcs.common.dal.auto.daointerface.SPicDAO;
 // auto generated imports
 import com.wonder.wcs.common.dal.auto.dataobject.SPicDO;
 import org.springframework.dao.DataAccessException;
-import java.util.List;
+import com.caozong.util.PageList;
 import java.util.Map;
 import java.util.HashMap;
 import com.wonder.wcs.common.dal.auto.dataobject.SPicDO;
+import com.caozong.util.Paginator;
 
 /**
  * An ibatis based implementation of dao interface <tt>com.wonder.wcs.common.dal.auto.daointerface.SPicDAO</tt>.
@@ -131,18 +132,34 @@ public class IbatisSPicDAO extends SqlMapClientDaoSupport implements SPicDAO {
 	 *  <tt>select id, name, url, create_time, update_time from s_pic where (name LIKE '$name$%') order by sort ASC</tt>
 	 *
 	 *	@param name
-	 *	@return List<SPicDO>
+	 *	@param pageSize
+	 *	@param pageNum
+	 *	@return PageList<SPicDO>
 	 *	@throws DataAccessException
 	 */	 
-    public List<SPicDO> selectByName(String name) throws DataAccessException {
+    public PageList<SPicDO> selectByName(String name, int pageSize, int pageNum) throws DataAccessException {
+        Map<String,Object> param = new HashMap<String,Object>();
 
-	    Map<String,Object> param = new HashMap<String,Object>();
-	    param.put("name", name);
+        param.put("name", name);
+        param.put("pageSize", new Integer(pageSize));
+        param.put("pageNum", new Integer(pageNum));
 
+        Paginator paginator = new Paginator();
+        paginator.setItemsPerPage(pageSize);
+        paginator.setPage(pageNum);
 
-
-        return getSqlMapClientTemplate().queryForList("MS-S-PIC-SELECT-BY-NAME", param);
-
+        paginator.setItems(((Integer) getSqlMapClientTemplate().queryForObject("MS-S-PIC-SELECT-BY-NAME-COUNT-FOR-PAGING", param)).intValue());
+        
+        PageList<SPicDO>  pageList = new PageList<SPicDO>();
+        pageList.setPaginator(paginator);
+        
+        if (paginator.getBeginIndex() <= paginator.getItems()) {
+            param.put("startRow", new Integer(paginator.getBeginIndex()));
+            param.put("rowLength", new Integer(paginator.getLength()));
+            pageList.addAll(getSqlMapClientTemplate().queryForList("MS-S-PIC-SELECT-BY-NAME", param));
+        }
+        
+        return pageList;
     }
 
 	/**

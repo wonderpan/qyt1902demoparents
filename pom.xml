@@ -15,61 +15,61 @@
     </modules>
 
 
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <repositories>
-                <repository>
-                    <id>maven-net-cn</id>
-                    <name>Maven China Mirror</name>
-                    <url>http://repository.sonatype.org/content/groups/public</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>releases</id>
-                    <url>http://repo1.maven.org/maven2</url>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>thirdparty</id>
-                    <url>http://maven.caozoo.net:8080/nexus/content/repositories/thirdparty</url>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>snapshots</id>
-                    <url>http://maven.caozoo.net:8080/nexus/content/groups/repo</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>maven-net-cn</id>
-                    <name>Maven China Mirror</name>
-                    <url>http://maven.oschina.net/content/groups/public</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-    </profiles>
+    <!--<profiles>-->
+        <!--<profile>-->
+            <!--<id>dev</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<repositories>-->
+                <!--<repository>-->
+                    <!--<id>maven-net-cn</id>-->
+                    <!--<name>Maven China Mirror</name>-->
+                    <!--<url>http://repository.sonatype.org/content/groups/public</url>-->
+                    <!--<releases>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</releases>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>false</enabled>-->
+                    <!--</snapshots>-->
+                <!--</repository>-->
+                <!--<repository>-->
+                    <!--<id>releases</id>-->
+                    <!--<url>http://repo1.maven.org/maven2</url>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</snapshots>-->
+                <!--</repository>-->
+                <!--<repository>-->
+                    <!--<id>thirdparty</id>-->
+                    <!--<url>http://maven.caozoo.net:8080/nexus/content/repositories/thirdparty</url>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</snapshots>-->
+                <!--</repository>-->
+                <!--<repository>-->
+                    <!--<id>snapshots</id>-->
+                    <!--<url>http://maven.caozoo.net:8080/nexus/content/groups/repo</url>-->
+                    <!--<releases>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</releases>-->
+                <!--</repository>-->
+            <!--</repositories>-->
+            <!--<pluginRepositories>-->
+                <!--<pluginRepository>-->
+                    <!--<id>maven-net-cn</id>-->
+                    <!--<name>Maven China Mirror</name>-->
+                    <!--<url>http://maven.oschina.net/content/groups/public</url>-->
+                    <!--<releases>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</releases>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>false</enabled>-->
+                    <!--</snapshots>-->
+                <!--</pluginRepository>-->
+            <!--</pluginRepositories>-->
+        <!--</profile>-->
+    <!--</profiles>-->
 
     <properties>
         <spring.version>3.1.4.RELEASE</spring.version>

@@ -7,7 +7,7 @@ package com.wonder.wcs.common.dal.auto.daointerface;
 // auto generated imports
 import com.wonder.wcs.common.dal.auto.dataobject.SPicDO;
 import org.springframework.dao.DataAccessException;
-import java.util.List;
+import com.caozong.util.PageList;
 
 /**
  * A dao interface provides methods to access database table <tt>s_pic</tt>.
@@ -100,10 +100,12 @@ public interface SPicDAO {
 	 *  <tt>select id, name, url, create_time, update_time from s_pic where (name LIKE '$name$%') order by sort ASC</tt>
 	 *
 	 *	@param name
-	 *	@return List<SPicDO>
+	 *	@param pageSize
+	 *	@param pageNum
+	 *	@return PageList<SPicDO>
 	 *	@throws DataAccessException
 	 */	 
-    public List<SPicDO> selectByName(String name) throws DataAccessException;
+    public PageList<SPicDO> selectByName(String name, int pageSize, int pageNum) throws DataAccessException;
 
 	/**
 	 *  Query DB table <tt>s_pic</tt> for records.

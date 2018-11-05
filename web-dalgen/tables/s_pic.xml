@@ -43,7 +43,7 @@
 	</operation> 
 	
 	<!--???name???????-->
-	<operation name="selectByName" multiplicity="many" paging="false">
+	<operation name="selectByName" multiplicity="many" paging="true">
 	    <extraparams>
 			<param name="name" javatype="java.lang.String"/>
 		</extraparams>
